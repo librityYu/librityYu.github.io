@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Activity的创建流程 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="在TransactionExecutor顺序调用了Activity全部生命周期：参考博客：(21条消息) Android | 基于Android9.0的startActivity流程分析（3）：新Activity的onStart流程、onResume流程_明朗晨光的专栏-CSDN博客 先来看execute(ClientTransaction transaction)方法： 12345public">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activity的创建流程">
+<meta property="og:url" content="http://example.com/2021/06/10/Activity%E7%9A%84%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在TransactionExecutor顺序调用了Activity全部生命周期：参考博客：(21条消息) Android | 基于Android9.0的startActivity流程分析（3）：新Activity的onStart流程、onResume流程_明朗晨光的专栏-CSDN博客 先来看execute(ClientTransaction transaction)方法： 12345public">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-10T13:53:25.000Z">
+<meta property="article:modified_time" content="2021-07-06T05:54:58.960Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Activity的创建流程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/10/Activity%E7%9A%84%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-06-10T13:53:25.000Z" itemprop="datePublished">2021-06-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Activity的创建流程
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在TransactionExecutor顺序调用了Activity全部生命周期：参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011386173/article/details/87857602">(21条消息) Android | 基于Android9.0的startActivity流程分析（3）：新Activity的onStart流程、onResume流程_明朗晨光的专栏-CSDN博客</a></p>
+<p>先来看execute(ClientTransaction transaction)方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(ClientTransaction transaction)</span> </span>&#123;</span><br><span class="line">      executeCallbacks(transaction);</span><br><span class="line"></span><br><span class="line">      executeLifecycleState(transaction);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在看看execteLifecycleState方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Transition to the final state if requested by the transaction. */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">executeLifecycleState</span><span class="params">(ClientTransaction transaction)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Cycle to the state right before the final requested state.</span></span><br><span class="line">        cycleToPath(r, lifecycleItem.getTargetState(), <span class="keyword">true</span> <span class="comment">/* excludeLastState */</span>, transaction);</span><br><span class="line">        <span class="comment">// Execute the final transition with proper parameters.</span></span><br><span class="line">        lifecycleItem.execute(mTransactionHandler, token, mPendingActions);</span><br><span class="line">        lifecycleItem.postExecute(mTransactionHandler, token, mPendingActions);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在看cycleToPath方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">cycleToPath</span><span class="params">(ActivityClientRecord r, <span class="keyword">int</span> finish, <span class="keyword">boolean</span> excludeLastState,</span></span></span><br><span class="line"><span class="params"><span class="function">           ClientTransaction transaction)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">final</span> <span class="keyword">int</span> start = r.getLifecycleState();</span><br><span class="line">       <span class="keyword">if</span> (DEBUG_RESOLVER) &#123;</span><br><span class="line">           Slog.d(TAG, tId(transaction) + <span class="string">&quot;Cycle activity: &quot;</span></span><br><span class="line">                   + getShortActivityName(r.token, mTransactionHandler)</span><br><span class="line">                   + <span class="string">&quot; from: &quot;</span> + getStateName(start) + <span class="string">&quot; to: &quot;</span> + getStateName(finish)</span><br><span class="line">                   + <span class="string">&quot; excludeLastState: &quot;</span> + excludeLastState);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">final</span> IntArray path = mHelper.getLifecyclePath(start, finish, excludeLastState);</span><br><span class="line">       performLifecycleSequence(r, path, transaction);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>再看performLifecycleSequence方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">performLifecycleSequence</span><span class="params">(ActivityClientRecord r, IntArray path,</span></span></span><br><span class="line"><span class="params"><span class="function">           ClientTransaction transaction)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">final</span> <span class="keyword">int</span> size = path.size();</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, state; i &lt; size; i++) &#123;</span><br><span class="line">           <span class="keyword">switch</span> (state) &#123;</span><br><span class="line">               <span class="keyword">case</span> ON_CREATE:</span><br><span class="line">                   mTransactionHandler.handleLaunchActivity(r, mPendingActions,</span><br><span class="line">                           <span class="keyword">null</span> <span class="comment">/* customIntent */</span>);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_START:</span><br><span class="line">                   mTransactionHandler.handleStartActivity(r, mPendingActions);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_RESUME:</span><br><span class="line">                   mTransactionHandler.handleResumeActivity(r.token, <span class="keyword">false</span> <span class="comment">/* finalStateRequest */</span>,</span><br><span class="line">                           r.isForward, <span class="string">&quot;LIFECYCLER_RESUME_ACTIVITY&quot;</span>);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_PAUSE:</span><br><span class="line">                   mTransactionHandler.handlePauseActivity(r.token, <span class="keyword">false</span> <span class="comment">/* finished */</span>,</span><br><span class="line">                           <span class="keyword">false</span> <span class="comment">/* userLeaving */</span>, <span class="number">0</span> <span class="comment">/* configChanges */</span>, mPendingActions,</span><br><span class="line">                           <span class="string">&quot;LIFECYCLER_PAUSE_ACTIVITY&quot;</span>);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_STOP:</span><br><span class="line">                   mTransactionHandler.handleStopActivity(r.token, <span class="keyword">false</span> <span class="comment">/* show */</span>,</span><br><span class="line">                           <span class="number">0</span> <span class="comment">/* configChanges */</span>, mPendingActions, <span class="keyword">false</span> <span class="comment">/* finalStateRequest */</span>,</span><br><span class="line">                           <span class="string">&quot;LIFECYCLER_STOP_ACTIVITY&quot;</span>);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_DESTROY:</span><br><span class="line">                   mTransactionHandler.handleDestroyActivity(r.token, <span class="keyword">false</span> <span class="comment">/* finishing */</span>,</span><br><span class="line">                           <span class="number">0</span> <span class="comment">/* configChanges */</span>, <span class="keyword">false</span> <span class="comment">/* getNonConfigInstance */</span>,</span><br><span class="line">                           <span class="string">&quot;performLifecycleSequence. cycling to:&quot;</span> + path.get(size - <span class="number">1</span>));</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_RESTART:</span><br><span class="line">                   mTransactionHandler.performRestartActivity(r.token, <span class="keyword">false</span> <span class="comment">/* start */</span>);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">default</span>:</span><br><span class="line">                   <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Unexpected lifecycle state: &quot;</span> + state);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 依次完成了 Activity的全部生命周期的调用。</p>
+<p>当调用到ActivityThread的handleLaunchActivity的时候，在handlerLaunchActivity里面调用了performLaunchActivity创建了Activity对象，并完成了Activity的onCreate()。</p>
+<p>Activity对象的创建是在ActivityThread里面的performLaunchActivity方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Activity <span class="title">performLaunchActivity</span><span class="params">(ActivityClientRecord r, Intent customIntent)</span></span>&#123;</span><br><span class="line"> Activity activity = <span class="keyword">null</span>;</span><br><span class="line"> java.lang.ClassLoader cl = appContext.getClassLoader();</span><br><span class="line"> activity = mInstrumentation.newActivity(cl, component.getClassName(), r.intent);</span><br><span class="line"> <span class="keyword">return</span> activity</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先在performLaunchActivity里面完成了Activity对象的创建。</p>
+<p>在看这串代码会发现一个很好的东西Instrumentation，Activity对象的实例话是通过它进行的，Activity的create方法也是最先由它调用的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Activity对象的实例化</span><br><span class="line"><span class="function"><span class="keyword">public</span> Activity <span class="title">newActivity</span><span class="params">(ClassLoader cl, String className,</span></span></span><br><span class="line"><span class="params"><span class="function">            Intent intent)</span></span></span><br><span class="line"><span class="function">          return activity</span>;</span><br><span class="line">    &#125;</span><br><span class="line">Activity的create调用</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">callActivityOnCreate</span><span class="params">(Activity activity, Bundle icicle)</span> </span>&#123;</span><br><span class="line">        prePerformCreate(activity);</span><br><span class="line">        activity.performCreate(icicle);</span><br><span class="line">        postPerformCreate(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>接着调用了activity的attach方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">activity.attach(appContext, <span class="keyword">this</span>, getInstrumentation(), r.token,</span><br><span class="line">                      r.ident, app, r.intent, r.activityInfo, title, r.parent,</span><br><span class="line">                      r.embeddedID, r.lastNonConfigurationInstances, config,</span><br><span class="line">                      r.referrer, r.voiceInteractor, window, r.configCallback,</span><br><span class="line">                      r.assistToken);</span><br></pre></td></tr></table></figure>
+
+<p>在attach里面做了很多重要的事情：</p>
+<ul>
+<li>在performLaunchActity的时候并没给我们的Activity父类的mBase:Context赋值，赋值的地方就是在attach的时候。</li>
+<li>创建PhoneWindow对象。</li>
+<li>指定ui线程为当前Activity所在的线程</li>
+<li>给PhoneWindow设置WindowManager 也就是WindowManagerImpl</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">attach</span><span class="params">(Context context, ActivityThread aThread,</span></span></span><br><span class="line"><span class="params"><span class="function">           Instrumentation instr, IBinder token, <span class="keyword">int</span> ident,</span></span></span><br><span class="line"><span class="params"><span class="function">           Application application, Intent intent, ActivityInfo info,</span></span></span><br><span class="line"><span class="params"><span class="function">           CharSequence title, Activity parent, String id,</span></span></span><br><span class="line"><span class="params"><span class="function">           NonConfigurationInstances lastNonConfigurationInstances,</span></span></span><br><span class="line"><span class="params"><span class="function">           Configuration config, String referrer, IVoiceInteractor voiceInteractor,</span></span></span><br><span class="line"><span class="params"><span class="function">           Window window, ActivityConfigCallback activityConfigCallback, IBinder assistToken)</span> </span>&#123;</span><br><span class="line">       attachBaseContext(context); <span class="comment">//给父类的mBase:Context赋值</span></span><br><span class="line">       mWindow = <span class="keyword">new</span> PhoneWindow(<span class="keyword">this</span>, window, activityConfigCallback);</span><br><span class="line">       <span class="keyword">if</span> (info.softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED) &#123;</span><br><span class="line">           <span class="comment">// 当软件盘的状态被指定了，则将软键盘状态设置为给定的</span></span><br><span class="line">           mWindow.setSoftInputMode(info.softInputMode);</span><br><span class="line">       &#125;</span><br><span class="line">       mUiThread = Thread.currentThread();<span class="comment">//指定ui线程为当前线程</span></span><br><span class="line">       <span class="comment">// 给每个Activity的PhoneWindow创建WindowManagerImpl对象。</span></span><br><span class="line">       mWindow.setWindowManager(</span><br><span class="line">               (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),</span><br><span class="line">               mToken, mComponent.flattenToString(),</span><br><span class="line">               (info.flags &amp; ActivityInfo.FLAG_HARDWARE_ACCELERATED) != <span class="number">0</span>);  </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么要通过服务的方式获取WindManagerService-服务创建的WindowManagerService一样吗？"><a href="#为什么要通过服务的方式获取WindManagerService-服务创建的WindowManagerService一样吗？" class="headerlink" title="为什么要通过服务的方式获取WindManagerService,服务创建的WindowManagerService一样吗？"></a>为什么要通过服务的方式获取WindManagerService,服务创建的WindowManagerService一样吗？</h2><blockquote>
+<p>Activity通过执行attach方法，创建了Activity的Window对象，指定了ui线程，给window对象设置了WindowManagerIml。 一个Activity有一个window变量 一个mWindowManager变量 然后Winodw里面又保存了WindowManager对象。WindowManager里面由保存了window对象。</p>
+</blockquote>
+<p>在performLaunchActivity()里面接着调用了callActivityOnCreate方法，去完成Activity的调用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断当前activity是不是数据持久化 </span></span><br><span class="line"><span class="comment">// 在Manifest里面申明 android:persistableMode=&quot;persistAcrossReboots&quot;</span></span><br><span class="line"><span class="keyword">if</span> (r.isPersistable()) &#123;</span><br><span class="line">                    mInstrumentation.callActivityOnCreate(activity, r.state, r.persistentState);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    mInstrumentation.callActivityOnCreate(activity, r.state);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>调用prePerformCreate(Activity)的时候往消息队列里面添加了一个启动activity的消息。</p>
+</li>
+<li><p>然后activity调用performCreate去创建Activity</p>
+<h2 id="这里没搞懂，为啥要往消息队列里面添加一个消息"><a href="#这里没搞懂，为啥要往消息队列里面添加一个消息" class="headerlink" title="这里没搞懂，为啥要往消息队列里面添加一个消息"></a>这里没搞懂，为啥要往消息队列里面添加一个消息</h2></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">callActivityOnCreate</span><span class="params">(Activity activity, Bundle icicle)</span> </span>&#123;</span><br><span class="line">        prePerformCreate(activity);</span><br><span class="line">        activity.performCreate(icicle);</span><br><span class="line">        postPerformCreate(activity);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 启动Acitivity的时候往MessageQueue里面添加了一个消息</span></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">prePerformCreate</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mWaitingActivities != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (mSync) &#123;</span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">int</span> N = mWaitingActivities.size();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; i++) &#123;</span><br><span class="line">                    <span class="keyword">final</span> ActivityWaiter aw = mWaitingActivities.get(i);</span><br><span class="line">                    <span class="keyword">final</span> Intent intent = aw.intent;</span><br><span class="line">                    <span class="keyword">if</span> (intent.filterEquals(activity.getIntent())) &#123;</span><br><span class="line">                        aw.activity = activity;</span><br><span class="line">                        <span class="comment">// 往消息队列里面添加一个消息</span></span><br><span class="line">                        mMessageQueue.addIdleHandler(<span class="keyword">new</span> ActivityGoing(aw));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>现在来看Activity的performCreate方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">performCreate</span><span class="params">(Bundle icicle, PersistableBundle persistentState)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 遍历调用全部有注册监听activity创建的监听</span></span><br><span class="line">       dispatchActivityPreCreated(icicle);</span><br><span class="line">       mCanEnterPictureInPicture = <span class="keyword">true</span>;</span><br><span class="line">       restoreHasCurrentPermissionRequest(icicle);</span><br><span class="line">       <span class="keyword">if</span> (persistentState != <span class="keyword">null</span>) &#123;</span><br><span class="line">           onCreate(icicle, persistentState);</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           onCreate(icicle);</span><br><span class="line">       &#125;</span><br><span class="line">       writeEventLog(LOG_AM_ON_CREATE_CALLED, <span class="string">&quot;performCreate&quot;</span>);</span><br><span class="line">       mActivityTransitionState.readState(icicle);</span><br><span class="line"></span><br><span class="line">       mVisibleFromClient = !mWindow.getWindowStyle().getBoolean(</span><br><span class="line">               com.android.internal.R.styleable.Window_windowNoDisplay, <span class="keyword">false</span>);</span><br><span class="line">       mFragments.dispatchActivityCreated(); <span class="comment">// 这里也去调用了Fragment的创建流程</span></span><br><span class="line">       mActivityTransitionState.setEnterActivityOptions(<span class="keyword">this</span>, getActivityOptions());</span><br><span class="line">      <span class="comment">// 遍历调用全部注册有监听activty的postcreate监听</span></span><br><span class="line">      dispatchActivityPostCreated(icicle);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过看源码，我们知道了另外一种用来全局监听activity状态的方式：就是在Application里面注册监听：</p>
+<p>Application里面有个一公开接口 ActivityLifecycleCallbacks，我们可以站在全局的角度上观察所有activut的情况，使用方式如下：</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainApplication</span> : <span class="type">BaseApplication</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">        registerActivityLifecycleCallbacks(<span class="keyword">object</span> :ActivityLifecycleCallbacks&#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityCreated</span><span class="params">(activity: <span class="type">Activity</span>, savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityStarted</span><span class="params">(activity: <span class="type">Activity</span>)</span></span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityResumed</span><span class="params">(activity: <span class="type">Activity</span>)</span></span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityPaused</span><span class="params">(activity: <span class="type">Activity</span>)</span></span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityStopped</span><span class="params">(activity: <span class="type">Activity</span>)</span></span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivitySaveInstanceState</span><span class="params">(activity: <span class="type">Activity</span>, outState: <span class="type">Bundle</span>)</span></span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActivityDestroyed</span><span class="params">(activity: <span class="type">Activity</span>)</span></span> &#123;&#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="至此走完了Activity生命周期的所有方法。"><a href="#至此走完了Activity生命周期的所有方法。" class="headerlink" title="至此走完了Activity生命周期的所有方法。"></a>至此走完了Activity生命周期的所有方法。</h5><hr>
+<p>ActivityTaskManagerService.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现了转场动画</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">overridePendingTransition</span><span class="params">(IBinder token, String packageName,</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="keyword">int</span> enterAnim, <span class="keyword">int</span> exitAnim)</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p>一个Activity的创建首先在Activity的attach里面创建了PhoneWindow对象。</p>
+<p>在调用到Activity的onCreate方法时候，将attach里面创建的PhoneWindow对象传递给了AppCompatDelegate里面的mWindow对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// AppCompatDelegate</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        ensureWindow();</span><br><span class="line">        mCreated = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着我们在onCreate里面调用setContentView(int layoutId)方法。</p>
+<p>​    执行逻辑是：在setContentView里面给我们的PhoneWindow创建了DecorView对象，然后拿到PhoneWindow里面的content父控件，然后将自己的view通过add的方式添加到这个content的view里面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// AppCompatActivity</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(<span class="meta">@LayoutRes</span> <span class="keyword">int</span> layoutResID)</span> </span>&#123;</span><br><span class="line">        getDelegate().setContentView(layoutResID);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// AppCompatDelegateImpl</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        ensureSubDecor(); <span class="comment">//创建我们DecorView mSubDecor</span></span><br><span class="line">        ViewGroup contentParent = mSubDecor.findViewById(android.R.id.content);</span><br><span class="line">        contentParent.removeAllViews();</span><br><span class="line">        contentParent.addView(v);</span><br><span class="line">        mAppCompatWindowCallback.getWrapped().onContentChanged();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在来看下这个DecorView是怎么创建的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// AppCompatDelegateImpl</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureSubDecor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!mSubDecorInstalled) &#123;</span><br><span class="line">            <span class="comment">// 创建DecorView</span></span><br><span class="line">            mSubDecor = createSubDecor();</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> ViewGroup <span class="title">createSubDecor</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>上面走完了Activity的onCreate方法，现在看下onStart执行流程。</p>
+<p>在ActivityThread的handleStartActivity(ActivityClientRecord r,PendingTransactionActions pendingActions):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  ActivityThread</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleStartActivity</span><span class="params">(ActivityClientRecord r,</span></span></span><br><span class="line"><span class="params"><span class="function">            PendingTransactionActions pendingActions)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">final</span> Activity activity = r.activity;</span><br><span class="line">    <span class="comment">// Start</span></span><br><span class="line">   activity.performStart(<span class="string">&quot;handleStartActivity&quot;</span>);</span><br><span class="line">   r.setState(ON_START);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Activity </span></span><br><span class="line"> <span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">performStart</span><span class="params">(String reason)</span> </span>&#123;</span><br><span class="line">   mInstrumentation.callActivityOnStart(<span class="keyword">this</span>); <span class="comment">//执行了Activity的start方法</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面走完了onStart方法。也没干什么</p>
+<hr>
+<p>现在来看下onResume的执行流程：</p>
+<p>在onResume里面干了最重要的事就是创建ViewRootImpl对象。</p>
+<p>首先通过Activity获取对应的WindowManager。Activity的WindowManger对象是在Activity的attach放里面创建的。可以看上面的文章写了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ActivityThread</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleResumeActivity</span><span class="params">(IBinder token, <span class="keyword">boolean</span> finalStateRequest, <span class="keyword">boolean</span> isForward,</span></span></span><br><span class="line"><span class="params"><span class="function">            String reason)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 这里执行了Activity的onResume 方法</span></span><br><span class="line">       <span class="keyword">final</span> ActivityClientRecord r = performResumeActivity(token, finalStateRequest, reason);</span><br><span class="line">    <span class="keyword">if</span> (r.window == <span class="keyword">null</span> &amp;&amp; !a.mFinished &amp;&amp; willBeVisible) &#123;</span><br><span class="line">            r.window = r.activity.getWindow();</span><br><span class="line">            View decor = r.window.getDecorView();</span><br><span class="line">            decor.setVisibility(View.INVISIBLE);</span><br><span class="line">      <span class="comment">// 获取在attach的时候创建的WindowManager对象</span></span><br><span class="line">            ViewManager wm = a.getWindowManager();</span><br><span class="line">            WindowManager.LayoutParams l = r.window.getAttributes();</span><br><span class="line">            a.mDecor = decor;</span><br><span class="line">            l.type = WindowManager.LayoutParams.TYPE_BASE_APPLICATION;</span><br><span class="line">            l.softInputMode |= forwardBit;</span><br><span class="line">            <span class="keyword">if</span> (r.mPreserveWindow) &#123;</span><br><span class="line">                a.mWindowAdded = <span class="keyword">true</span>;</span><br><span class="line">                r.mPreserveWindow = <span class="keyword">false</span>;</span><br><span class="line">                <span class="comment">// 第一次执行onResume的时候这里获取的是null</span></span><br><span class="line">                ViewRootImpl impl = decor.getViewRootImpl();</span><br><span class="line">                <span class="keyword">if</span> (impl != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    impl.notifyChildRebuilt();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         <span class="keyword">if</span> (a.mVisibleFromClient) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!a.mWindowAdded) &#123;</span><br><span class="line">                    a.mWindowAdded = <span class="keyword">true</span>;</span><br><span class="line">                <span class="comment">// 这里很关键，去创建了我们的ViewRootImpl</span></span><br><span class="line">                <span class="comment">// 也将我们的DecorView添加到Window里面。</span></span><br><span class="line">                    wm.addView(decor, l);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    a.onWindowAttributesChanged(l);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">  ......省略代码</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来看看刚才添加Decorview到Window的操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!a.mWindowAdded) &#123;</span><br><span class="line">                    a.mWindowAdded = <span class="keyword">true</span>;</span><br><span class="line">                    wm.addView(decor, l);</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// WindowManagerImpl</span></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addView</span><span class="params">(<span class="meta">@NonNull</span> View view, <span class="meta">@NonNull</span> ViewGroup.LayoutParams params)</span> </span>&#123;</span><br><span class="line">        applyDefaultToken(params);</span><br><span class="line">        mGlobal.addView(view, params, mContext.getDisplay(), mParentWindow);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，WindowManagerImpl将添加view的操作交给了WindowManagerGlobal去做。</p>
+<p>现在来看下WindowManagerGlobal是如何添加的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//首先看下WindowManagerGlobal是怎么创建的：</span></span><br><span class="line"><span class="comment">// 可以看到他是透过懒加载的方式，创建了一个单例对象。</span></span><br><span class="line"><span class="comment">// 也就是说我们每个Activity的创建走的都是同一个对象。</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> WindowManagerGlobal mGlobal = WindowManagerGlobal.getInstance();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// WindowManagerGlobal</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addView</span><span class="params">(View view, ViewGroup.LayoutParams params,</span></span></span><br><span class="line"><span class="params"><span class="function">            Display display, Window parentWindow)</span> </span>&#123;</span><br><span class="line">        ViewRootImpl root;</span><br><span class="line">        View panelParentView = <span class="keyword">null</span>;</span><br><span class="line">         <span class="comment">// 创建了我们的ViewRootImpl</span></span><br><span class="line">        root = <span class="keyword">new</span> ViewRootImpl(view.getContext(), display);</span><br><span class="line">        view.setLayoutParams(wparams);</span><br><span class="line">        mViews.add(view);</span><br><span class="line">        mRoots.add(root);</span><br><span class="line">        mParams.add(wparams);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="comment">// 开始一个view从测量到布局的整个流程。</span></span><br><span class="line">             root.setView(view, wparams, panelParentView);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (RuntimeException e) &#123;</span><br><span class="line">              <span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                  removeViewLocked(index, <span class="keyword">true</span>);</span><br><span class="line">             &#125;</span><br><span class="line">               <span class="keyword">throw</span> e;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Android 应用框架中为了更快的响应UI刷新事件在 ViewRootImpl.scheduleTraversals 中使用了同步屏障。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ViewRootImpl.java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setView</span><span class="params">(View view, WindowManager.LayoutParams attrs, View panelParentView,</span></span></span><br><span class="line"><span class="params"><span class="function">            <span class="keyword">int</span> userId)</span> </span>&#123;</span><br><span class="line">		 requestLayout(); <span class="comment">//可以看到ViewRootImpl主动调用了requestlayout</span></span><br><span class="line">&#125;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestLayout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!mHandlingLayoutInLayoutRequest) &#123;</span><br><span class="line">            checkThread();</span><br><span class="line">            mLayoutRequested = <span class="keyword">true</span>;</span><br><span class="line">            scheduleTraversals();<span class="comment">// 按计划进行分发</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">final</span> ViewRootHandler mHandler = <span class="keyword">new</span> ViewRootHandler();</span><br><span class="line"> <span class="keyword">final</span> TraversalRunnable mTraversalRunnable = <span class="keyword">new</span> TraversalRunnable();</span><br><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">scheduleTraversals</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!mTraversalScheduled) &#123;</span><br><span class="line">            mTraversalScheduled = <span class="keyword">true</span>;</span><br><span class="line">            <span class="comment">// 通过postSyncBarrier()设置同步屏障 目的是为了让绘制流程更快的被执行</span></span><br><span class="line">            mTraversalBarrier = mHandler.getLooper().getQueue().postSyncBarrier();</span><br><span class="line">            <span class="comment">//handler发送消息，有了同步屏障mTraversalRunnable就会被优先执行。</span></span><br><span class="line">            mChoreographer.postCallback(</span><br><span class="line">                    Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以看到这里使用了消息机制里面的 同步屏障 机制。目的是为了让绘制流程尽快被执行。</p>
+<p>设置同步屏障之后，next函数里面会忽略所有的同步消息，返回异步消息。换句话说就是Handler消息机制增加了一种简单的预先级制度，异步消息的优先级高于同步消息。</p>
+<p>同步屏障就是将新的这个message插入到了表头的位置。</p>
+<p>文章：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e10479c85af7">Android中同步屏障的应用及简析 - 简书 (jianshu.com)</a></p>
+<p>博客：《Android消息机制》</p>
+</blockquote>
+<p>在mTraversalRunnable里面执行整个view的测量布局绘制：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ViewRootImpl</span></span><br><span class="line"><span class="keyword">final</span> TraversalRunnable mTraversalRunnable = <span class="keyword">new</span> TraversalRunnable();<span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">TraversalRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            doTraversal(); <span class="comment">// 执行了全部的测量绘制布局过程</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doTraversal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mTraversalScheduled) &#123;</span><br><span class="line">            mTraversalScheduled = <span class="keyword">false</span>;</span><br><span class="line">            <span class="comment">// 移除同步锁</span></span><br><span class="line">            mHandler.getLooper().getQueue().removeSyncBarrier(mTraversalBarrier);</span><br><span class="line">            performTraversals();  <span class="comment">// 执行了全部的测量绘制布局过程</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">performTraversals</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);</span><br><span class="line">      performLayout(lp, mWidth, mHeight);</span><br><span class="line">      performDraw();</span><br><span class="line">&#125;  </span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">performMeasure</span><span class="params">(<span class="keyword">int</span> childWidthMeasureSpec, <span class="keyword">int</span> childHeightMeasureSpec)</span> </span>&#123;       </span><br><span class="line">       mView.measure(childWidthMeasureSpec, childHeightMeasureSpec);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>计算的时候先进入到 View的measure方法：</p>
+<blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将大小和方式融合在一起</span></span><br><span class="line">makeMeasureSpec(<span class="keyword">int</span> size,<span class="keyword">int</span> mode)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// View.java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">measure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">    onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 给我们的view设置指定大小</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">        setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),</span><br><span class="line">                getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当时viewGroup的时候，都是重载了onMeasure方法。因为我们还需要计算viewgroup里面的子view的大小，才能确定我们的viewgroup的大小是多少。</p>
+<p>这里我们来看下LinearLayout的onMeasure方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// LinearLayout</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mOrientation == VERTICAL) &#123;</span><br><span class="line">        measureVertical(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        measureHorizontal(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结： 一个view的测量过程都是首先通过view的measure执行下去，然后不同的view通过重写onMeasure方法实现对他们所有子view的测量。</p>
+<p>上面就是从ViewRootImpl触发整个页面的执行测量的过程。</p>
+<hr>
+<p>ViewRootImpl：performLayout()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ViewRootImpl  </span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">performLayout</span><span class="params">(WindowManager.LayoutParams lp, <span class="keyword">int</span> desiredWindowWidth,</span></span></span><br><span class="line"><span class="params"><span class="function">            <span class="keyword">int</span> desiredWindowHeight)</span> </span>&#123;</span><br><span class="line">       host.layout(<span class="number">0</span>, <span class="number">0</span>, host.getMeasuredWidth(), host.getMeasuredHeight());</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// View</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">layout</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> t, <span class="keyword">int</span> r, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">       onLayout(changed, l, t, r, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过查看源代码，发现可以使用 addOnLayoutChangeListener()方法，监听某个view布局的改变。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">viewpager.addOnLayoutChangeListener(<span class="keyword">object</span> :View.OnLayoutChangeListener&#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onLayoutChange</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">                v: <span class="type">View</span>?,</span></span></span><br><span class="line"><span class="params"><span class="function">                left: <span class="type">Int</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                top: <span class="type">Int</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                right: <span class="type">Int</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                bottom: <span class="type">Int</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                oldLeft: <span class="type">Int</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                oldTop: <span class="type">Int</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                oldRight: <span class="type">Int</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                oldBottom: <span class="type">Int</span></span></span></span><br><span class="line"><span class="params"><span class="function">            )</span></span> &#123;</span><br><span class="line"><span class="comment">// 知道了开始位置 和 结束位置 不就可以做动画了嘛</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<p>至此 layout分析完了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/06/10/Activity%E7%9A%84%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/" data-id="ckr1v2r50001cpkutc100ex1q" data-title="Activity的创建流程" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/06/10/Androi%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%B5%81%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Androi触摸事件分发流程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/06/10/Android%E5%8A%A8%E7%94%BB%E8%BD%AC%E5%9C%BA%E7%9A%84%E6%9C%AC%E8%B4%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android动画转场的本质</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pr/">Pr</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%88%E6%9E%9C/">效果</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EJS/" rel="tag">EJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/" rel="tag">kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E8%A8%80/" rel="tag">语言</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EJS/" style="font-size: 10px;">EJS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/%E8%AF%AD%E8%A8%80/" style="font-size: 20px;">语言</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/07/13/C%E7%9B%98%E5%8F%AF%E4%BB%A5%E5%88%A0%E7%9A%84%E6%96%87%E4%BB%B6/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/13/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%99%BB%E5%BD%95%E5%A4%9A%E4%B8%AAGitHub%E6%96%B9%E5%BC%8F/">一台电脑登录多个GitHub方式</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/13/kotlin%E4%BB%A3%E7%90%86/">kotlin代理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/09/Android%E9%87%8D%E5%90%AF%E5%8A%9F%E8%83%BD/">Android重启功能</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
