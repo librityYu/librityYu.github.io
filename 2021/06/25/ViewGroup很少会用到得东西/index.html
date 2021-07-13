@@ -13,12 +13,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="轻量级的移除和添加view，addView和removeView都是重量级的操作，会触发重绘，导致卡顿。  detachViewFromParent(View view, int index, LayoutParams params)  removeDetachedView(View view,boolean animate)   效果：   实现： 12345678910111213141516">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/06/25/ViewGroup%E5%BE%88%E5%B0%91%E4%BC%9A%E7%94%A8%E5%88%B0%E5%BE%97%E4%B8%9C%E8%A5%BF/ViewGroup很少会用到得东西/0m6kk-k1ufo.gif">
+<meta property="og:image" content="http://example.com/.com//0m6kk-k1ufo.gif">
 <meta property="article:published_time" content="2021-06-25T07:00:36.000Z">
 <meta property="article:modified_time" content="2021-06-25T07:34:24.659Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/06/25/ViewGroup%E5%BE%88%E5%B0%91%E4%BC%9A%E7%94%A8%E5%88%B0%E5%BE%97%E4%B8%9C%E8%A5%BF/ViewGroup很少会用到得东西/0m6kk-k1ufo.gif">
+<meta name="twitter:image" content="http://example.com/.com//0m6kk-k1ufo.gif">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -109,7 +109,7 @@
 </li>
 </ul>
 <p>效果：</p>
-<img src="./ViewGroup很少会用到得东西/0m6kk-k1ufo.gif" alt="图片替换文本" width="250" height="500" align="bottom" style="zoom:33%;" />
+<img src="/.com//0m6kk-k1ufo.gif" alt="图片替换文本" width="250" height="500" align="bottom" style="zoom:33%;">
 
 <p>实现：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">moveToTop</span><span class="params">(target: <span class="type">View</span>)</span></span> &#123;</span><br><span class="line">       <span class="keyword">var</span> mViewGroup = conn</span><br><span class="line">       <span class="comment">//先确定现在在哪个位置</span></span><br><span class="line">       <span class="keyword">val</span> startIndex: <span class="built_in">Int</span> = mViewGroup.indexOfChild(target)</span><br><span class="line">       <span class="comment">//计算一共需要几次交换，就可到达最上面</span></span><br><span class="line">       <span class="keyword">val</span> count: <span class="built_in">Int</span> = mViewGroup.childCount - <span class="number">1</span> - startIndex</span><br><span class="line">       <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0</span> until count) &#123;</span><br><span class="line">           <span class="comment">//更新索引</span></span><br><span class="line">           <span class="keyword">val</span> fromIndex: <span class="built_in">Int</span> = mViewGroup.indexOfChild(target)</span><br><span class="line">           <span class="comment">//目标是它的上层</span></span><br><span class="line">           <span class="keyword">val</span> toIndex = fromIndex + <span class="number">1</span></span><br><span class="line">           <span class="comment">//获取需要交换位置的两个子View</span></span><br><span class="line">           <span class="keyword">val</span> to: View = mViewGroup.getChildAt(toIndex)</span><br><span class="line"></span><br><span class="line">           <span class="comment">//先把它们拿出来  这个方法是project的，所以我们需要自定义viewgroup然后重载这个方法变成public</span></span><br><span class="line">           mViewGroup.detachViewFromParent(toIndex)</span><br><span class="line">           mViewGroup.detachViewFromParent(fromIndex)</span><br><span class="line"></span><br><span class="line">           <span class="comment">//再放回去，但是放回去的位置(索引)互换了</span></span><br><span class="line">           mViewGroup.attachViewToParent(to, fromIndex, to.layoutParams)</span><br><span class="line">           mViewGroup.attachViewToParent(target, toIndex, target.layoutParams)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//刷新</span></span><br><span class="line">       mViewGroup.invalidate()</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
@@ -118,7 +118,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/25/ViewGroup%E5%BE%88%E5%B0%91%E4%BC%9A%E7%94%A8%E5%88%B0%E5%BE%97%E4%B8%9C%E8%A5%BF/" data-id="ckr1v2r4p000mpkutahnnby94" data-title="ViewGroup很少会用到得东西" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/25/ViewGroup%E5%BE%88%E5%B0%91%E4%BC%9A%E7%94%A8%E5%88%B0%E5%BE%97%E4%B8%9C%E8%A5%BF/" data-id="ckr1v7rot000k98utdzn6bvtk" data-title="ViewGroup很少会用到得东西" class="article-share-link">Share</a>
       
       
       

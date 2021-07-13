@@ -114,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/18/Kotlin%E4%B9%8BFlow%E5%AD%A6%E4%B9%A0/" data-id="ckr1v2r4e0007pkutdt51eokq" data-title="Kotlin之Flow学习" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/18/Kotlin%E4%B9%8BFlow%E5%AD%A6%E4%B9%A0/" data-id="ckr1v7rom000898ut7fkp5qqw" data-title="Kotlin之Flow学习" class="article-share-link">Share</a>
       
       
       
@@ -169,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/18/%E9%80%9A%E8%BF%87%E5%8D%8F%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/" data-id="ckr1v2r57001rpkut96l7gv3i" data-title="通过协程的方式下载文件" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/18/%E9%80%9A%E8%BF%87%E5%8D%8F%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/" data-id="ckr1v7rpe001p98ut3a1zae3x" data-title="通过协程的方式下载文件" class="article-share-link">Share</a>
       
       
       
@@ -243,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/10/Android%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/" data-id="ckr1v2r480001pkutf23j810n" data-title="Android消息机制" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/10/Android%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/" data-id="ckr1v7ro9000098uteppgdrej" data-title="Android消息机制" class="article-share-link">Share</a>
       
       
       
@@ -309,10 +309,10 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* x y 是手指按在父控件上的时候通过event.getX() event.getY()获取的值。</span></span><br><span class="line"><span class="comment">* getX获得的值 是手指相对于自己的坐标</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isTransformedTouchPointInView</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y, View child,</span></span></span><br><span class="line"><span class="params"><span class="function">            PointF outLocalPoint)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span>[] point = getTempPoint();</span><br><span class="line">        point[<span class="number">0</span>] = x;</span><br><span class="line">        point[<span class="number">1</span>] = y;</span><br><span class="line">        transformPointToViewLocal(point, child);</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">boolean</span> isInView = child.pointInView(point[<span class="number">0</span>], point[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span> (isInView &amp;&amp; outLocalPoint != <span class="keyword">null</span>) &#123;</span><br><span class="line">            outLocalPoint.set(point[<span class="number">0</span>], point[<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> isInView;</span><br><span class="line">    &#125;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">transformPointToViewLocal</span><span class="params">(<span class="keyword">float</span>[] point, View child)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 这么一减，就得出了对应在子view里面的坐标</span></span><br><span class="line">        point[<span class="number">0</span>] += mScrollX - child.mLeft;</span><br><span class="line">        point[<span class="number">1</span>] += mScrollY - child.mTop;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//hasIdentityMatrix() 鉴定这个view所所对应的矩阵有没有应用过比如setTranslation setRotation setScale 这些方法。如果有返回false 没有返回true</span></span><br><span class="line">        <span class="keyword">if</span> (!child.hasIdentityMatrix()) &#123;</span><br><span class="line">            child.getInverseMatrix().mapPoints(point);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">pointInView</span><span class="params">(<span class="keyword">float</span> localX, <span class="keyword">float</span> localY, <span class="keyword">float</span> slop)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> localX &gt;= -slop &amp;&amp; localY &gt;= -slop &amp;&amp; localX &lt; ((mRight - mLeft) + slop) &amp;&amp;</span><br><span class="line">                localY &lt; ((mBottom - mTop) + slop);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<img src="./Andriod触摸事件分发流程/图1.png" alt="img1" style="zoom: 50%;" />
+<img src="/.com//图1.png" alt="img1" style="zoom: 50%;">
 
 <p>现在分析transformPointToViewLocal的计算原理：</p>
-<img src="./Andriod触摸事件分发流程/图2.png" alt="img1" style="zoom: 50%;" />
+<img src="/.com//图2.png" alt="img1" style="zoom: 50%;">
 
 <p>能执行dispatchTransformedTouchEvent方法的对象一定是一个viewgroup，他的执行需要传一个 child：View  的参数，这个参数如果为null就代表，执行super.dispatchTouchEvent(event);也就是自己父类的dispatchTouchEvent（自己的父类也就是view）。自己父类也就是view的dispatchTouchEvent方法干的事情上面讲了，用来设置这个事件有没有被消费。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dispatchTransformedTouchEvent</span><span class="params">(MotionEvent event, <span class="keyword">boolean</span> cancel,</span></span></span><br><span class="line"><span class="params"><span class="function">          View child, <span class="keyword">int</span> desiredPointerIdBits)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">final</span> <span class="keyword">boolean</span> handled;</span><br><span class="line">      <span class="keyword">final</span> <span class="keyword">int</span> oldAction = event.getAction();</span><br><span class="line">      <span class="keyword">if</span> (cancel || oldAction == MotionEvent.ACTION_CANCEL) &#123;</span><br><span class="line">          event.setAction(MotionEvent.ACTION_CANCEL);</span><br><span class="line">          <span class="keyword">if</span> (child == <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="comment">// 执行自己父类（view)的dispatchTouchEvent  也相当于去执行onTouchEvent方法</span></span><br><span class="line">              handled = <span class="keyword">super</span>.dispatchTouchEvent(event);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="comment">// child不等于null代表去执行 自己孩子的dispatchEvent方法</span></span><br><span class="line">              handled = child.dispatchTouchEvent(event);</span><br><span class="line">          &#125;</span><br><span class="line">          event.setAction(oldAction);</span><br><span class="line">          <span class="keyword">return</span> handled;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Calculate the number of pointers to deliver.</span></span><br><span class="line">      <span class="keyword">final</span> <span class="keyword">int</span> oldPointerIdBits = event.getPointerIdBits();</span><br><span class="line">      <span class="keyword">final</span> <span class="keyword">int</span> newPointerIdBits = oldPointerIdBits &amp; desiredPointerIdBits;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// If for some reason we ended up in an inconsistent state where it looks like we</span></span><br><span class="line">      <span class="comment">// might produce a motion event with no pointers in it, then drop the event.</span></span><br><span class="line">      <span class="keyword">if</span> (newPointerIdBits == <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// If the number of pointers is the same and we don&#x27;t need to perform any fancy</span></span><br><span class="line">      <span class="comment">// irreversible transformations, then we can reuse the motion event for this</span></span><br><span class="line">      <span class="comment">// dispatch as long as we are careful to revert any changes we make.</span></span><br><span class="line">      <span class="comment">// Otherwise we need to make a copy.</span></span><br><span class="line">      <span class="keyword">final</span> MotionEvent transformedEvent;</span><br><span class="line">      <span class="keyword">if</span> (newPointerIdBits == oldPointerIdBits) &#123;</span><br><span class="line">          <span class="keyword">if</span> (child == <span class="keyword">null</span> || child.hasIdentityMatrix()) &#123;</span><br><span class="line">              <span class="keyword">if</span> (child == <span class="keyword">null</span>) &#123;</span><br><span class="line">                  handled = <span class="keyword">super</span>.dispatchTouchEvent(event);</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  <span class="keyword">final</span> <span class="keyword">float</span> offsetX = mScrollX - child.mLeft;</span><br><span class="line">                  <span class="keyword">final</span> <span class="keyword">float</span> offsetY = mScrollY - child.mTop;</span><br><span class="line">                  event.offsetLocation(offsetX, offsetY);</span><br><span class="line"></span><br><span class="line">                  handled = child.dispatchTouchEvent(event);</span><br><span class="line"></span><br><span class="line">                  event.offsetLocation(-offsetX, -offsetY);</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">return</span> handled;</span><br><span class="line">          &#125;</span><br><span class="line">          transformedEvent = MotionEvent.obtain(event);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          transformedEvent = event.split(newPointerIdBits);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Perform any necessary transformations and dispatch.</span></span><br><span class="line">      <span class="keyword">if</span> (child == <span class="keyword">null</span>) &#123;</span><br><span class="line">          handled = <span class="keyword">super</span>.dispatchTouchEvent(transformedEvent);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">final</span> <span class="keyword">float</span> offsetX = mScrollX - child.mLeft;</span><br><span class="line">          <span class="keyword">final</span> <span class="keyword">float</span> offsetY = mScrollY - child.mTop;</span><br><span class="line">          transformedEvent.offsetLocation(offsetX, offsetY);</span><br><span class="line">          <span class="keyword">if</span> (! child.hasIdentityMatrix()) &#123;</span><br><span class="line">              transformedEvent.transform(child.getInverseMatrix());</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          handled = child.dispatchTouchEvent(transformedEvent);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Done.</span></span><br><span class="line">      transformedEvent.recycle();</span><br><span class="line">      <span class="keyword">return</span> handled;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
@@ -324,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/10/Androi%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%B5%81%E7%A8%8B/" data-id="ckr1v2r4c0005pkut4qq41sdv" data-title="Androi触摸事件分发流程" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/10/Androi%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%B5%81%E7%A8%8B/" data-id="ckr1v7roh000498ut3pxu9a0k" data-title="Androi触摸事件分发流程" class="article-share-link">Share</a>
       
       
       
@@ -500,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/10/Activity%E7%9A%84%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/" data-id="ckr1v2r50001cpkutc100ex1q" data-title="Activity的创建流程" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/10/Activity%E7%9A%84%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/" data-id="ckr1v7rpd001o98ut88bi4zg5" data-title="Activity的创建流程" class="article-share-link">Share</a>
       
       
       
@@ -553,13 +553,13 @@
 <p>代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">mView.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> lastX, lastY;</span><br><span class="line">    Toast toast = Toast.makeText(TestActivity.<span class="keyword">this</span>, <span class="string">&quot;&quot;</span>, Toast.LENGTH_SHORT);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = (<span class="keyword">int</span>) event.getRawX();</span><br><span class="line">        <span class="keyword">int</span> y = (<span class="keyword">int</span>) event.getRawY();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (event.getAction() == MotionEvent.ACTION_MOVE) &#123;</span><br><span class="line">            <span class="comment">//Toolbar和状态栏的高度</span></span><br><span class="line">            <span class="keyword">int</span> toolbarHeight = (getWindow().getDecorView().getHeight() - findViewById(R.id.root_view).getHeight());</span><br><span class="line">            <span class="keyword">int</span> widthOffset = mView.getWidth() / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> heightOffset = mView.getHeight() / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            mView.setTranslationX(x - mView.getLeft() - widthOffset);</span><br><span class="line">            mView.setTranslationY(y - mView.getTop() - heightOffset - toolbarHeight);</span><br><span class="line"></span><br><span class="line">            toast.setText(String.format(<span class="string">&quot;left: %d, top: %d, right: %d, bottom: %d&quot;</span>,</span><br><span class="line">                    mView.getLeft(), mView.getTop(), mView.getRight(), mView.getBottom()));</span><br><span class="line">            toast.show();</span><br><span class="line">        &#125;</span><br><span class="line">        lastX = x;</span><br><span class="line">        lastY = y;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<img src="./Android动画转场的本质/tu1.png" alt="img1" style="zoom: 50%;" />
+<img src="/.com//tu1.png" alt="img1" style="zoom: 50%;">
 
 <p>可以发现，当view移动的时候，哪个框框并没有移动，打印的left值也没变。</p>
 <p>那我们直接改layout：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">if</span> (event.getAction() == MotionEvent.ACTION_MOVE) &#123;</span><br><span class="line">        ...</span><br><span class="line">        mView.layout(x - widthOffset, y - heightOffset - toolbarHeight,</span><br><span class="line">                x + widthOffset, y + heightOffset - toolbarHeight);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<img src="./Android动画转场的本质/tu2.png" alt="img1" style="zoom: 50%;" />
+<img src="/.com//tu2.png" alt="img1" style="zoom: 50%;">
 
 <p>可以发现用layout移动view，那个框框也是会动的。</p>
 <p>还有一个实现改变view的位置的方法：这个方法也不是正真改变控件的位置。</p>
@@ -569,7 +569,7 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011387817/article/details/80313184">Android实现圆弧滑动效果之ArcSlidingHelper篇_陈小缘的博客-CSDN博客</a></p>
 <p>这里我们就需要看事件分发的代码了：</p>
 <p>事件传递顺序：</p>
-<img src="./Android动画转场的本质/tu3.png" alt="img1" style="zoom: 50%;" />
+<img src="/.com//tu3.png" alt="img1" style="zoom: 50%;">
 
 <p>先从Activity传到PhonwWindow才传到Decorview,DecorView是继承自ViewGroup，然后就走到了ViewGroup的dispatchTouchEvent(Event e)方法。</p>
 <p>进入viewGroup首先判断这个view是不是可见 and 有没有被遮挡：</p>
@@ -582,7 +582,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/10/Android%E5%8A%A8%E7%94%BB%E8%BD%AC%E5%9C%BA%E7%9A%84%E6%9C%AC%E8%B4%A8/" data-id="ckr1v2r440000pkutfu3nhded" data-title="Android动画转场的本质" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/10/Android%E5%8A%A8%E7%94%BB%E8%BD%AC%E5%9C%BA%E7%9A%84%E6%9C%AC%E8%B4%A8/" data-id="ckr1v7rod000198uthmzb7puh" data-title="Android动画转场的本质" class="article-share-link">Share</a>
       
       
       
@@ -621,7 +621,7 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>使用TransitionManager实现view的过度效果：</p>
-<img src="./TransitionManagers实现View变化的过度动画/ydtph-p4821.gif" alt="图片替换文本" width="250" height="500" align="bottom" />
+<img src="/.com//ydtph-p4821.gif" alt="图片替换文本" width="250" height="500" align="bottom">
 
 <p>实现起来很简单，只需要在修改view位置的时候调用下面这个方法就好了：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> transition = ChangeBounds()</span><br><span class="line">transition.duration = <span class="number">500</span></span><br><span class="line">TransitionManager.beginDelayedTransition(binding.con, transition)</span><br></pre></td></tr></table></figure>
@@ -631,7 +631,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/10/TransitionManagers%E5%AE%9E%E7%8E%B0View%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%87%E5%BA%A6%E5%8A%A8%E7%94%BB/" data-id="ckr1v2r4o000lpkut14weacfd" data-title="TransitionManagers实现View变化的过度动画" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/10/TransitionManagers%E5%AE%9E%E7%8E%B0View%E5%8F%98%E5%8C%96%E7%9A%84%E8%BF%87%E5%BA%A6%E5%8A%A8%E7%94%BB/" data-id="ckr1v7ror000h98utecmq59z5" data-title="TransitionManagers实现View变化的过度动画" class="article-share-link">Share</a>
       
       
       
@@ -685,7 +685,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/05/kotlin1-5-0/" data-id="ckr1v2r4w000ypkutgy6f42e0" data-title="kotlin1.5.0" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/05/kotlin1-5-0/" data-id="ckr1v7roz000w98uteb4j4v8h" data-title="kotlin1.5.0" class="article-share-link">Share</a>
       
       
       
@@ -730,17 +730,17 @@
 <li>堆内存： 保存对象的属性内容。堆内存需要用new关键字来分配空间。</li>
 <li>栈内存： 保存堆内存的地址。</li>
 </ul>
-<p><img src="D:\myblog\source_posts\内存学习\storage.jpg" alt="s"></p>
-<img src="D:\myblog\source\_posts\内存学习\storage2.jpg" alt="s" style="zoom:50%;" />
+<p><img src="/.com//myblog\source_posts\内存学习\storage.jpg" alt="s"></p>
+<img src="/.com//myblog\source\_posts\内存学习\storage2.jpg" alt="s" style="zoom:50%;">
 
-<img src="D:\myblog\source\_posts\内存学习\虚拟机栈的执行过程演示.png" alt="s" style="zoom:60%;" />
+<img src="/.com//myblog\source\_posts\内存学习\虚拟机栈的执行过程演示.png" alt="s" style="zoom:60%;">
 
 <p>方法区：存储虚拟机加载的内存信息，常量，静态变量，即时编译器编译后的代码等数据。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/04/%E5%86%85%E5%AD%98%E5%AD%A6%E4%B9%A0/" data-id="ckr1v2r50001apkut6tpk37oe" data-title="内存学习" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/04/%E5%86%85%E5%AD%98%E5%AD%A6%E4%B9%A0/" data-id="ckr1v7rpc001l98ut6qdg986c" data-title="内存学习" class="article-share-link">Share</a>
       
       
       
@@ -781,7 +781,7 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>效果如图：</p>
-<img src="./丝滑的软键盘弹出效果/软键盘交互.gif" alt="图片替换文本" width="250" height="500" align="bottom" />
+<img src="/.com//软键盘交互.gif" alt="图片替换文本" width="250" height="500" align="bottom">
 
 
 
@@ -796,7 +796,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/04/%E4%B8%9D%E6%BB%91%E7%9A%84%E8%BD%AF%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E6%95%88%E6%9E%9C/" data-id="ckr1v2r4z0017pkut9z4v1nwu" data-title="丝滑的软键盘弹出效果" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/04/%E4%B8%9D%E6%BB%91%E7%9A%84%E8%BD%AF%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E6%95%88%E6%9E%9C/" data-id="ckr1v7rp2001698utgxijg1st" data-title="丝滑的软键盘弹出效果" class="article-share-link">Share</a>
       
       
       

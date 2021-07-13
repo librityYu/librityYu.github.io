@@ -13,14 +13,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="我们进行转场动画最常用的就是Translation。我们查看源代码知道Translation的父类是Visibility。我们在自定义转场动画的时候只需要实现onAppear() 和 onDisappear() 方法。只需要在这里面去创建对应的Animator对象，实现各自的动画就好了。现有的实现类有Fade，Slide，Explode  View有自带的做缩放平移旋转…..的api: ​">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/06/10/Android%E5%8A%A8%E7%94%BB%E8%BD%AC%E5%9C%BA%E7%9A%84%E6%9C%AC%E8%B4%A8/Android动画转场的本质/tu1.png">
-<meta property="og:image" content="http://example.com/2021/06/10/Android%E5%8A%A8%E7%94%BB%E8%BD%AC%E5%9C%BA%E7%9A%84%E6%9C%AC%E8%B4%A8/Android动画转场的本质/tu2.png">
-<meta property="og:image" content="http://example.com/2021/06/10/Android%E5%8A%A8%E7%94%BB%E8%BD%AC%E5%9C%BA%E7%9A%84%E6%9C%AC%E8%B4%A8/Android动画转场的本质/tu3.png">
+<meta property="og:image" content="http://example.com/.com//tu1.png">
+<meta property="og:image" content="http://example.com/.com//tu2.png">
+<meta property="og:image" content="http://example.com/.com//tu3.png">
 <meta property="article:published_time" content="2021-06-10T13:35:00.000Z">
 <meta property="article:modified_time" content="2021-07-02T14:10:36.518Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/06/10/Android%E5%8A%A8%E7%94%BB%E8%BD%AC%E5%9C%BA%E7%9A%84%E6%9C%AC%E8%B4%A8/Android动画转场的本质/tu1.png">
+<meta name="twitter:image" content="http://example.com/.com//tu1.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -118,13 +118,13 @@
 <p>代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">mView.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> lastX, lastY;</span><br><span class="line">    Toast toast = Toast.makeText(TestActivity.<span class="keyword">this</span>, <span class="string">&quot;&quot;</span>, Toast.LENGTH_SHORT);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = (<span class="keyword">int</span>) event.getRawX();</span><br><span class="line">        <span class="keyword">int</span> y = (<span class="keyword">int</span>) event.getRawY();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (event.getAction() == MotionEvent.ACTION_MOVE) &#123;</span><br><span class="line">            <span class="comment">//Toolbar和状态栏的高度</span></span><br><span class="line">            <span class="keyword">int</span> toolbarHeight = (getWindow().getDecorView().getHeight() - findViewById(R.id.root_view).getHeight());</span><br><span class="line">            <span class="keyword">int</span> widthOffset = mView.getWidth() / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> heightOffset = mView.getHeight() / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            mView.setTranslationX(x - mView.getLeft() - widthOffset);</span><br><span class="line">            mView.setTranslationY(y - mView.getTop() - heightOffset - toolbarHeight);</span><br><span class="line"></span><br><span class="line">            toast.setText(String.format(<span class="string">&quot;left: %d, top: %d, right: %d, bottom: %d&quot;</span>,</span><br><span class="line">                    mView.getLeft(), mView.getTop(), mView.getRight(), mView.getBottom()));</span><br><span class="line">            toast.show();</span><br><span class="line">        &#125;</span><br><span class="line">        lastX = x;</span><br><span class="line">        lastY = y;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<img src="./Android动画转场的本质/tu1.png" alt="img1" style="zoom: 50%;" />
+<img src="/.com//tu1.png" alt="img1" style="zoom: 50%;">
 
 <p>可以发现，当view移动的时候，哪个框框并没有移动，打印的left值也没变。</p>
 <p>那我们直接改layout：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">if</span> (event.getAction() == MotionEvent.ACTION_MOVE) &#123;</span><br><span class="line">        ...</span><br><span class="line">        mView.layout(x - widthOffset, y - heightOffset - toolbarHeight,</span><br><span class="line">                x + widthOffset, y + heightOffset - toolbarHeight);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<img src="./Android动画转场的本质/tu2.png" alt="img1" style="zoom: 50%;" />
+<img src="/.com//tu2.png" alt="img1" style="zoom: 50%;">
 
 <p>可以发现用layout移动view，那个框框也是会动的。</p>
 <p>还有一个实现改变view的位置的方法：这个方法也不是正真改变控件的位置。</p>
@@ -134,7 +134,7 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011387817/article/details/80313184">Android实现圆弧滑动效果之ArcSlidingHelper篇_陈小缘的博客-CSDN博客</a></p>
 <p>这里我们就需要看事件分发的代码了：</p>
 <p>事件传递顺序：</p>
-<img src="./Android动画转场的本质/tu3.png" alt="img1" style="zoom: 50%;" />
+<img src="/.com//tu3.png" alt="img1" style="zoom: 50%;">
 
 <p>先从Activity传到PhonwWindow才传到Decorview,DecorView是继承自ViewGroup，然后就走到了ViewGroup的dispatchTouchEvent(Event e)方法。</p>
 <p>进入viewGroup首先判断这个view是不是可见 and 有没有被遮挡：</p>
@@ -147,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/10/Android%E5%8A%A8%E7%94%BB%E8%BD%AC%E5%9C%BA%E7%9A%84%E6%9C%AC%E8%B4%A8/" data-id="ckr1v2r440000pkutfu3nhded" data-title="Android动画转场的本质" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/06/10/Android%E5%8A%A8%E7%94%BB%E8%BD%AC%E5%9C%BA%E7%9A%84%E6%9C%AC%E8%B4%A8/" data-id="ckr1v7rod000198uthmzb7puh" data-title="Android动画转场的本质" class="article-share-link">Share</a>
       
       
       
