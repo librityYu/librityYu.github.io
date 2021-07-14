@@ -91,9 +91,9 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
+				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
 				    
@@ -105,7 +105,7 @@
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(3)</small></a></li>
+				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(4)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -223,6 +223,37 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/18/通过协程的方式下载文件/">通过协程的方式下载文件</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-18T01:18:34.000Z" itemprop="datePublished">
+          2021-06-18
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        首先构建Retrofit:
+1234567OkHttpClient client = new OkHttpClient.Builder()                .build();Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&quot;www.baidu.com&quot;)                .client(client)  
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/18/通过协程的方式下载文件/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -401,7 +432,7 @@ ViewGroup的dispatchTouchEvent(Event e)，收到一个事件，首先判断这�
     
     
     | 
-    <a href='/tags/语言/'>语言</a>
+    <a href='/tags/kotlin/'>kotlin</a>
     
     
 </span>
@@ -410,16 +441,8 @@ ViewGroup的dispatchTouchEvent(Event e)，收到一个事件，首先判断这�
                 <div class="col-md-8">
                     <p>
                       
-                        1.5.0 新增了下面三个新特性：
-
-record class : 记录类 data class
-
-Sealed interface : 密封接口，密封类和接口表示受限制的类层次结构，提供了对继承的更多控制
-
-Inline classes
-
-
-密封类，密封接口​    密封类，密封接口就是一种专门用来配合when语句使用得到类，举个例子，假如在Android中我们有一个view，我们需要动态的设置他的显示和影藏，或者，动态设置他的偏移，
+                        密封类，密封接口​    密封类，密封接口就是一种专门用来配合when语句使用得到类，举个例子，假如在Android中我们有一个view，我们需要动态的设置他的显示和影藏，或者，动态设置他的偏移，可以这么做：
+123456789101112sealed class UiOP&#123;	object Show:Uiop()	object Hide:Uiop()	class TranslateX(val px:Float):Uiop()	
                       
                     </p>
                     
@@ -543,48 +566,6 @@ java_error_in_studio.hprof文件：C:\Users\11699\java_error_in_studio.hprof
                     
                     <p class="pull-right readMore">
                         <a href="/2021/05/31/C盘可以删的文件/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/05/31/git使用总结/">git使用总结</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-05-31T02:23:14.000Z" itemprop="datePublished">
-          2021-05-31
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        git stash先暂时对当前做的操作进行缓存，切到其他分支可以使用 git stash pop 进行恢复。
-更多见博客：git stash 用法总结和注意点 - 加个小鸡腿 - 博客园 (cnblogs.com)
-更新本地Android Studio的仓库列表:1git fetch
-
-
-
-查看全部branch1git branch -a
-
-查看远程brandh1git branch -r
-
-查看本地1git branch -l
-
-创建
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/05/31/git使用总结/">Read More...</a>
                     </p>
                     
                 </div>

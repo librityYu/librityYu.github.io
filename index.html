@@ -91,9 +91,9 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
+				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
 				    
@@ -105,7 +105,7 @@
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(3)</small></a></li>
+				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(4)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -223,6 +223,39 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/07/14/jetPack-Databind/">jetPack-Databind</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-07-14T02:27:05.000Z" itemprop="datePublished">
+          2021-07-14
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        使用DataBing如果只是想展示数据的话，你的数据类就和常规的一样就好了。如果你想ui监听到你的数据改变的话，你的数据类就需要继承类BaseObservable，参数需要用@Bindable进行声明。
+1234class Student : BaseObservable &#123;    @Bindable    var name: String = &quot;&quot;&#125;
+
+使用@Bindable声明的参数我们在类B
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/07/14/jetPack-Databind/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -520,6 +553,11 @@ offer：队列中的元素数量和队列长度相等，则直接返回false，�
           2021-06-18
       </time>
     
+    
+    | 
+    <a href='/tags/kotlin/'>kotlin</a>
+    
+    
 </span>
                     </span>
                 </div>
@@ -537,37 +575,6 @@ single() : 这个流只能返回一个结果
                     
                     <p class="pull-right readMore">
                         <a href="/2021/06/18/Kotlin之Flow学习/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/18/通过协程的方式下载文件/">通过协程的方式下载文件</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-18T01:18:34.000Z" itemprop="datePublished">
-          2021-06-18
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        首先构建Retrofit:
-1234567OkHttpClient client = new OkHttpClient.Builder()                .build();Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&quot;www.baidu.com&quot;)                .client(client)  
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/18/通过协程的方式下载文件/">Read More...</a>
                     </p>
                     
                 </div>

@@ -91,9 +91,9 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
+				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
 				    
@@ -105,7 +105,7 @@
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(3)</small></a></li>
+				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(4)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -201,7 +201,7 @@
     
     
     | 
-    <a href='/tags/语言/'>语言</a>
+    <a href='/tags/kotlin/'>kotlin</a>
     
     
 </span>
@@ -209,17 +209,17 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>1.5.0 新增了下面三个新特性：</p>
-<ul>
-<li><p>record class : 记录类 data class</p>
-</li>
-<li><p>Sealed interface : 密封接口，密封类和接口表示受限制的类层次结构，提供了对继承的更多控制</p>
-</li>
-<li><p>Inline classes</p>
-</li>
-</ul>
-<h1 id="密封类，密封接口"><a href="#密封类，密封接口" class="headerlink" title="密封类，密封接口"></a>密封类，密封接口</h1><p>​    密封类，密封接口就是一种专门用来配合when语句使用得到类，举个例子，假如在Android中我们有一个view，我们需要动态的设置他的显示和影藏，或者，动态设置他的偏移，可以这么做：</p>
+      		<h1 id="密封类，密封接口"><a href="#密封类，密封接口" class="headerlink" title="密封类，密封接口"></a>密封类，密封接口</h1><p>​    密封类，密封接口就是一种专门用来配合when语句使用得到类，举个例子，假如在Android中我们有一个view，我们需要动态的设置他的显示和影藏，或者，动态设置他的偏移，可以这么做：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">UiOP</span></span>&#123;</span><br><span class="line">	<span class="keyword">object</span> Show:Uiop()</span><br><span class="line">	<span class="keyword">object</span> Hide:Uiop()</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">TranslateX</span></span>(<span class="keyword">val</span> px:<span class="built_in">Float</span>):Uiop()</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">TranslateY</span></span>(<span class="keyword">val</span> px:<span class="built_in">Float</span>):UiOp()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">execute</span><span class="params">(view:<span class="type">View</span>,op:<span class="type">Uiop</span>)</span></span> = <span class="keyword">when</span>(op)&#123;</span><br><span class="line">	UiOp.Show -&gt; view.visibility = View.VISIBLE</span><br><span class="line">     UiOp.Hide -&gt; view.visibility = View.GONE</span><br><span class="line">    <span class="keyword">is</span> UiOp.TranslateX -&gt; view.translationX = op.px <span class="comment">// 这个 when 语句分支不仅告诉 view 要水平移动，还告诉 view 需要移动多少距离，这是枚举等 Java 传统思想不容易实现的</span></span><br><span class="line">    <span class="keyword">is</span> UiOp.TranslateY -&gt; view.translationY = op.px</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="takeIf-and-takeUnless"><a href="#takeIf-and-takeUnless" class="headerlink" title="takeIf and takeUnless"></a><strong>takeIf and takeUnless</strong></h1><p>官方网址：<a target="_blank" rel="noopener" href="https://kotlinlang.org/docs/scope-functions.html#takeif-and-takeunless">Scope functions | Kotlin (kotlinlang.org)</a></p>
+<p>takeIf：如果匹配为true那么就返回对象本身，否则返回null</p>
+<p>takeUnless：如果不匹配就返回对象本身，否则返回null</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kotlin.random.*</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 当takeIf里面的表达式返回true 那么就返回自身      否则就返回null</span></span><br><span class="line"><span class="comment">* 当takeUnless里面的表达式返回false 那么就返回本身 否则返回null</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> number = Random.nextInt(<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> evenOrNull = number.takeIf &#123; it % <span class="number">2</span> == <span class="number">0</span> &#125;</span><br><span class="line">    <span class="keyword">val</span> oddOrNull = number.takeUnless &#123; it % <span class="number">2</span> == <span class="number">0</span> &#125;</span><br><span class="line">    println(<span class="string">&quot;even: <span class="variable">$evenOrNull</span>, odd: <span class="variable">$oddOrNull</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// even: 76, odd: null</span></span><br><span class="line"><span class="comment">// even: null, odd: 29</span></span><br><span class="line"><span class="comment">// even: 12, odd: null</span></span><br></pre></td></tr></table></figure>
+
+<p>项目里面我第一使用的场景是，在使用kotlin的代理模式+DataBind的时候，我需要检测参数是否带有Bindable注解：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">internal</span> <span class="function"><span class="keyword">fun</span> <span class="title">getBindingIdByProperty</span><span class="params">(property: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    <span class="keyword">val</span> bindingProperty = property.takeIf &#123;</span><br><span class="line">        <span class="comment">// 检测是否带了注解</span></span><br><span class="line">        it.getter.hasAnnotation&lt;Bindable&gt;()</span><br><span class="line">    &#125;</span><br><span class="line">        ?: <span class="keyword">throw</span> IllegalArgumentException(<span class="string">&quot;KProperty: <span class="subst">$&#123;property.name&#125;</span> must be annotated with the `@Bindable` annotation on the getter.&quot;</span>)</span><br><span class="line">    <span class="comment">//没带的话我直接抛出了个异常  demo见：PokexActivity</span></span><br><span class="line">    <span class="keyword">val</span> propertyName = bindingProperty.name.decapitalize(Locale.ENGLISH)</span><br><span class="line">    <span class="keyword">val</span> bindingPropertyName = propertyName</span><br><span class="line">        .takeIf &#123; it.startsWith(JAVA_BEANS_BOOLEAN) &#125;</span><br><span class="line">        ?.replaceFirst(JAVA_BEANS_BOOLEAN, String())</span><br><span class="line">        ?.decapitalize(Locale.ENGLISH) ?: propertyName</span><br><span class="line">    <span class="keyword">return</span> bindingFieldsMap[bindingPropertyName] ?: BR._all</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
             <div class="clearfix"></div>
