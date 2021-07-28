@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>LiveData | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(13)</small></a></li>
+				    
+				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-07-15T07:15:32.000Z" itemprop="datePublished">
+          2021-07-15
+      </time>
+    
+    
+    | 
+    <a href='/tags/LiveData/'>LiveData</a>
+    
+    
+</span>
+                <h1>LiveData</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="MutableLiveData"><a href="#MutableLiveData" class="headerlink" title="MutableLiveData"></a>MutableLiveData</h1><p>这是最常用的，最基本的一个LiveData</p>
+<hr>
+<h1 id="MediatorLiveData"><a href="#MediatorLiveData" class="headerlink" title="MediatorLiveData"></a>MediatorLiveData</h1><p>继承自MutableLiveData。它可以观察其他的LiveData对象，并对来自它们的OnChanged事件做出反应。用来合并多个LiveData的值，并且统一做出回应。</p>
+<p>例子：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>   liveData1:LiveData = ...;</span><br><span class="line"><span class="keyword">var</span>  liveData2:LiveData = ...;</span><br><span class="line"><span class="keyword">var</span>  liveDataMerger = MediatorLiveData&lt;T&gt;()</span><br><span class="line">liveDataMerger.addSource(liveData1, value -&gt; liveDataMerger.setValue(value));</span><br><span class="line">liveDataMerger.addSource(liveData2, value -&gt; liveDataMerger.setValue(value));</span><br><span class="line">liveDataMerger.addSource(liveData1, new Observer () &#123;</span><br><span class="line">       <span class="keyword">private</span> int count = <span class="number">1</span>;</span><br><span class="line">  </span><br><span class="line">        <span class="meta">@Override</span> <span class="keyword">public</span> void onChanged(<span class="meta">@Nullable</span> Integer s) &#123;</span><br><span class="line">           count++;</span><br><span class="line">           liveDataMerger.setValue(s);</span><br><span class="line">           <span class="keyword">if</span> (count &gt; <span class="number">10</span>) &#123;</span><br><span class="line">               liveDataMerger.removeSource(liveData1);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="CoroutineLiveData"><a href="#CoroutineLiveData" class="headerlink" title="CoroutineLiveData"></a>CoroutineLiveData</h1><blockquote>
+<p>androidx.lifecycle:lifecycle-livedata-ktx:2.3.1</p>
+</blockquote>
+<p>这是一个内部类，我们没法直接使用。使用方法直接通过 liveData() 的方式进行创建。注意：在liveData()创建一个livedata的时候，他的内部block会在livedata为活跃状态下自动触发。然后需要通过emit或者emitSource方式把结果发送出去。</p>
+<p>通过名字就可以知道这是一个具有协程属性挂起的livedata，通过它可以发送延迟的数据，并且他也是和生命周期绑定的。因为使用它只能通过 liveData()这个方法创建，我们就来分析这个：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">liveData</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    context: <span class="type">CoroutineContext</span> = EmptyCoroutineContext,</span></span></span><br><span class="line"><span class="params"><span class="function">    timeoutInMs: <span class="type">Long</span> = DEFAULT_TIMEOUT,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="meta">@BuilderInference</span> block: <span class="type">suspend</span> <span class="type">LiveDataScope</span>&lt;<span class="type">T</span>&gt;.() -&gt; <span class="type">Unit</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>: LiveData&lt;T&gt; = CoroutineLiveData(context, timeoutInMs, block)</span><br></pre></td></tr></table></figure>
+
+<p> 构建一个LiveData，其中包含在LiveDataScope上执行的给定块产生的值。当返回的LiveData变为活动时，块开始执行。如果在块执行时，LiveData变为非活动状态，它将在timeoutInMs毫秒之后被取消，除非LiveData在该超时之前再次变为活动状态(以优雅地处理活动旋转等情况)。LiveDataScope任何值。从已取消的块发出的将被忽略。取消之后，如果LiveData再次激活，则将从头重新执行该块。如果你愿意的话。</p>
+<p><strong>那这个timeoutInMs是怎么起作用的呢。这里看源码：</strong></p>
+<p>在CoroutineLiveData类里面的onInactive(非活跃)方法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">internal</span> <span class="class"><span class="keyword">class</span> <span class="title">CoroutineLiveData</span>&lt;<span class="type">T</span>&gt;</span>(</span><br><span class="line">    context: CoroutineContext = EmptyCoroutineContext,</span><br><span class="line">    timeoutInMs: <span class="built_in">Long</span> = DEFAULT_TIMEOUT,</span><br><span class="line">    block: Block&lt;T&gt;</span><br><span class="line">) : MediatorLiveData&lt;T&gt;() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> blockRunner: BlockRunner&lt;T&gt;?</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onActive</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onActive()</span><br><span class="line">        blockRunner?.maybeRun()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 当livedata处于非活跃状态 会被系统触发</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onInactive</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onInactive()</span><br><span class="line">        blockRunner?.cancel()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">internal</span> <span class="class"><span class="keyword">class</span> <span class="title">BlockRunner</span>&lt;<span class="type">T</span>&gt;</span>(</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> liveData: CoroutineLiveData&lt;T&gt;,</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> block: Block&lt;T&gt;,</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> timeoutInMs: <span class="built_in">Long</span>,</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> scope: CoroutineScope,</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> onDone: () -&gt; <span class="built_in">Unit</span></span><br><span class="line">) &#123;</span><br><span class="line">       <span class="meta">@MainThread</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">cancel</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cancellationJob != <span class="literal">null</span>) &#123;</span><br><span class="line">            error(<span class="string">&quot;Cancel call cannot happen without a maybeRun&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        cancellationJob = scope.launch(Dispatchers.Main.immediate) &#123;</span><br><span class="line">            <span class="comment">// 可以看到这里开启了一个协程，他会延迟我们设定的timeoutInMs时间后在执行，如果5秒内livedata还出去非活跃状态，那么这次事件就执行cancel方法。</span></span><br><span class="line">            delay(timeoutInMs)</span><br><span class="line">            <span class="keyword">if</span> (!liveData.hasActiveObservers()) &#123;</span><br><span class="line">                runningJob?.cancel()</span><br><span class="line">                runningJob = <span class="literal">null</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>案例：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> <span class="keyword">data</span> : LiveData&lt;<span class="built_in">Int</span>&gt; = liveData &#123;</span><br><span class="line">    delay(<span class="number">3000</span>)</span><br><span class="line">    emit(<span class="number">3</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个基于&#x27; userId &#x27;获取&#x27; User &#x27;对象并每30秒刷新一次的LiveData</span></span><br><span class="line"><span class="comment">// as long as it is observed</span></span><br><span class="line"><span class="keyword">val</span> userId : LiveData&lt;String&gt; = ...</span><br><span class="line"><span class="keyword">val</span> user = userId.switchMap &#123; id -&gt;</span><br><span class="line">    liveData &#123;</span><br><span class="line">      <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="comment">// note that `while(true)` is fine because the `delay(30_000)` below will cooperate in</span></span><br><span class="line">        <span class="comment">// cancellation if LiveData is not actively observed anymore</span></span><br><span class="line">        <span class="keyword">val</span> <span class="keyword">data</span> = api.fetch(id) <span class="comment">// errors are ignored for brevity</span></span><br><span class="line">        emit(<span class="keyword">data</span>)</span><br><span class="line">        delay(<span class="number">30_000</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A retrying data fetcher with doubling back-off</span></span><br><span class="line"><span class="keyword">val</span> user = liveData &#123;</span><br><span class="line">    <span class="keyword">var</span> backOffTime = <span class="number">1_000</span></span><br><span class="line">    <span class="keyword">var</span> succeeded = <span class="literal">false</span></span><br><span class="line">    <span class="keyword">while</span>(!succeeded) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            emit(api.fetch(id))</span><br><span class="line">            succeeded = <span class="literal">true</span></span><br><span class="line">        &#125; <span class="keyword">catch</span>(ioError : IOException) &#123;</span><br><span class="line">            delay(backOffTime)</span><br><span class="line">            backOffTime *= minOf(backOffTime * <span class="number">2</span>, <span class="number">60_000</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a LiveData that tries to load the `User` from local cache first and then tries to fetch</span></span><br><span class="line"><span class="comment">// from the server and also yields the updated value</span></span><br><span class="line"><span class="keyword">val</span> user = liveData &#123;</span><br><span class="line">    <span class="comment">// dispatch loading first</span></span><br><span class="line">    emit(LOADING(id))</span><br><span class="line">    <span class="comment">// check local storage</span></span><br><span class="line">    <span class="keyword">val</span> cached = cache.loadUser(id)</span><br><span class="line">    <span class="keyword">if</span> (cached != <span class="literal">null</span>) &#123;</span><br><span class="line">        emit(cached)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (cached == <span class="literal">null</span> || cached.isStale()) &#123;</span><br><span class="line">        <span class="keyword">val</span> fresh = api.fetch(id) <span class="comment">// errors are ignored for brevity</span></span><br><span class="line">        cache.save(fresh)</span><br><span class="line">        emit(fresh)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a LiveData that immediately receives a LiveData&lt;User&gt; from the database and yields it as a</span></span><br><span class="line"><span class="comment">// source but also tries to back-fill the database from the server</span></span><br><span class="line"><span class="keyword">val</span> user = liveData &#123;</span><br><span class="line">    <span class="keyword">val</span> fromDb: LiveData&lt;User&gt; = roomDatabase.loadUser(id)</span><br><span class="line">    emitSource(fromDb)</span><br><span class="line">    <span class="keyword">val</span> updated = api.fetch(id) <span class="comment">// errors are ignored for brevity</span></span><br><span class="line">    <span class="comment">// Since we are using Room here, updating the database will update the `fromDb` LiveData</span></span><br><span class="line">    <span class="comment">// that was obtained above. See Room&#x27;s documentation for more details.</span></span><br><span class="line">    <span class="comment">// https://developer.android.com/training/data-storage/room/accessing-data#query-observable</span></span><br><span class="line">    roomDatabase.insert(updated)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2021/07/15/%E5%8D%8F%E7%A8%8BliveData-Flow%E7%9A%84%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" style="float: left;">
+        ← 协程liveData+Flow的实战案例
+    </a>
+    
+    
+    <a class="pull-right" href="/2021/07/15/LeetCode1-10/">
+        LeetCode1-10 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

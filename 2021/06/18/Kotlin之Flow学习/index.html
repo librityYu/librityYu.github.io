@@ -91,21 +91,31 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(1)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(2)</small></a></li>
 				    
 				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(13)</small></a></li>
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(4)</small></a></li>
+				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -210,18 +220,27 @@
         </div>
         <div class="col-md-8 col-md-offset-2">
       		<p>官方：<a target="_blank" rel="noopener" href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/index.html">kotlinx.coroutines.flow - kotlinx-coroutines-core</a></p>
-<p>创建Flow:</p>
+<p>流到底是什么？流是可以实现断断续续的收集数据。</p>
+<p><strong>创建Flow:</strong></p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = flow&lt;<span class="built_in">Int</span>&gt; &#123; emit(<span class="number">1</span>) &#125;</span><br></pre></td></tr></table></figure>
 
-<p>single() : 这个流只能返回一个结果</p>
+<p><strong>single() : 这个流只能返回一个结果</strong></p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = f.map &#123;<span class="string">&quot;笑了&quot;</span>+ it + <span class="string">&quot;下&quot;</span>&#125;</span><br><span class="line">              .map &#123;<span class="string">&quot;小王&quot;</span>+ it&#125;</span><br><span class="line">              .single()</span><br><span class="line"><span class="comment">// 打印结果：result = &quot;小王笑了1下&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>collect: 打印每次的emit结果：</p>
+<p><strong>collect: 打印每次的emit结果：</strong></p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = flow&lt;<span class="built_in">Int</span>&gt; &#123;emit(<span class="number">1</span>)emit(<span class="number">2</span>)&#125;</span><br><span class="line">f.map &#123;<span class="string">&quot;笑了&quot;</span>+ it + <span class="string">&quot;下&quot;</span>&#125;</span><br><span class="line"> .collect&#123;result-&gt;</span><br><span class="line">     Log.i(<span class="string">&quot;zjc&quot;</span>,<span class="string">&quot;<span class="subst">$&#123;result&#125;</span>&quot;</span>)</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">// 答应结果： 笑了1下  笑了2下</span></span><br></pre></td></tr></table></figure>
 
-<p>flowOn: 指定当前流在哪个线程执行，他不会影响下一个流的执行线程：</p>
+<p><strong>flowOn: 指定当前流在哪个线程执行，他不会影响下一个流的执行线程：</strong></p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lifecycleScope.launch &#123;</span><br><span class="line">     f.map &#123;Log.i(<span class="string">&quot;zjc&quot;</span>,<span class="string">&quot;<span class="subst">$&#123;Thread.currentThread().name&#125;</span>&quot;</span>)&#125;<span class="comment">// 子线程</span></span><br><span class="line">     .flowOn(Dispatchers.IO)</span><br><span class="line">     .map &#123;Log.i(<span class="string">&quot;zjc&quot;</span>,<span class="string">&quot;<span class="subst">$&#123;Thread.currentThread().name&#125;</span>&quot;</span>)&#125;<span class="comment">// 主线程</span></span><br><span class="line">     .flowOn(Dispatchers.Main).collect &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p><strong>filter操作符  我们可以对结果集添加过滤条件</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">loadData1</span><span class="params">()</span></span> = flow &#123;</span><br><span class="line">    println(<span class="string">&quot;进入加载数据的方法&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.3</span>) &#123;</span><br><span class="line">        delay(<span class="number">1000</span>)</span><br><span class="line">        emit(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> runBlocking &#123;</span><br><span class="line">        loadData1().filter &#123;</span><br><span class="line">            it &gt; <span class="number">1</span></span><br><span class="line">        &#125;.collect &#123;</span><br><span class="line">            println(it)</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">// 结果：2 3</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>buffer操作符，尽可能减少发送数据和处理事件的时间</strong> <a target="_blank" rel="noopener" href="https://huanglinqing.blog.csdn.net/article/details/109476671?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-2.control">Kotlin Flow 看这一篇 带你入门~_黄林晴-CSDN博客</a></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> startTime: <span class="built_in">Long</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> endTime: <span class="built_in">Long</span> = <span class="number">0</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">loadData1</span><span class="params">()</span></span> = flow &#123;</span><br><span class="line">    startTime = System.currentTimeMillis() / <span class="number">1000</span></span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.3</span>) &#123;</span><br><span class="line">        delay(<span class="number">1000</span>)</span><br><span class="line">        emit(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    runBlocking &#123;</span><br><span class="line">        loadData1().collect &#123; value -&gt;</span><br><span class="line">            delay(<span class="number">2000</span>)</span><br><span class="line">            println(<span class="string">&quot;<span class="variable">$value</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        endTime = System.currentTimeMillis() / <span class="number">1000</span></span><br><span class="line">        println(<span class="string">&quot;处理时间:<span class="subst">$&#123;endTime - startTime&#125;</span>s&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*1 2 3</span></span><br><span class="line"><span class="comment">*处理时间 9s</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>现在改成buffer</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    runBlocking &#123;</span><br><span class="line">        loadData1().buffer().collect &#123; value -&gt;</span><br><span class="line">            delay(<span class="number">2000</span>)</span><br><span class="line">            println(<span class="string">&quot;<span class="variable">$value</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        endTime = System.currentTimeMillis() / <span class="number">1000</span></span><br><span class="line">        println(<span class="string">&quot;处理时间:<span class="subst">$&#123;endTime - startTime&#125;</span>s&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*1 2 3</span></span><br><span class="line"><span class="comment">*处理时间 8s</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
