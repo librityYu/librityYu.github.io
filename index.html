@@ -109,11 +109,13 @@
 				    
 				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(13)</small></a></li>
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
 				    
@@ -233,6 +235,212 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/08/31/View被添加到页面的过程/">View被添加到页面的过程</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-08-31T03:00:51.000Z" itemprop="datePublished">
+          2021-08-31
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        执行addView()方法：
+12345public void addView(View child, int index, LayoutParams params) &#123;    requestLayout();    invalidate(true);    addViewInner(child, index, params, false);&#125;
+
+看下requestLayout方法：
+1234567891011121
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/08/31/View被添加到页面的过程/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/08/25/Android性能分析/">Android性能分析</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-08-25T08:36:44.000Z" itemprop="datePublished">
+          2021-08-25
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        
+Android检查GPU呈现速度和过度绘制 - SegmentFault 思否
+Adb命令：常用adb命令汇总(绝对干货) - 简书 (jianshu.com)
+
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/08/25/Android性能分析/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/08/22/TCP-TP/">TCP/TP</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-08-22T01:52:51.000Z" itemprop="datePublished">
+          2021-08-22
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        
+OSI模型有七层：物理层 -&gt; 链路层 -&gt; 网络层 -&gt; 传输层 -&gt; 会话层 -&gt; 表示层 -&gt; 应用层
+
+ARPANET模型有五层：链路层 -&gt; 网络层 -&gt; 网络层 -&gt; 传输层 -&gt; 应用层
+
+
+地址解析协议：ARP
+IP发送给链路层协议的PDU称为IP数据报，大的分组放入链路层PDU(称为帧)需要进行压缩处理，这个过程叫做分片。
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/08/22/TCP-TP/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/08/17/viewPager移动过程/">viewPager移动过程</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-08-17T01:19:10.000Z" itemprop="datePublished">
+          2021-08-17
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        监听viewPager移动：
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &#123;    @Override    public v
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/08/17/viewPager移动过程/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/08/13/SnapHelper实现recycleiview只能滑一页的原理/">SnapHelper实现recycleiview只能滑一页的原理</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-08-13T01:36:01.000Z" itemprop="datePublished">
+          2021-08-13
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        SnapHelper通过调用attachToRecycleview方法，将recycleview对象传递到封装类SnapHelper里面。
+内部调用了Recycleview.addOnScrollListener 和 setOnFlingListener 方法用来监听我们recycleview滑动。
+12345// Recycleview.java// onFling用来监听惯性滑动。 这个监听recycleiview只能拥有一份pub
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/08/13/SnapHelper实现recycleiview只能滑一页的原理/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/07/30/反编译/">反编译</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-07-30T03:20:31.000Z" itemprop="datePublished">
+          2021-07-30
+      </time>
+    
+    
+    | 
+    <a href='/tags/反编译/'>反编译</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        工具准备在反编译比较大得apk得时候会遇到一些问题：
+比如：java.lang.RuntimeException: can not merge I and Z
+解决办法：android 反编译出错 can not merge I and Z - lianghe - 博客园 (cnblogs.com) 替换掉lib文件里面的dex-ir-2.0.jar架包。架包下载路径：链接：https://pan.baidu.com/s/1tYKlC6
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/07/30/反编译/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -367,222 +575,6 @@ MediatorLiveData继承自MutableLiveData。它可以观察其他的LiveData对�
                     
                     <p class="pull-right readMore">
                         <a href="/2021/07/15/LeetCode1-10/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/07/14/jetPack-Databind/">jetPack-Databind</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-07-14T02:27:05.000Z" itemprop="datePublished">
-          2021-07-14
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        使用DataBing如果只是想展示数据的话，你的数据类就和常规的一样就好了。如果你想ui监听到你的数据改变的话，你的数据类就需要继承类BaseObservable，参数需要用@Bindable进行声明。
-1234class Student : BaseObservable &#123;    @Bindable    var name: String = &quot;&quot;&#125;
-
-使用@Bindable声明的参数我们在类B
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/07/14/jetPack-Databind/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/07/13/一台电脑登录多个GitHub方式/">一台电脑登录多个GitHub方式</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-07-13T08:25:28.000Z" itemprop="datePublished">
-          2021-07-13
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        如何在同一台电脑上使用两个github账户_wolfking0608的博客-CSDN博客
-一台电脑上的git同时使用两个github账户 - 小蒋不素小蒋 - 博客园 (cnblogs.com)
-Git配置时出现Could not open a connection to your authentication agent_也许云知道的博客-CSDN博客
-
-首先生成多个SSH Key(给不同账号配置对应的私钥)
-
-
-注意不能覆盖以前的，
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/07/13/一台电脑登录多个GitHub方式/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/07/13/kotlin代理/">kotlin代理</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-07-13T01:20:14.000Z" itemprop="datePublished">
-          2021-07-13
-      </time>
-    
-    
-    | 
-    <a href='/tags/kotlin/'>kotlin</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        委托代理在kotlin里面代理都是通过by关键字来实现得。代理顾名思义就是重写setValue方法和getValue方法，将某一类型得数据按照我们设计好的某种工厂方式加工出来。比如by lazy，我们希望使用他的代理都可以实现懒加载得功能，帮助开发者省下每次都要写懒加载得方式。
-实现代理得思路就是重写setVaule方法和getValue方法。如果是var声明的变量那么就可以重写setValue和getValue。如果是val声明的就只
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/07/13/kotlin代理/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/07/09/Android重启功能/">Android重启功能</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-07-09T07:15:16.000Z" itemprop="datePublished">
-          2021-07-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        1234567891011121314private fun onLogoutAndRestartApp() &#123;    ActivityManagerUtil.get().finishAllActivity(); //杀死全部activity    var h = Handler(Looper.getMainLooper())    h.postDelayed(Runnable &#123;        restartApp
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/07/09/Android重启功能/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/29/Java运算符/">Java运算符</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-29T09:57:41.000Z" itemprop="datePublished">
-          2021-06-29
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        一：与运算符（&amp;）运算规则：
-0&amp;0=0；0&amp;1=0；1&amp;0=0；1&amp;1=1
-即：两个同时为1，结果为1，否则为0
-例如：3&amp;5
-十进制3转为二进制的3：0000 0011
-十进制5转为二进制的5：0000 0101
-————————结果：0000 0001 -&gt;转为十进制：1
-即：3&amp;5 = 1
-二：或运算（|）运算规则：
-0|0=0；  0|1=1；  1|0=1；   
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/29/Java运算符/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/25/ViewGroup很少会用到得东西/">ViewGroup很少会用到得东西</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-25T07:00:36.000Z" itemprop="datePublished">
-          2021-06-25
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        轻量级的移除和添加view，addView和removeView都是重量级的操作，会触发重绘，导致卡顿。
-
-detachViewFromParent(View view, int index, LayoutParams params)
-
-removeDetachedView(View view,boolean animate)
-
-
-效果：
-
-
-实现：
-12345678910111213141516171819202122232425pr
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/25/ViewGroup很少会用到得东西/">Read More...</a>
                     </p>
                     
                 </div>

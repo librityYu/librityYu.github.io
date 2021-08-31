@@ -109,11 +109,13 @@
 				    
 				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(13)</small></a></li>
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
 				    
@@ -221,6 +223,8 @@
         <div class="col-md-8 col-md-offset-2">
       		<p>官方：<a target="_blank" rel="noopener" href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/index.html">kotlinx.coroutines.flow - kotlinx-coroutines-core</a></p>
 <p>流到底是什么？流是可以实现断断续续的收集数据。</p>
+<p><strong>冷流</strong> :只有订阅者订阅时，才开始执行发射数据流的代码。并且冷流和订阅者只能是一对一的关系，当有多个不同的订阅者时，消息是重新完整发送的。也就是说对冷流而言，有多个订阅者的时候，他们各自的事件是独立的。</p>
+<p><strong>热流</strong>:无论有没有订阅者订阅，事件始终都会发生。当 热流有多个订阅者时，热流与订阅者们的关系是一对多的关系，可以与多个订阅者共享信息。</p>
 <p><strong>创建Flow:</strong></p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = flow&lt;<span class="built_in">Int</span>&gt; &#123; emit(<span class="number">1</span>) &#125;</span><br></pre></td></tr></table></figure>
 

@@ -109,11 +109,13 @@
 				    
 				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(13)</small></a></li>
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
 				    
@@ -233,6 +235,202 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/18/通过协程的方式下载文件/">通过协程的方式下载文件</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-18T01:18:34.000Z" itemprop="datePublished">
+          2021-06-18
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        首先构建Retrofit:
+1234567OkHttpClient client = new OkHttpClient.Builder()                .build();Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&quot;www.baidu.com&quot;)                .client(client)  
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/18/通过协程的方式下载文件/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/10/Android消息机制/">Android消息机制</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-10T13:53:25.000Z" itemprop="datePublished">
+          2021-06-10
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        同步屏障博客： Handler同步屏障机制的原理和使用场景_u013728021的博客-CSDN博客
+Android中同步屏障的应用及简析 - 简书 (jianshu.com)
+什么是同步屏障：
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Handler的消息分为两种：同步消息和异步消息。
+123456789101112//Message.java 获取这个消息属于哪种public 
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/10/Android消息机制/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/10/Androi触摸事件分发流程/">Androi触摸事件分发流程</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-10T13:53:25.000Z" itemprop="datePublished">
+          2021-06-10
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        事件传递是从里向外触发，也就是说是父视图先拿到事件然后依次传到子view。
+ViewGroup的dispatchTouchEvent(Event e)，收到一个事件，首先判断这个view是不是可见然后它有没有被遮挡。如果可见并且没有遮挡就就可以进行事件的分发。在事件分发里面有一个很重要的参数mFirstTouchTarget，这个参数只有当我们的事件找到了那个可以消费他的那个view的时候，这个mFirstTouchTarget才会被附
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/10/Androi触摸事件分发流程/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/10/Activity的创建流程/">Activity的创建流程</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-10T13:53:25.000Z" itemprop="datePublished">
+          2021-06-10
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        在TransactionExecutor顺序调用了Activity全部生命周期：参考博客：(21条消息) Android | 基于Android9.0的startActivity流程分析（3）：新Activity的onStart流程、onResume流程_明朗晨光的专栏-CSDN博客
+先来看execute(ClientTransaction transaction)方法：
+12345public void execute(ClientT
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/10/Activity的创建流程/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/10/Android动画转场的本质/">Android动画转场的本质</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-10T13:35:00.000Z" itemprop="datePublished">
+          2021-06-10
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        我们进行转场动画最常用的就是Translation。我们查看源代码知道Translation的父类是Visibility。我们在自定义转场动画的时候只需要实现onAppear() 和 onDisappear() 方法。只需要在这里面去创建对应的Animator对象，实现各自的动画就好了。现有的实现类有Fade，Slide，Explode
+ View有自带的做缩放平移旋转…..的api:
+​      这些动画的底层实现都是交给了Rend
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/10/Android动画转场的本质/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/10/TransitionManagers实现View变化的过度动画/">TransitionManagers实现View变化的过度动画</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-10T01:27:41.000Z" itemprop="datePublished">
+          2021-06-10
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        使用TransitionManager实现view的过度效果：
+
+
+实现起来很简单，只需要在修改view位置的时候调用下面这个方法就好了：
+123var transition = ChangeBounds()transition.duration = 500TransitionManager.beginDelayedTransition(binding.con, transition)
+
+字节跳动基于Scene实现的页面跳转框架：byt
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/10/TransitionManagers实现View变化的过度动画/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -388,176 +586,9 @@ java_error_in_studio.hprof文件：C:\Users\11699\java_error_in_studio.hprof
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/05/31/git使用总结/">git使用总结</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-05-31T02:23:14.000Z" itemprop="datePublished">
-          2021-05-31
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        git stash先暂时对当前做的操作进行缓存，切到其他分支可以使用 git stash pop 进行恢复。
-更多见博客：git stash 用法总结和注意点 - 加个小鸡腿 - 博客园 (cnblogs.com)
-更新本地Android Studio的仓库列表:1git fetch
-
-
-
-查看全部branch1git branch -a
-
-查看远程brandh1git branch -r
-
-查看本地1git branch -l
-
-创建
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/05/31/git使用总结/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/05/25/谷歌应用下载破解方式/">谷歌应用下载破解方式</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-05-25T05:59:03.000Z" itemprop="datePublished">
-          2021-05-25
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-用谷歌浏览器打开链接：https://chrome.google.com/webstore/category/extensions?hl=zh-CN  Chrome网上应用商店。搜索：  apk downloader
-
-
-
-将这个插件安装到谷歌浏览器。
-
-
-
-直接打开网址：chrome-extension://fgljidimohbcmjdabiecfeikkmpbjegm/apkdownload.html
-输入正确的apk应用名字或
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/05/25/谷歌应用下载破解方式/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/05/20/MarkDown生成目录/">MarkDown生成目录</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-05-20T13:13:50.000Z" itemprop="datePublished">
-          2021-05-20
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-第一步
-第二步
-
-第一步使用vscode下载插件 MarkDown All
-
-第二步然后使用vscod快捷键生成调用命令（ctrl shift p）输入 MarkDown all。就会自动为我们生成目录
-
-
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/05/20/MarkDown生成目录/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/05/20/WebStorm/">WebStorm新建EJS工程</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-05-20T09:17:21.000Z" itemprop="datePublished">
-          2021-05-20
-      </time>
-    
-    
-    | 
-    <a href='/tags/EJS/'>EJS</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-NodeJs基于EJS得建立
-1. 新建一个目录ejs_demo
-2. 新建app.js 通过node运行这个脚本文件，会开启一个服务，然后完成对模板文件得渲染。
-3. 新建index.html
-4. 新建head.html
-5. 新建footer.html
-6. 新建main.cs
-7. 控制台运行命名：node app.js
-
-
-使用WebStorm模板来新建项目
-1. 打开WebStorm新建项目 按如下选项进行选定。需要选择E
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/05/20/WebStorm/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           <a class="pull-left" href="/page/2/">← Newer Posts</a>
-          
+          <a class="pull-right" href="/page/4/">Older Posts →</a>
         </nav>
     </div>
 </section>

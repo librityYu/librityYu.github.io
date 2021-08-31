@@ -109,11 +109,13 @@
 				    
 				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(13)</small></a></li>
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
 				    
@@ -233,6 +235,222 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/07/14/jetPack-Databind/">jetPack-Databind</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-07-14T02:27:05.000Z" itemprop="datePublished">
+          2021-07-14
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        使用DataBing如果只是想展示数据的话，你的数据类就和常规的一样就好了。如果你想ui监听到你的数据改变的话，你的数据类就需要继承类BaseObservable，参数需要用@Bindable进行声明。
+1234class Student : BaseObservable &#123;    @Bindable    var name: String = &quot;&quot;&#125;
+
+使用@Bindable声明的参数我们在类B
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/07/14/jetPack-Databind/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/07/13/一台电脑登录多个GitHub方式/">一台电脑登录多个GitHub方式</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-07-13T08:25:28.000Z" itemprop="datePublished">
+          2021-07-13
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        如何在同一台电脑上使用两个github账户_wolfking0608的博客-CSDN博客
+一台电脑上的git同时使用两个github账户 - 小蒋不素小蒋 - 博客园 (cnblogs.com)
+Git配置时出现Could not open a connection to your authentication agent_也许云知道的博客-CSDN博客
+
+首先生成多个SSH Key(给不同账号配置对应的私钥)
+
+
+注意不能覆盖以前的，
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/07/13/一台电脑登录多个GitHub方式/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/07/13/kotlin代理/">kotlin代理</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-07-13T01:20:14.000Z" itemprop="datePublished">
+          2021-07-13
+      </time>
+    
+    
+    | 
+    <a href='/tags/kotlin/'>kotlin</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        委托代理在kotlin里面代理都是通过by关键字来实现得。代理顾名思义就是重写setValue方法和getValue方法，将某一类型得数据按照我们设计好的某种工厂方式加工出来。比如by lazy，我们希望使用他的代理都可以实现懒加载得功能，帮助开发者省下每次都要写懒加载得方式。
+实现代理得思路就是重写setVaule方法和getValue方法。如果是var声明的变量那么就可以重写setValue和getValue。如果是val声明的就只
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/07/13/kotlin代理/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/07/09/Android重启功能/">Android重启功能</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-07-09T07:15:16.000Z" itemprop="datePublished">
+          2021-07-09
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        1234567891011121314private fun onLogoutAndRestartApp() &#123;    ActivityManagerUtil.get().finishAllActivity(); //杀死全部activity    var h = Handler(Looper.getMainLooper())    h.postDelayed(Runnable &#123;        restartApp
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/07/09/Android重启功能/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/29/Java运算符/">Java运算符</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-29T09:57:41.000Z" itemprop="datePublished">
+          2021-06-29
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        一：与运算符（&amp;）运算规则：
+0&amp;0=0；0&amp;1=0；1&amp;0=0；1&amp;1=1
+即：两个同时为1，结果为1，否则为0
+例如：3&amp;5
+十进制3转为二进制的3：0000 0011
+十进制5转为二进制的5：0000 0101
+————————结果：0000 0001 -&gt;转为十进制：1
+即：3&amp;5 = 1
+二：或运算（|）运算规则：
+0|0=0；  0|1=1；  1|0=1；   
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/29/Java运算符/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/25/ViewGroup很少会用到得东西/">ViewGroup很少会用到得东西</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-25T07:00:36.000Z" itemprop="datePublished">
+          2021-06-25
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        轻量级的移除和添加view，addView和removeView都是重量级的操作，会触发重绘，导致卡顿。
+
+detachViewFromParent(View view, int index, LayoutParams params)
+
+removeDetachedView(View view,boolean animate)
+
+
+效果：
+
+
+实现：
+12345678910111213141516171819202122232425pr
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/25/ViewGroup很少会用到得东西/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -360,212 +578,13 @@ offer：队列中的元素数量和队列长度相等，则直接返回false，�
                       
                         官方：kotlinx.coroutines.flow - kotlinx-coroutines-core
 流到底是什么？流是可以实现断断续续的收集数据。
-创建Flow:
-1var f = flow&lt;Int&gt; &#123; emit(1) &#125;
-
-single() : 这个流只能返回一个结果
-1234var result = f.map &#123;&quot;笑了&quot;+ it + &quot;下&quot;&
+冷流 :只有订阅者订阅时，才开始执行发射数据流的代码。并且冷流和订阅者只能是一对一的关系，当有多个不同的订阅者时，消息是重新完整发送的。也就是说对冷流而言，有多个订阅者的时候，他们各自的事件是独立的。
+热流:无论有没有订阅者订阅，事件始终都会发生。当 热流有多个订阅者时，热流与订阅者们
                       
                     </p>
                     
                     <p class="pull-right readMore">
                         <a href="/2021/06/18/Kotlin之Flow学习/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/18/通过协程的方式下载文件/">通过协程的方式下载文件</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-18T01:18:34.000Z" itemprop="datePublished">
-          2021-06-18
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        首先构建Retrofit:
-1234567OkHttpClient client = new OkHttpClient.Builder()                .build();Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&quot;www.baidu.com&quot;)                .client(client)  
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/18/通过协程的方式下载文件/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/10/Android消息机制/">Android消息机制</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-10T13:53:25.000Z" itemprop="datePublished">
-          2021-06-10
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        同步屏障博客： Handler同步屏障机制的原理和使用场景_u013728021的博客-CSDN博客
-Android中同步屏障的应用及简析 - 简书 (jianshu.com)
-什么是同步屏障：
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Handler的消息分为两种：同步消息和异步消息。
-123456789101112//Message.java 获取这个消息属于哪种public 
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/10/Android消息机制/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/10/Androi触摸事件分发流程/">Androi触摸事件分发流程</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-10T13:53:25.000Z" itemprop="datePublished">
-          2021-06-10
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        事件传递是从里向外触发，也就是说是父视图先拿到事件然后依次传到子view。
-ViewGroup的dispatchTouchEvent(Event e)，收到一个事件，首先判断这个view是不是可见然后它有没有被遮挡。如果可见并且没有遮挡就就可以进行事件的分发。在事件分发里面有一个很重要的参数mFirstTouchTarget，这个参数只有当我们的事件找到了那个可以消费他的那个view的时候，这个mFirstTouchTarget才会被附
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/10/Androi触摸事件分发流程/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/10/Activity的创建流程/">Activity的创建流程</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-10T13:53:25.000Z" itemprop="datePublished">
-          2021-06-10
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        在TransactionExecutor顺序调用了Activity全部生命周期：参考博客：(21条消息) Android | 基于Android9.0的startActivity流程分析（3）：新Activity的onStart流程、onResume流程_明朗晨光的专栏-CSDN博客
-先来看execute(ClientTransaction transaction)方法：
-12345public void execute(ClientT
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/10/Activity的创建流程/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/10/Android动画转场的本质/">Android动画转场的本质</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-10T13:35:00.000Z" itemprop="datePublished">
-          2021-06-10
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        我们进行转场动画最常用的就是Translation。我们查看源代码知道Translation的父类是Visibility。我们在自定义转场动画的时候只需要实现onAppear() 和 onDisappear() 方法。只需要在这里面去创建对应的Animator对象，实现各自的动画就好了。现有的实现类有Fade，Slide，Explode
- View有自带的做缩放平移旋转…..的api:
-​      这些动画的底层实现都是交给了Rend
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/10/Android动画转场的本质/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/10/TransitionManagers实现View变化的过度动画/">TransitionManagers实现View变化的过度动画</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-10T01:27:41.000Z" itemprop="datePublished">
-          2021-06-10
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        使用TransitionManager实现view的过度效果：
-
-
-实现起来很简单，只需要在修改view位置的时候调用下面这个方法就好了：
-123var transition = ChangeBounds()transition.duration = 500TransitionManager.beginDelayedTransition(binding.con, transition)
-
-字节跳动基于Scene实现的页面跳转框架：byt
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/10/TransitionManagers实现View变化的过度动画/">Read More...</a>
                     </p>
                     
                 </div>

@@ -109,11 +109,13 @@
 				    
 				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(13)</small></a></li>
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
 				    
@@ -229,6 +231,14 @@
 <h2 id="三：异或运算符（-）"><a href="#三：异或运算符（-）" class="headerlink" title="三：异或运算符（^）"></a>三：异或运算符（^）</h2><p>运算规则：0^0=0；  0^1=1；  1^0=1；   1^1=0；</p>
 <p>即：参加运算的两个对象，如果两个位为“异”（值不同），则该位结果为1，否则为0。</p>
 <p>例如：3^5 =  0000 0011 | 0000 0101 =0000 0110，因此，3^5 = 6</p>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a><strong>应用</strong></h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dabaoonline/article/details/50163977">Android源码中常见的一些flag的运算的理解</a></p>
+<p>a&amp;~b：  清除标志位b</p>
+<p>a|b :        添加标志位b</p>
+<p>a&amp;b：     取出标志位b</p>
+<p>a^b：      取出a与b的不同部分</p>
+<p>例子： a = 101  b = 010</p>
+<p>那么：a |= b   a= 111 可以看到b的标志位全部被添加进去了</p>
+<p>a &amp;= b 那么 a = 111 &amp; 010 = 010  可以看到取出了标志位b</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
