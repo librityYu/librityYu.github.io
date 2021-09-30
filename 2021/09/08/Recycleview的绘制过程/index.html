@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>Recycleview的绘制过程 | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
+				    
+				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-09-08T06:00:11.000Z" itemprop="datePublished">
+          2021-09-08
+      </time>
+    
+</span>
+                <h1>Recycleview的绘制过程</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>掉用Recycleview的setAdapter的时候会去执行recycleview的requestlayout：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAdapter</span><span class="params">(<span class="meta">@Nullable</span> Adapter adapter)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// bail out if layout is frozen</span></span><br><span class="line">    setLayoutFrozen(<span class="keyword">false</span>);</span><br><span class="line">    setAdapterInternal(adapter, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">    processDataSetCompletelyChanged(<span class="keyword">false</span>);</span><br><span class="line">    <span class="comment">// 执行了requestlayout</span></span><br><span class="line">    requestLayout();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后在(Recycleview)onLayout里面执行了dispatchLayout:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed, <span class="keyword">int</span> l, <span class="keyword">int</span> t, <span class="keyword">int</span> r, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    TraceCompat.beginSection(TRACE_ON_LAYOUT_TAG);</span><br><span class="line">    <span class="comment">// 执行了dispatchLayout</span></span><br><span class="line">    dispatchLayout();</span><br><span class="line">    TraceCompat.endSection();</span><br><span class="line">    mFirstLayoutComplete = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着调用dispatchLayout()，这里面可以看到很关键的三个方法：dispatchLayoutStep1()   dispatchLayoutStep2()   dispatchLayout3()。  最主要是在dispatchLayoutStep2()里面，有一个while循环，在whill循环里面我们通过判断当前itempostion的值是否小于我们在adapter里面设置的getItemCount()的值，来动态addView子view进去。现在我们来看下dispatchLayoutStep2()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dispatchLayout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mAdapter == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="comment">// leave the state in START</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (mLayout == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mState.mIsMeasuring = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (mState.mLayoutStep == State.STEP_START) &#123;</span><br><span class="line">        dispatchLayoutStep1();</span><br><span class="line">        mLayout.setExactMeasureSpecsFrom(<span class="keyword">this</span>);</span><br><span class="line">        dispatchLayoutStep2();<span class="comment">// 里面有一个while循环，通过给定的adapter的getItemCount值，判断添加几个进去。</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mAdapterHelper.hasUpdates() || mLayout.getWidth() != getWidth()</span><br><span class="line">            || mLayout.getHeight() != getHeight()) &#123;</span><br><span class="line">        mLayout.setExactMeasureSpecsFrom(<span class="keyword">this</span>);</span><br><span class="line">        dispatchLayoutStep2();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        mLayout.setExactMeasureSpecsFrom(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    dispatchLayoutStep3();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>来看下dispatchLayout2()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dispatchLayoutStep2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ----</span><br><span class="line">    mState.mItemCount = mAdapter.getItemCount();</span><br><span class="line">    mState.mDeletedInvisibleItemCountSincePreviousLayout = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Step 2: Run layout</span></span><br><span class="line">    mState.mInPreLayout = <span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">// 进行循环遍历addVie</span></span><br><span class="line">    mLayout.onLayoutChildren(mRecycler, mState);</span><br><span class="line"></span><br><span class="line">    mState.mStructureChanged = <span class="keyword">false</span>;</span><br><span class="line">    mPendingSavedState = <span class="keyword">null</span>;</span><br><span class="line">   ------</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>viewpager2每次调用setCurrentItem(position)的时候会触发requestlayout,requestlayout都是层层往上回归调用的，知道调用到viewRoomtImpl的requestlayout方法，然后调用到viewrootimpl的perfromTraversals方法。他又是由viewRootImpl的doTraversal调用。doTraversal是在一个runable里面调用的。</p>
+<p>Recycleview的suppressLayout里面将mLayoutSuppressed</p>
+<ul>
+<li><p>mLayoutSuppressed：是否阻止recycleview的layout</p>
+</li>
+<li><p>mLayoutWasDefered：如果对 requestLayout 的调用被拦截并阻止正常执行，并且我们计划稍后继续正常执行，则为 True。 </p>
+</li>
+<li><p>mInterceptRequestLayoutDepth：当前调用startInterceptRequestLayout()的嵌套深度(调用startInterceptRequestLayout()的次数-调用stopInterceptRequestLayout的次数(boolean))。这用于指示我们是否应该推迟由RecyclerView子节点的布局请求引起的布局操作。</p>
+</li>
+</ul>
+<p>Recycleview里面有一个教 mState：State 的变量，用来保存当前recycleliew当前所处于的状态，分别为：</p>
+<ul>
+<li>STEP_STARP= 1</li>
+<li>STEP_LAYOUT = 1&lt;&lt;1</li>
+<li>STEP_ANIMATIONS = 1</li>
+</ul>
+<p>默认情况下mState.mLayoutStep的初始值为STEP_START。</p>
+<p>mState.mLayoutStep的值有三个地方进行赋值，分别为：</p>
+<ul>
+<li>Recycleview的dispatchLayoutStep1() 将其赋值为State.STEP_Layout</li>
+<li>Recycleview的dispatchLayoutStep2() 将其赋值为State.Step.STEP_ANIMATIONS</li>
+<li>Recycleview的dispatchLayout3() 将其赋值为State.STEP_START</li>
+</ul>
+<p>来看下Recycleview的onMeasure方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthSpec,<span class="keyword">int</span> heightSpec)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(mLayout.isAutoMeasureEnabled())&#123;</span><br><span class="line">        <span class="keyword">if</span>(mState.mLayoutStep == Step.STEP_START)&#123;</span><br><span class="line">            dispatchLayoutStep1();</span><br><span class="line">        &#125;</span><br><span class="line">        mState.mIsMeaturing = <span class="keyword">true</span>;</span><br><span class="line">        dispatchLayoutStep2();</span><br><span class="line">        <span class="keyword">if</span>(mLayout.shouldMeasureTwice())&#123;</span><br><span class="line">            mState.mIsMeasuring = <span class="keyword">true</span>;</span><br><span class="line">            dispatchLayoutStep2();</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    startInterceptRequestLayout(mRecycler,mState,widthSpec,heightSpec);</span><br><span class="line">    stopInterceptRequestLayout(<span class="keyword">false</span>);</span><br><span class="line">    mState.mInPreLayout = <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>来看下onLayout方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed,<span class="keyword">int</span> l,<span class="keyword">int</span> t,<span class="keyword">int</span> r,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    dispatchLayout();</span><br><span class="line">    mFirstLayoutComplete = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2021/09/18/Python/" style="float: left;">
+        ← Python
+    </a>
+    
+    
+    <a class="pull-right" href="/2021/09/02/SimpleDrwawwView%E5%8A%A8%E6%80%81%E8%AE%BE%E7%BD%AE/">
+        SimpleDrwawwView动态设置 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>
