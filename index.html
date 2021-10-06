@@ -97,7 +97,7 @@
 				    
 				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(2)</small></a></li>
+				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
 				    
 				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
 				    
@@ -241,6 +241,77 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/10/06/Gradle上传插件到仓库/">Gradle上传插件到仓库</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-10-06T03:47:34.000Z" itemprop="datePublished">
+          2021-10-06
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        
+准备工作：首先新建一个插件模块 plugin_module
+
+把plugin_module里面的文件全部删了只留下src/main  和 build.gradle 文件。
+
+修改build.gradle文件内容
+
+1234567apply plugin: &#x27;groovy&#x27;  //必须dependencies &#123;    implementation gradleApi() //必须    implement
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/10/06/Gradle上传插件到仓库/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/10/05/打包时添加内容脚本插件/">打包时添加内容脚本插件</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-10-05T07:54:44.000Z" itemprop="datePublished">
+          2021-10-05
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        ####需求：为每次打包生成内容数据信息
+Gradle自定义插件有三种方式：https://zhuanlan.zhihu.com/p/158588813
+1. 在build.gradle
+直接在app目录下的build.gradle文件中写
+1234567891011class MyPlugin implements Plugin&lt;Project&gt;&#123;    @Override    void apply(Proje
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/10/05/打包时添加内容脚本插件/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -504,78 +575,6 @@ path：为文件夹的路径而不是文件的路径
                     
                     <p class="pull-right readMore">
                         <a href="/2021/08/31/View被添加到页面的过程/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/08/25/Android性能分析/">Android性能分析</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-08-25T08:36:44.000Z" itemprop="datePublished">
-          2021-08-25
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-Android检查GPU呈现速度和过度绘制 - SegmentFault 思否
-Adb命令：常用adb命令汇总(绝对干货) - 简书 (jianshu.com)
-
-
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/08/25/Android性能分析/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/08/22/TCP-TP/">TCP/TP</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-08-22T01:52:51.000Z" itemprop="datePublished">
-          2021-08-22
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-OSI模型有七层：物理层 -&gt; 链路层 -&gt; 网络层 -&gt; 传输层 -&gt; 会话层 -&gt; 表示层 -&gt; 应用层
-
-ARPANET模型有五层：链路层 -&gt; 网络层 -&gt; 网络层 -&gt; 传输层 -&gt; 应用层
-
-
-地址解析协议：ARP
-IP发送给链路层协议的PDU称为IP数据报，大的分组放入链路层PDU(称为帧)需要进行压缩处理，这个过程叫做分片。
-
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/08/22/TCP-TP/">Read More...</a>
                     </p>
                     
                 </div>
