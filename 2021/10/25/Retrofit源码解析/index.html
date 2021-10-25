@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>Retrofit源码解析 | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(5)</small></a></li>
+				    
+				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/Handler/" class="animsition-link">Handler<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/kotlin/" class="animsition-link">kotlin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
+				    
+				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-10-25T07:46:17.000Z" itemprop="datePublished">
+          2021-10-25
+      </time>
+    
+</span>
+                <h1>Retrofit源码解析</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>接口解析过程：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ApiInterFace</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下载文件</span></span><br><span class="line">    <span class="meta">@Streaming</span></span><br><span class="line">    <span class="meta">@GET</span></span><br><span class="line">    <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">downloadFile</span><span class="params">(<span class="meta">@Url</span> fileUrl: <span class="type">String</span>?)</span></span>: Response&lt;ResponseBody&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;使用Retrofit调用create(Class<T> service)得时候，会去解析我们的service方法，service也就是上面我演示的ApiInterface方法。他会去解析这个接口的downloadFile方法的注解，泛型参数信息，和所有参数上面的注解信息。因为现在引入了Kotlin的协程，所以在解析方法的注解的时候，会判断最后一个注解是不是协程，如果是的话会给参数<font color="red">isKotlinSuspendFunction</font>标记为true。</T></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</span><br><span class="line">        Builder(Retrofit retrofit, Method method) &#123;</span><br><span class="line">              <span class="keyword">this</span>.retrofit = retrofit;</span><br><span class="line">              <span class="keyword">this</span>.method = method;<span class="comment">//这个方法</span></span><br><span class="line">              <span class="keyword">this</span>.methodAnnotations = method.getAnnotations();<span class="comment">// 这个方法被标记的所有注解</span></span><br><span class="line">              <span class="keyword">this</span>.parameterTypes = method.getGenericParameterTypes();<span class="comment">//这个方法所有的泛型参数类型</span></span><br><span class="line">              <span class="keyword">this</span>.parameterAnnotationsArray = method.getParameterAnnotations();<span class="comment">//这个方法的参数的所有注解信息</span></span><br><span class="line">            &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*	以上面ApiSerice这个接口为例子：</span></span><br><span class="line"><span class="comment">*	this.methodAnnotations = [<span class="doctag">@retrofit</span>2.http.Get(value=),<span class="doctag">@retrofit</span>2.http.Streaming()]</span></span><br><span class="line"><span class="comment">*	this.parameterTYpes = [String,Continuation&lt;Response&lt;REsponseBody&gt;&gt;]</span></span><br><span class="line"><span class="comment">*	this.parameterAnnotationsArray = [<span class="doctag">@retrofit</span>2.http.Url()]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 关于方法的注解解析都在RequestFactory.java 类完成。</p>
+</blockquote>
+<p>&nbsp;&nbsp;Retrofit为啥要使用动态代理？</p>
+<p>在Retrofit使用动态代理可以适配新出现的技术，比如以前使用Okhttp的时候，我们都是要创建一个Call对象，然后通过这个call对象去进行网络请求。然后现在出现了kotlin的协程，kotlin由于使用了动态代理，我们可以去通过代理创建可以搭配kolin的协程进行的网络请求。</p>
+<p>&nbsp;&nbsp;在Retrofit的代理实现的类是继承自ServiceMethod抽象类。目前Retrofit已知的有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">    A--&gt;B;</span><br><span class="line">    A--&gt;C;</span><br><span class="line">    B--&gt;D;</span><br><span class="line">    C--&gt;D;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">      ServiceMethod &lt;|-- HttpServiceMethod</span><br><span class="line">      HttpServiceMethod &lt;|-- SuspendForBody</span><br><span class="line">      HttpServiceMethod &lt;|-- SuspendForResponse</span><br><span class="line">      HttpServiceMethod &lt;|-- CallAdapted</span><br><span class="line">      ServiceMethod : +ServiceMethod&lt;T&gt; parseAnnotations()</span><br><span class="line">      ServiceMethod : +T invoke()</span><br><span class="line">      </span><br><span class="line">    </span><br><span class="line">      class HttpServiceMethod&#123;</span><br><span class="line">      	  +HttpServiceMethod parseAnnotations()</span><br><span class="line">          -CallAdapter createCallAdapter()</span><br><span class="line">          -Converter&lt;ResponseBody,ResponseT&gt; createREsponseConverter()</span><br><span class="line">          +ReturnT invoke()</span><br><span class="line">          +ReturnT adapter()</span><br><span class="line">          -RequestFactory requestFory</span><br><span class="line">          -okhttp3.Call.Factory callFactory</span><br><span class="line">          -Converter&lt;REsponseBody,ResponseT&gt; responseConverter</span><br><span class="line">      &#125;</span><br><span class="line">      class CallAdapted&#123;</span><br><span class="line">          -T adapter()</span><br><span class="line">      &#125;</span><br><span class="line">      class SuspendForBody&#123;</span><br><span class="line">          -T adapter()</span><br><span class="line">      &#125;</span><br><span class="line">      class SuspendForResponse&#123;</span><br><span class="line">          -T adapter()</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;结合类图在结合代码再来看下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Retrofit.java</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">create</span><span class="params">(<span class="keyword">final</span> Class&lt;T&gt; service)</span> </span>&#123;</span><br><span class="line">  validateServiceInterface(service);</span><br><span class="line">  <span class="keyword">return</span> (T) Proxy.newProxyInstance(service.getClassLoader(), <span class="keyword">new</span> Class&lt;?&gt;[] &#123; service &#125;,</span><br><span class="line">      <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">          <span class="keyword">return</span> loadServiceMethod(method).invoke(args != <span class="keyword">null</span> ? args : emptyArgs);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;loadServiceMethod(method)方法就是去创建了ServiceMethod对象，它通过Method上面的注解判断这次的请求是协程呢还是Call呢还是其他，然后通过创建出对应的ServiceMethod对象，调用这个对象的invoke方法，通过上面的类图我们可以看到只有HttpServiceMethod类实现了invoke方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HttpSercieMethod.java</span></span><br><span class="line"><span class="meta">@Override</span> <span class="keyword">final</span> <span class="meta">@Nullable</span> <span class="function">ReturnT <span class="title">invoke</span><span class="params">(Object[] args)</span> </span>&#123;</span><br><span class="line">  Call&lt;ResponseT&gt; call = <span class="keyword">new</span> OkHttpCall&lt;&gt;(requestFactory, args, callFactory, responseConverter);</span><br><span class="line">  <span class="keyword">return</span> adapt(call, args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;可以看到invoke实现其实就是去创建了OkHttpCall对象，然后调用adapter方法。通过类如可以看到实现adapter方法的类只有三个(哪三个，去看图)。</p>
+<p>&nbsp;&nbsp;现在来看下loadServiceMethod是怎么通过注解来确定HttpServiceMethod具体是哪个对象的。</p>
+<p>&nbsp;&nbsp;</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2021/10/25/Kotlin%E5%8D%8F%E7%A8%8B/" style="float: left;">
+        ← Kotlin协程
+    </a>
+    
+    
+    <a class="pull-right" href="/2021/10/22/%E8%BD%AF%E4%BB%B6%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9%E9%9B%86%E5%90%88/">
+        软件目录修改集合 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+{% if theme.mermaid.enable %}
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({{ JSON.stringify(theme.mermaid.options) }});
+    }
+  </script>
+{% endif %}
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

@@ -93,11 +93,15 @@
 				  	
 				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(3)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(5)</small></a></li>
 				    
 				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/Handler/" class="animsition-link">Handler<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
 				    
@@ -109,9 +113,11 @@
 				    
 				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/kotlin/" class="animsition-link">kotlin<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(2)</small></a></li>
+				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(3)</small></a></li>
 				    
 				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
 				    
@@ -235,8 +241,7 @@
 <p>再看performLifecycleSequence方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">performLifecycleSequence</span><span class="params">(ActivityClientRecord r, IntArray path,</span></span></span><br><span class="line"><span class="params"><span class="function">           ClientTransaction transaction)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">final</span> <span class="keyword">int</span> size = path.size();</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, state; i &lt; size; i++) &#123;</span><br><span class="line">           <span class="keyword">switch</span> (state) &#123;</span><br><span class="line">               <span class="keyword">case</span> ON_CREATE:</span><br><span class="line">                   mTransactionHandler.handleLaunchActivity(r, mPendingActions,</span><br><span class="line">                           <span class="keyword">null</span> <span class="comment">/* customIntent */</span>);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_START:</span><br><span class="line">                   mTransactionHandler.handleStartActivity(r, mPendingActions);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_RESUME:</span><br><span class="line">                   mTransactionHandler.handleResumeActivity(r.token, <span class="keyword">false</span> <span class="comment">/* finalStateRequest */</span>,</span><br><span class="line">                           r.isForward, <span class="string">&quot;LIFECYCLER_RESUME_ACTIVITY&quot;</span>);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_PAUSE:</span><br><span class="line">                   mTransactionHandler.handlePauseActivity(r.token, <span class="keyword">false</span> <span class="comment">/* finished */</span>,</span><br><span class="line">                           <span class="keyword">false</span> <span class="comment">/* userLeaving */</span>, <span class="number">0</span> <span class="comment">/* configChanges */</span>, mPendingActions,</span><br><span class="line">                           <span class="string">&quot;LIFECYCLER_PAUSE_ACTIVITY&quot;</span>);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_STOP:</span><br><span class="line">                   mTransactionHandler.handleStopActivity(r.token, <span class="keyword">false</span> <span class="comment">/* show */</span>,</span><br><span class="line">                           <span class="number">0</span> <span class="comment">/* configChanges */</span>, mPendingActions, <span class="keyword">false</span> <span class="comment">/* finalStateRequest */</span>,</span><br><span class="line">                           <span class="string">&quot;LIFECYCLER_STOP_ACTIVITY&quot;</span>);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_DESTROY:</span><br><span class="line">                   mTransactionHandler.handleDestroyActivity(r.token, <span class="keyword">false</span> <span class="comment">/* finishing */</span>,</span><br><span class="line">                           <span class="number">0</span> <span class="comment">/* configChanges */</span>, <span class="keyword">false</span> <span class="comment">/* getNonConfigInstance */</span>,</span><br><span class="line">                           <span class="string">&quot;performLifecycleSequence. cycling to:&quot;</span> + path.get(size - <span class="number">1</span>));</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">case</span> ON_RESTART:</span><br><span class="line">                   mTransactionHandler.performRestartActivity(r.token, <span class="keyword">false</span> <span class="comment">/* start */</span>);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">default</span>:</span><br><span class="line">                   <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Unexpected lifecycle state: &quot;</span> + state);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
-<p>可以看到 依次完成了 Activity的全部生命周期的调用。</p>
-<p>当调用到ActivityThread的handleLaunchActivity的时候，在handlerLaunchActivity里面调用了performLaunchActivity创建了Activity对象，并完成了Activity的onCreate()。</p>
+<p>可以看到 依次完成了 Activity的全部生命周期的调用。mTransactionHandler的对象是ClientTransactionHandler，这个类是一个抽象类，他的唯一实现类是ActivityThread。当调用到ActivityThread的handleLaunchActivity的时候，在handlerLaunchActivity里面调用了performLaunchActivity创建了Activity对象，并完成了Activity的onCreate()。</p>
 <p>Activity对象的创建是在ActivityThread里面的performLaunchActivity方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Activity <span class="title">performLaunchActivity</span><span class="params">(ActivityClientRecord r, Intent customIntent)</span></span>&#123;</span><br><span class="line"> Activity activity = <span class="keyword">null</span>;</span><br><span class="line"> java.lang.ClassLoader cl = appContext.getClassLoader();</span><br><span class="line"> activity = mInstrumentation.newActivity(cl, component.getClassName(), r.intent);</span><br><span class="line"> <span class="keyword">return</span> activity</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -430,6 +435,8 @@
       
 <!-- ============================ Footer =========================== -->
 
+
+
 <footer>
     <div class="container">
             <div class="copy">
@@ -460,7 +467,12 @@
             <div class="clearfix"> </div>
         </div>
 </footer>
-
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 <!-- ============================ END Footer =========================== -->
       <!-- Load our scripts -->
 <!-- Resizable 'on-demand' full-height hero -->
@@ -481,7 +493,14 @@
 </script>
 <script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
 <script src="/js/scripts.js"></script><!-- Theme scripts -->
-
+{% if theme.mermaid.enable %}
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({{ JSON.stringify(theme.mermaid.options) }});
+    }
+  </script>
+{% endif %}
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="/fancybox/jquery.fancybox.pack.js"></script>

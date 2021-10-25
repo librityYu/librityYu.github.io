@@ -93,11 +93,15 @@
 				  	
 				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(3)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(5)</small></a></li>
 				    
 				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/Handler/" class="animsition-link">Handler<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
 				    
@@ -109,9 +113,11 @@
 				    
 				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/kotlin/" class="animsition-link">kotlin<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(2)</small></a></li>
+				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(3)</small></a></li>
 				    
 				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
 				    
@@ -282,6 +288,8 @@
       
 <!-- ============================ Footer =========================== -->
 
+
+
 <footer>
     <div class="container">
             <div class="copy">
@@ -312,7 +320,12 @@
             <div class="clearfix"> </div>
         </div>
 </footer>
-
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 <!-- ============================ END Footer =========================== -->
       <!-- Load our scripts -->
 <!-- Resizable 'on-demand' full-height hero -->
@@ -333,7 +346,14 @@
 </script>
 <script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
 <script src="/js/scripts.js"></script><!-- Theme scripts -->
-
+{% if theme.mermaid.enable %}
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({{ JSON.stringify(theme.mermaid.options) }});
+    }
+  </script>
+{% endif %}
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="/fancybox/jquery.fancybox.pack.js"></script>

@@ -93,11 +93,15 @@
 				  	
 				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(3)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(5)</small></a></li>
 				    
 				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/Handler/" class="animsition-link">Handler<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
 				    
@@ -109,9 +113,11 @@
 				    
 				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/kotlin/" class="animsition-link">kotlin<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(2)</small></a></li>
+				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(3)</small></a></li>
 				    
 				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
 				    
@@ -245,6 +251,219 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2021/06/25/ViewGroup很少会用到得东西/">ViewGroup很少会用到得东西</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-25T07:00:36.000Z" itemprop="datePublished">
+          2021-06-25
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        轻量级的移除和添加view，addView和removeView都是重量级的操作，会触发重绘，导致卡顿。
+
+detachViewFromParent(View view, int index, LayoutParams params)
+
+removeDetachedView(View view,boolean animate)
+
+
+效果：
+
+
+实现：
+12345678910111213141516171819202122232425pr
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/25/ViewGroup很少会用到得东西/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/24/java阻塞队列之ArrayBlockingQueue/">java阻塞队列之ArrayBlockingQueue</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-24T02:22:38.000Z" itemprop="datePublished">
+          2021-06-24
+      </time>
+    
+    
+    | 
+    <a href='/tags/语言/'>语言</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        java阻塞队列之ArrayBlockingQueue - 北漂程序员 - 博客园 (cnblogs.com)
+take：取出一个元素，它会将线程挂起，直到被中断或者取出成功。
+poll：取出一个元素，取不到返回null，取得到返回值。不会挂起线程。
+put：判断元素是否null，然后判断当前队列中的元素数量和队列的长度，如果二者相等则阻塞当前线程；
+offer：队列中的元素数量和队列长度相等，则直接返回false，否则执行enqueu
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/24/java阻塞队列之ArrayBlockingQueue/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/23/Pr学习/">Pr学习</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-23T00:39:31.000Z" itemprop="datePublished">
+          2021-06-23
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        d 
+手动标记卡点:听音乐，然后通过按M进行标记  按Shift+M：移动标记点
+利用插件进行标记 beatedit
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/23/Pr学习/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/22/Recycleview滑动分析/">Recycleview滑动分析</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-22T08:58:55.000Z" itemprop="datePublished">
+          2021-06-22
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                          通过使用as的Profiler监听cpu的运行状况，我们可以更容易的了解到Recycleview滑动的执行过程。由下图可以看到，recycle view的滑动一次调用了：
+123456789RecyclerView.onTouchEvent()RecyclerView.scrollByInternal()RecyclerView.scrollStep()LinearLayoutManager.scrollVerticallyBy()
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/22/Recycleview滑动分析/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/18/Kotlin之Flow学习/">Kotlin之Flow学习</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-18T03:11:59.000Z" itemprop="datePublished">
+          2021-06-18
+      </time>
+    
+    
+    | 
+    <a href='/tags/kotlin/'>kotlin</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        官方：kotlinx.coroutines.flow - kotlinx-coroutines-core
+流到底是什么？流是可以实现断断续续的收集数据。
+冷流 :只有订阅者订阅时，才开始执行发射数据流的代码。并且冷流和订阅者只能是一对一的关系，当有多个不同的订阅者时，消息是重新完整发送的。也就是说对冷流而言，有多个订阅者的时候，他们各自的事件是独立的。
+热流:无论有没有订阅者订阅，事件始终都会发生。当 热流有多个订阅者时，热流与订阅者们
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/18/Kotlin之Flow学习/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/06/18/通过协程的方式下载文件/">通过协程的方式下载文件</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-06-18T01:18:34.000Z" itemprop="datePublished">
+          2021-06-18
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        首先构建Retrofit:
+1234567OkHttpClient client = new OkHttpClient.Builder()                .build();Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&quot;www.baidu.com&quot;)                .client(client)  
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/06/18/通过协程的方式下载文件/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2021/06/10/Android消息机制/">Android消息机制</a></h3>
                     <span>
                         <span class="post-meta">
@@ -371,238 +590,6 @@ ViewGroup的dispatchTouchEvent(Event e)，收到一个事件，首先判断这�
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/10/TransitionManagers实现View变化的过度动画/">TransitionManagers实现View变化的过度动画</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-10T01:27:41.000Z" itemprop="datePublished">
-          2021-06-10
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        使用TransitionManager实现view的过度效果：
-
-
-实现起来很简单，只需要在修改view位置的时候调用下面这个方法就好了：
-123var transition = ChangeBounds()transition.duration = 500TransitionManager.beginDelayedTransition(binding.con, transition)
-
-字节跳动基于Scene实现的页面跳转框架：byt
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/10/TransitionManagers实现View变化的过度动画/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/05/kotlin1-5-0/">kotlin1.5.0</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-04T23:25:50.000Z" itemprop="datePublished">
-          2021-06-05
-      </time>
-    
-    
-    | 
-    <a href='/tags/kotlin/'>kotlin</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        密封类，密封接口​    密封类，密封接口就是一种专门用来配合when语句使用得到类，举个例子，假如在Android中我们有一个view，我们需要动态的设置他的显示和影藏，或者，动态设置他的偏移，可以这么做：
-123456789101112sealed class UiOP&#123;	object Show:Uiop()	object Hide:Uiop()	class TranslateX(val px:Float):Uiop()	
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/05/kotlin1-5-0/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/04/内存学习/">内存学习</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-04T07:52:30.000Z" itemprop="datePublished">
-          2021-06-04
-      </time>
-    
-    
-    | 
-    <a href='/tags/JVM/'>JVM</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        程序不在使用一块内存的时候，就会被释放回堆中。
-
-堆内存： 保存对象的属性内容。堆内存需要用new关键字来分配空间。
-栈内存： 保存堆内存的地址。
-
-
-
-
-
-
-方法区：存储虚拟机加载的内存信息，常量，静态变量，即时编译器编译后的代码等数据。
-
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/04/内存学习/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/04/丝滑的软键盘弹出效果/">丝滑的软键盘弹出效果</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-04T03:10:17.000Z" itemprop="datePublished">
-          2021-06-04
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        效果如图：
-
-
-
-
-思路：首先需要禁用系统的软件盘对布局的影响：使用adjustResize的话，软键盘弹出后整个页面就不会被软禁盘推上去。
-1android:windowSoftInputMode=&quot;adjustResize|stateHidden&quot;
-
-需求：点击更多，弹出更多页面。
-这里我是通过点击更多，移动底部view进行平移动画，在平移的时候，需要计算recycleview当前的高度，如果展示更多的页面上移后
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/04/丝滑的软键盘弹出效果/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/05/31/C盘可以删的文件/">C盘定期清理</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-05-31T02:23:14.000Z" itemprop="datePublished">
-          2021-05-31
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-java_error_in_studio.hprof文件：C:\Users\11699\java_error_in_studio.hprof 
-
-
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/05/31/C盘可以删的文件/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/05/31/git使用总结/">git使用总结</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-05-31T02:23:14.000Z" itemprop="datePublished">
-          2021-05-31
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        git stash先暂时对当前做的操作进行缓存，切到其他分支可以使用 git stash pop 进行恢复。
-更多见博客：git stash 用法总结和注意点 - 加个小鸡腿 - 博客园 (cnblogs.com)
-更新本地Android Studio的仓库列表:1git fetch
-
-
-
-查看全部branch1git branch -a
-
-查看远程brandh1git branch -r
-
-查看本地1git branch -l
-
-创建
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/05/31/git使用总结/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           <a class="pull-left" href="/page/3/">← Newer Posts</a>
           <a class="pull-right" href="/page/5/">Older Posts →</a>
@@ -620,6 +607,8 @@ java_error_in_studio.hprof文件：C:\Users\11699\java_error_in_studio.hprof
 
       
 <!-- ============================ Footer =========================== -->
+
+
 
 <footer>
     <div class="container">
@@ -651,7 +640,12 @@ java_error_in_studio.hprof文件：C:\Users\11699\java_error_in_studio.hprof
             <div class="clearfix"> </div>
         </div>
 </footer>
-
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 <!-- ============================ END Footer =========================== -->
       <!-- Load our scripts -->
 <!-- Resizable 'on-demand' full-height hero -->
@@ -672,7 +666,14 @@ java_error_in_studio.hprof文件：C:\Users\11699\java_error_in_studio.hprof
 </script>
 <script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
 <script src="/js/scripts.js"></script><!-- Theme scripts -->
-
+{% if theme.mermaid.enable %}
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({{ JSON.stringify(theme.mermaid.options) }});
+    }
+  </script>
+{% endif %}
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="/fancybox/jquery.fancybox.pack.js"></script>

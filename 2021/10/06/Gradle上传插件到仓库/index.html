@@ -93,11 +93,15 @@
 				  	
 				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(3)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(5)</small></a></li>
 				    
 				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/Handler/" class="animsition-link">Handler<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
 				    
@@ -109,9 +113,11 @@
 				    
 				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/kotlin/" class="animsition-link">kotlin<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(2)</small></a></li>
+				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(3)</small></a></li>
 				    
 				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
 				    
@@ -244,7 +250,7 @@
 </ol>
 <p>至此准备工作做好了！</p>
 <hr>
-<h4 id="插件上传："><a href="#插件上传：" class="headerlink" title="插件上传："></a>插件上传：</h4><p>在我们的插件模块的build.gradle加入以下代码：</p>
+<h2 id="上传到本地Maven"><a href="#上传到本地Maven" class="headerlink" title="上传到本地Maven"></a>上传到本地Maven</h2><h4 id="插件上传："><a href="#插件上传：" class="headerlink" title="插件上传："></a>插件上传：</h4><p>在我们的插件模块的build.gradle加入以下代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;groovy&#x27;  //必须</span><br><span class="line">apply plugin: &#x27;maven-publish&#x27; // 上传maven的插件</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation gradleApi() //必须</span><br><span class="line">    implementation localGroovy() //必须</span><br><span class="line">&#125;</span><br><span class="line">repositories &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">publishing &#123;</span><br><span class="line">    publications &#123;</span><br><span class="line">        maven(MavenPublication) &#123;</span><br><span class="line">            groupId = com.librity.releaseplugin</span><br><span class="line">            artifactId = releaseInfo</span><br><span class="line">            version = 1.0</span><br><span class="line"></span><br><span class="line">            from components.java</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>同步完成功能，可以看到我们多了这些任务：</p>
@@ -261,11 +267,30 @@
 <p>这些依赖写好后就可以在app的build.gradle里面进行使用了：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#x27;com.android.application&#x27;</span><br><span class="line">    id &#x27;kotlin-android&#x27;</span><br><span class="line">    id &#x27;releaseinfo&#x27; // 刚才我们定义的插件名字</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h2 id="上传GithubMaven"><a href="#上传GithubMaven" class="headerlink" title="上传GithubMaven"></a>上传GithubMaven</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;groovy&#x27;  //必须</span><br><span class="line">apply plugin: &#x27;maven-publish&#x27; //必须添加这个插件才能上传</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation gradleApi() //必须</span><br><span class="line">    implementation localGroovy() //必须</span><br><span class="line">&#125;</span><br><span class="line">repositories &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">publishing &#123;</span><br><span class="line">    publications &#123;</span><br><span class="line">        maven(MavenPublication) &#123;</span><br><span class="line">            groupId = GROUDID</span><br><span class="line">            artifactId = ARTIFACTID</span><br><span class="line">            version = versions</span><br><span class="line"></span><br><span class="line">            from components.java</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123;</span><br><span class="line">            def mavenLib = file(getProperty(&#x27;mavenPath&#x27;))</span><br><span class="line">            url = &quot;file://$&#123;mavenLib.absolutePath&#125;&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在gradle.properties里面加上这几个参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mavenPath = ..</span><br><span class="line">GROUDID = com.librity.releaseplugin</span><br><span class="line">ARTIFACTID = releaseInfo</span><br><span class="line">versions = 1.0</span><br></pre></td></tr></table></figure>
+
+<p>同步下工程：</p>
+<img src="/2021/10/06/Gradle%E4%B8%8A%E4%BC%A0%E6%8F%92%E4%BB%B6%E5%88%B0%E4%BB%93%E5%BA%93/tu3.png" style="zoom:50%;">
+
+<p>然后我们把我们的工程上传到github上面。</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">maven&#123;</span><br><span class="line">// 格式：&#x27;https://raw.githubusercontent.com/[username]/[工程名字]/[分支]</span><br><span class="line">    url &#x27;https://raw.githubusercontent.com/librityYu/ReleaseInfoTask/maven&#x27;</span><br><span class="line">&#125;</span><br><span class="line">dependencies &#123;</span><br><span class="line">        // 我们的插件</span><br><span class="line">        classpath &#x27;com.librity.releaseplugin:releaseInfo:1.0&#x27;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在我们要使用的module的build.gradle</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#x27;releaseinfo&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2021/10/14/Handler%E6%BA%90%E7%A0%81/" style="float: left;">
+        ← Handler源码
+    </a>
     
     
     <a class="pull-right" href="/2021/10/05/%E6%89%93%E5%8C%85%E6%97%B6%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9%E8%84%9A%E6%9C%AC%E6%8F%92%E4%BB%B6/">
@@ -331,6 +356,8 @@
       
 <!-- ============================ Footer =========================== -->
 
+
+
 <footer>
     <div class="container">
             <div class="copy">
@@ -361,7 +388,12 @@
             <div class="clearfix"> </div>
         </div>
 </footer>
-
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 <!-- ============================ END Footer =========================== -->
       <!-- Load our scripts -->
 <!-- Resizable 'on-demand' full-height hero -->
@@ -382,7 +414,14 @@
 </script>
 <script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
 <script src="/js/scripts.js"></script><!-- Theme scripts -->
-
+{% if theme.mermaid.enable %}
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({{ JSON.stringify(theme.mermaid.options) }});
+    }
+  </script>
+{% endif %}
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="/fancybox/jquery.fancybox.pack.js"></script>
