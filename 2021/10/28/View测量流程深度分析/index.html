@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>View测量流程深度分析 | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Andorid/" class="animsition-link">Andorid<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(6)</small></a></li>
+				    
+				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/Handler/" class="animsition-link">Handler<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/kotlin/" class="animsition-link">kotlin<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
+				    
+				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/硬件/" class="animsition-link">硬件<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-10-28T07:10:12.000Z" itemprop="datePublished">
+          2021-10-28
+      </time>
+    
+</span>
+                <h1>View测量流程深度分析</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>&nbsp;&nbsp;在看View源码的时候，有一个算数的知识我们一定要掌握，就是&amp; | ^ 这三个运算符的叠加使用。</p>
+<ul>
+<li>a&amp;~b： 清除标志位b</li>
+<li>a|b ：增加标志位b</li>
+<li>a&amp;b：取出标志位b</li>
+<li>a^b：取出a与b的不同部分</li>
+</ul>
+<h4 id="setFlag-int-flags-int-mask"><a href="#setFlag-int-flags-int-mask" class="headerlink" title="setFlag(int flags,int mask)"></a>setFlag(int flags,int mask)</h4><p>在View的构造函数里面有两个变量：<code>viewFlagValues</code> 和 <code>viewFlagMasks</code>。他们通过|运算符把元素添加到里面，这些元素有：</p>
+<ul>
+<li>fitsSystamWindow：viewFlagValues|=FITS_SYSTEM_WINDOWS</li>
+<li>view_focusable：(viewFlagValues &amp; ~FOCUSABLE_MASK)|getFoucusableAttribute(a)</li>
+<li>…..</li>
+</ul>
+<p>(还有很多比如可不可见，自动获取焦点，可不可点击都是通过|运算符添加到viewFlagValues里面的。具体可以看View的构造函数。)</p>
+<p>&nbsp;&nbsp;上面的属性全部设置完成后，在调用<code>setFlags(viewFlagValues,viewFlagMasks)</code>将值全部设置到mViewFlags里面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setFlags</span><span class="params">(<span class="keyword">int</span> flags, <span class="keyword">int</span> mask)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// mView</span></span><br><span class="line">        <span class="keyword">int</span> old = mViewFlags;</span><br><span class="line">       <span class="comment">// 看似一通计算，实则就是将flags的值赋值给了mViewFlags</span></span><br><span class="line">        mViewFlags = (mViewFlags &amp; ~mask) | (flags &amp; mask);</span><br><span class="line">       <span class="comment">// 接着通过^运算取出他们的不同部分。。</span></span><br><span class="line">        <span class="keyword">int</span> changed = mViewFlags ^ old;</span><br><span class="line">        <span class="keyword">if</span> (changed == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 为0代表并没有变化</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      	<span class="comment">// 这个flag就是传进来的flag标志</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> newVisibility = flags &amp; VISIBILITY_MASK;</span><br><span class="line">        <span class="keyword">if</span> (newVisibility == VISIBLE) &#123;</span><br><span class="line">        <span class="comment">// 这个判断的原理是 上面进行了^运算取出了他们的不同部分，如果之前是可见的，现在还是可见的，那么^结果后的changed &amp; VISIBILITY_MASK的结果一定是0。这样做是为了防止设置了同样的可见属性导致无用的页面刷新。</span></span><br><span class="line">            <span class="keyword">if</span> ((changed &amp; VISIBILITY_MASK) != <span class="number">0</span>) &#123;</span><br><span class="line">                mPrivateFlags |= PFLAG_DRAWN;</span><br><span class="line">                invalidate(<span class="keyword">true</span>);</span><br><span class="line">                needGlobalAttributesUpdate(<span class="keyword">true</span>);</span><br><span class="line">                shouldNotifyFocusableAvailable = hasSize();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      <span class="comment">//从这里可以看到当视图变成不可见的时候，会去主动触发一个requestLayout</span></span><br><span class="line">       <span class="keyword">if</span> ((changed &amp; GONE) != <span class="number">0</span>) &#123;</span><br><span class="line">            needGlobalAttributesUpdate(<span class="keyword">false</span>);</span><br><span class="line">            requestLayout();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (((mViewFlags &amp; VISIBILITY_MASK) == GONE)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (hasFocus()) &#123;</span><br><span class="line">                    clearFocus();</span><br><span class="line">                    <span class="keyword">if</span> (mParent <span class="keyword">instanceof</span> ViewGroup) &#123;</span><br><span class="line">                        ((ViewGroup) mParent).clearFocusedInCluster();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                clearAccessibilityFocus();</span><br><span class="line">                destroyDrawingCache();</span><br><span class="line">                <span class="keyword">if</span> (mParent <span class="keyword">instanceof</span> View) &#123;</span><br><span class="line">                    <span class="comment">// GONE views noop invalidation, so invalidate the parent</span></span><br><span class="line">                    ((View) mParent).invalidate(<span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                mPrivateFlags |= PFLAG_DRAWN;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (mAttachInfo != <span class="keyword">null</span>) &#123;</span><br><span class="line">                mAttachInfo.mViewVisibilityChanged = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      <span class="comment">// 在View的构造函数里面触发setFlags不会触发这个里面的方法</span></span><br><span class="line">      <span class="keyword">if</span> ((changed &amp; DRAW_MASK) != <span class="number">0</span>) &#123;</span><br><span class="line">            requestLayout();</span><br><span class="line">            invalidate(<span class="keyword">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过对setFlags()方法分析他的里面有两个地方会主动触发requestLayout:</p>
+<ol>
+<li>当页面设置成了GONE</li>
+<li>当changed标志里面加上了DRAW_MASK</li>
+</ol>
+<p><strong>View里面的参数mAttachInfo是什么时候设置上值得：</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在dispatchAttachedToWindow(AttachInfo info,int visibility)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> void dispatchAttachedToWindow(AttachInfo info, int visibility) &#123;</span><br><span class="line">        mAttachInfo = info;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在dispatchDetachedFromWindow里面将mAttacInfo设置为了null。</p>
+<p>现在问题来了，这个<code>dispatchAttachedToWindow()</code>方法是什么时候被调用的。</p>
+<p>&nbsp;&nbsp;在ViewRootImpl里面主动触发requestLayout得时候会去一步步走到<code>ViewRootImpl.performTraversals()</code>方法。在<code>performTraversals</code>方法里面调用了<code>host.dispatchAttachedToWindow</code>方法这个<code>host</code>也就是<code>DevorView</code>。<code>Decorview</code>是一个<code>ViewGroup</code>，所以现在进到ViewGroup得dispatchAttachedToWindow方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ViewGroup中的实现：</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dispatchAttachedToWindow</span><span class="params">(AttachInfo info, <span class="keyword">int</span> visibility)</span> </span>&#123;</span><br><span class="line">        mGroupFlags |= FLAG_PREVENT_DISPATCH_ATTACHED_TO_WINDOW;</span><br><span class="line">        <span class="comment">// 先调用自己的</span></span><br><span class="line">        <span class="keyword">super</span>.dispatchAttachedToWindow(info, visibility);</span><br><span class="line">        mGroupFlags &amp;= ~FLAG_PREVENT_DISPATCH_ATTACHED_TO_WINDOW;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> count = mChildrenCount;</span><br><span class="line">        <span class="keyword">final</span> View[] children = mChildren;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">            <span class="keyword">final</span> View child = children[i];</span><br><span class="line">           <span class="comment">// 递归调用每个child的dispatchAttachedToWindow方法</span></span><br><span class="line">           <span class="comment">// 典型的深度优先遍历</span></span><br><span class="line">            child.dispatchAttachedToWindow(info,</span><br><span class="line">                    combineVisibility(visibility, child.getVisibility()));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> transientCount = mTransientIndices == <span class="keyword">null</span> ? <span class="number">0</span> : mTransientIndices.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; transientCount; ++i) &#123;</span><br><span class="line">            View view = mTransientViews.get(i);</span><br><span class="line">            view.dispatchAttachedToWindow(info,</span><br><span class="line">                    combineVisibility(visibility, view.getVisibility()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// View中的实现：</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dispatchAttachedToWindow</span><span class="params">(AttachInfo info, <span class="keyword">int</span> visibility)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//System.out.println(&quot;Attached! &quot; + this);</span></span><br><span class="line">        mAttachInfo = info;</span><br><span class="line">        <span class="keyword">if</span> (mOverlay != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mOverlay.getOverlayView().dispatchAttachedToWindow(info, visibility);</span><br><span class="line">        &#125;</span><br><span class="line">        mWindowAttachCount++;</span><br><span class="line">        <span class="comment">// We will need to evaluate the drawable state at least once.</span></span><br><span class="line">        mPrivateFlags |= PFLAG_DRAWABLE_STATE_DIRTY;</span><br><span class="line">        <span class="keyword">if</span> (mFloatingTreeObserver != <span class="keyword">null</span>) &#123;</span><br><span class="line">            info.mTreeObserver.merge(mFloatingTreeObserver);</span><br><span class="line">            mFloatingTreeObserver = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ((mPrivateFlags&amp;PFLAG_SCROLL_CONTAINER) != <span class="number">0</span>) &#123;</span><br><span class="line">            mAttachInfo.mScrollContainers.add(<span class="keyword">this</span>);</span><br><span class="line">            mPrivateFlags |= PFLAG_SCROLL_CONTAINER_ADDED;</span><br><span class="line">        &#125;</span><br><span class="line">        performCollectViewAttributes(mAttachInfo, visibility);</span><br><span class="line">        onAttachedToWindow();</span><br><span class="line"></span><br><span class="line">        ListenerInfo li = mListenerInfo;</span><br><span class="line">        <span class="keyword">final</span> CopyOnWriteArrayList&lt;OnAttachStateChangeListener&gt; listeners =</span><br><span class="line">                li != <span class="keyword">null</span> ? li.mOnAttachStateChangeListeners : <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (listeners != <span class="keyword">null</span> &amp;&amp; listeners.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (OnAttachStateChangeListener listener : listeners) &#123;</span><br><span class="line">                listener.onViewAttachedToWindow(<span class="keyword">this</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> vis = info.mWindowVisibility;</span><br><span class="line">        <span class="keyword">if</span> (vis != GONE) &#123;</span><br><span class="line">            onWindowVisibilityChanged(vis);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Send onVisibilityChanged directly instead of dispatchVisibilityChanged.</span></span><br><span class="line">        <span class="comment">// As all views in the subtree will already receive dispatchAttachedToWindow</span></span><br><span class="line">        <span class="comment">// traversing the subtree again here is not desired.</span></span><br><span class="line">        onVisibilityChanged(<span class="keyword">this</span>, visibility);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ((mPrivateFlags&amp;PFLAG_DRAWABLE_STATE_DIRTY) != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// If nobody has evaluated the drawable state yet, then do it now.</span></span><br><span class="line">            refreshDrawableState();</span><br><span class="line">        &#125;</span><br><span class="line">        needGlobalAttributesUpdate(<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;可以看到执行了一个循环，遍历了全部的子view的dispatchAttachedToWindow方法。</p>
+<p>&nbsp;&nbsp;所以view的dispatchAttachedToWindow是在onResume阶段，最早由ViewRootImpl触发，然后交给了ViewGroup。遍历调用了所有的子view的dispatchedToWindow。</p>
+<p>&nbsp;&nbsp;&nbsp;在ViewRootImpl的构造函数里面会创建对象<code>mAttachInfo:View.AttachInfo</code>，在<code>AttachInfo</code>的构造函数里面，有一个Handler的参数，他是在<code>ViewRootImpl</code>类里面就已经创建好了<code>ViewRootHandler</code>。这个mAttachInfo也是一层层的传递到ViewRootImpl里面的所有子view里面。那他是通过什么传递的呢，就是通过</p>
+<p><code>dispatchAttachedToWindow</code>方法传递下去的。</p>
+<p>&nbsp;&nbsp;既然现在分析到了这里，那我就看下子view的<code>dispatchAttachedToWindow</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dispatchAttachedToWindow</span><span class="params">(AttachInfo info, <span class="keyword">int</span> visibility)</span> </span>&#123;</span><br><span class="line">    mAttachInfo = info;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Transfer all pending runnables.</span></span><br><span class="line">    <span class="keyword">if</span> (mRunQueue != <span class="keyword">null</span>) &#123;</span><br><span class="line">        mRunQueue.executeActions(info.mHandler);</span><br><span class="line">        mRunQueue = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    performCollectViewAttributes(mAttachInfo, visibility);</span><br><span class="line">    onAttachedToWindow();</span><br><span class="line"></span><br><span class="line">    ListenerInfo li = mListenerInfo;</span><br><span class="line">    <span class="keyword">final</span> CopyOnWriteArrayList&lt;OnAttachStateChangeListener&gt; listeners =</span><br><span class="line">            li != <span class="keyword">null</span> ? li.mOnAttachStateChangeListeners : <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (listeners != <span class="keyword">null</span> &amp;&amp; listeners.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (OnAttachStateChangeListener listener : listeners) &#123;</span><br><span class="line">            listener.onViewAttachedToWindow(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;在view的<code>dispatchAttachedToWindow</code>方法里面，可以看到有这么一行代码：<code>mRunQueue.executeActions(info.mHandler)</code>&gt;。通过名字execute意思是执行的意思，他想表达的意思就是执行mRunQueue里面的全部Message事件。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;那我们就来看下这个mRunQueue:HandlerActionQueue的数据结构：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HandlerActionQueue</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> HandlerAction[] mActions;<span class="comment">//报错所有的待执行的message</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCount;</span><br><span class="line">    <span class="comment">// 添加一个message</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">post</span><span class="params">(Runnable action)</span> </span>&#123;</span><br><span class="line">        postDelayed(action, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postDelayed</span><span class="params">(Runnable action, <span class="keyword">long</span> delayMillis)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> HandlerAction handlerAction = <span class="keyword">new</span> HandlerAction(action, delayMillis);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (mActions == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mActions = <span class="keyword">new</span> HandlerAction[<span class="number">4</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            mActions = GrowingArrayUtils.append(mActions, mCount, handlerAction);</span><br><span class="line">            mCount++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 删除一个message</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeCallbacks</span><span class="params">(Runnable action)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> count = mCount;</span><br><span class="line">            <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">final</span> HandlerAction[] actions = mActions;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (actions[i].matches(action)) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (j != i) &#123;</span><br><span class="line">                    actions[j] = actions[i];</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            mCount = j;</span><br><span class="line">            <span class="keyword">for</span> (; j &lt; count; j++) &#123;</span><br><span class="line">                actions[j] = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 执行一个message。通过看源码，这个executeActions是在View的dispatchAttachedToWindow方法</span></span><br><span class="line">    <span class="comment">//里面被主动调用了。dispatchAttachedToWindow方法又是在onResume里面被ViewRootImpl触发的。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executeActions</span><span class="params">(Handler handler)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="keyword">final</span> HandlerAction[] actions = mActions;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, count = mCount; i &lt; count; i++) &#123;</span><br><span class="line">                <span class="keyword">final</span> HandlerAction handlerAction = actions[i];</span><br><span class="line">                handler.postDelayed(handlerAction.action, handlerAction.delay);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            mActions = <span class="keyword">null</span>;</span><br><span class="line">            mCount = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mCount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Runnable <span class="title">getRunnable</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= mCount) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mActions[index].action;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getDelay</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= mCount) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mActions[index].delay;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">HandlerAction</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Runnable action;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">long</span> delay;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">HandlerAction</span><span class="params">(Runnable action, <span class="keyword">long</span> delay)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.action = action;</span><br><span class="line">            <span class="keyword">this</span>.delay = delay;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(Runnable otherAction)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> otherAction == <span class="keyword">null</span> &amp;&amp; action == <span class="keyword">null</span></span><br><span class="line">                    || action != <span class="keyword">null</span> &amp;&amp; action.equals(otherAction);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;<strong>通过这次的代码分析可以知道，我们为什么在onCreate里面调用了view.post方法，而不是在onResume里面了。因为在onCreate里面调用view.post就会往view的mRunQueue数组里面我们的Message消息。然后在页面走到onResume的生命周期的时候，由ViewRootImpl触发了dispatchAttachedToWindow方法层层调用到子view的dispatchAttachedToWindow方法，然后触发了mRunQueue.executeAcions()方法，执行我们在onCreate里面通过view.post添加的所有Message消息</strong>。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;继续看回我们的<code>performTraversals()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ViewRootImpl.java</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">performTraversals</span><span class="params">()</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 执行ViewRootImpl里面添加的所有message。目前我在源码看到ViewRootImpl只会在</span></span><br><span class="line"><span class="comment">//ViewRootImpl.performLayout方法里面会添加一条message。这个message的内容就是调用子view的</span></span><br><span class="line"><span class="comment">//requestLayout方法：</span></span><br><span class="line">getRunQueue().executeActions(mAttachInfo.mHandler);</span><br><span class="line">performMeasure()</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">performLayout</span><span class="params">(WindowManager.LayoutParams lp, <span class="keyword">int</span> desiredWindowWidth,</span></span></span><br><span class="line"><span class="params"><span class="function">            <span class="keyword">int</span> desiredWindowHeight)</span> </span>&#123;</span><br><span class="line">     <span class="comment">// 唯一在ViewRootImpl里面添加的message</span></span><br><span class="line">                        getRunQueue().post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                            <span class="meta">@Override</span></span><br><span class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                                <span class="keyword">int</span> numValidRequests = finalRequesters.size();</span><br><span class="line">                                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numValidRequests; ++i) &#123;</span><br><span class="line">                                    <span class="keyword">final</span> View view = finalRequesters.get(i);</span><br><span class="line">                                    view.requestLayout();</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;继续看<code>ViewRootImpl.performTraversals()</code>可以看到<code>perFormMeasure</code>方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">performMeasure</span><span class="params">(<span class="keyword">int</span> childWidthMeasureSpec, <span class="keyword">int</span> childHeightMeasureSpec)</span> </span>&#123;</span><br><span class="line">			mView.measure(childWidthMeasureSpec, childHeightMeasureSpec);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;继续看下<code>mView.measure()</code>,分析这个代码可以发现**:**</p>
+<p><strong>1. 如果页面需要强制重新布局,那么不管页面的长宽有没有改变都不会调用onMeasure方法.</strong></p>
+<p><strong>2. 如果强制更新布局为false,但是needsLayout是true.然后如果长宽没有改变,那么不会执行onMeasure方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">measure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 如果是强制布局或者需要重新布局 那么就进入</span></span><br><span class="line">    <span class="keyword">if</span> (forceLayout || needsLayout) &#123;</span><br><span class="line">        <span class="comment">// 在Activity创建完成第一次走到这里面的时候mMesureCache这个数组里面是没数据的,所以</span></span><br><span class="line">        <span class="comment">// 这个判断条件一定是符合要求的.回进入调用onMeasure方法.</span></span><br><span class="line">        <span class="keyword">int</span> cacheIndex = forceLayout ? -<span class="number">1</span> : mMeasureCache.indexOfKey(key);</span><br><span class="line">        <span class="keyword">if</span> (cacheIndex &lt; <span class="number">0</span> || sIgnoreMeasureCache) &#123;</span><br><span class="line">            onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">            mPrivateFlags3 &amp;= ~PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">long</span> value = mMeasureCache.valueAt(cacheIndex);</span><br><span class="line">            setMeasuredDimensionRaw((<span class="keyword">int</span>) (value &gt;&gt; <span class="number">32</span>), (<span class="keyword">int</span>) value);</span><br><span class="line">            mPrivateFlags3 |= PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mOldWidthMeasureSpec = widthMeasureSpec;</span><br><span class="line">    mOldHeightMeasureSpec = heightMeasureSpec;</span><br><span class="line">    mMeasureCache.put(key, ((<span class="keyword">long</span>) mMeasuredWidth) &lt;&lt; <span class="number">32</span> |</span><br><span class="line">            (<span class="keyword">long</span>) mMeasuredHeight &amp; <span class="number">0xffffffffL</span>); <span class="comment">// suppress sign extension</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从这个代码可以</p>
+</blockquote>
+<h4 id="invalidate"><a href="#invalidate" class="headerlink" title="invalidate"></a>invalidate</h4><blockquote>
+<p>核心思想：对于下面这个View树而言，如果A视图没有阿尔法通道，即完全不透明，那么理论上讲，如果只是A视图需要重绘，则不会导致A视图所在的父视图也进行重绘，只有当A视图隐藏时，才会通知父视图B绘制之前A所占领的区域即可。然而，对于包含阿尔法通道的视图系统而言，屏幕的效果是由A和B及底层所有父视图共同产生的，因此，每次当A视图需要重新绘制的时候，其底层的父视图B及所有父视图都需要进行重绘该区域。所以当A需要重新绘制的时候，必须通知父视图也绘制该区域。</p>
+</blockquote>
+<img src="/2021/10/28/View%E6%B5%8B%E9%87%8F%E6%B5%81%E7%A8%8B%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/图4.png" alt="img4" style="zoom:50%;">
+
+<blockquote>
+<p>invalidate的意思就是使失效：</p>
+<ol>
+<li><p>使什么失效？使当前的状态失效。</p>
+</li>
+<li><p>为什么要失效？因为只有标记为失效，系统才会在下一次屏幕刷新的时候执行重绘</p>
+</li>
+<li><p>什么时候失效？在例如点击效果，背景颜色，高度，长度等等当前屏幕元素需要更新的时候。</p>
+</li>
+<li><p>那么失效做了什么？为什么等下一次刷新呢？而不是直接出发重新绘制呢？这样做啥好处?</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/beijing2008lm/article/details/84680533">invalidate三部曲之始于invalidate</a></p>
+</li>
+</ol>
+</blockquote>
+<p>&nbsp;&nbsp;<strong>invalidate的调用原理</strong>：</p>
+<div align="center">
+    <img src="/2021/10/28/View%E6%B5%8B%E9%87%8F%E6%B5%81%E7%A8%8B%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/图1.jpg" alt="img1" style="zoom:50%;">
+</div>
+
+<p>&nbsp;&nbsp;<strong>View.invalidateInternal</strong></p>
+<div align="center">
+<img src="/2021/10/28/View%E6%B5%8B%E9%87%8F%E6%B5%81%E7%A8%8B%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/图2.jpg" alt="img1" style="zoom: 33%;">
+</div>
+
+<p><strong>打上DIRTY标记</strong><br>&nbsp;&nbsp;为后面的Draw做准备。</p>
+<p><code>mPrivateFlags |= PFLAG_DIRTY;</code></p>
+<p><strong>调用父组件的invalidateChild</strong><br>并将自身的left,top,right,bottom通知给父组件</p>
+<p><strong>ViewGroup.invalidateChild</strong></p>
+<p>&nbsp;&nbsp;循环执行父组件的<code>invalidateChildInPatent</code>,直到执行到ViewRootImpl完成后返回null。也就是尽头了。</p>
+<div align="center">
+<img src="/2021/10/28/View%E6%B5%8B%E9%87%8F%E6%B5%81%E7%A8%8B%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/图5.jpg" alt="img1" style="zoom: 50%;">
+</div>
+
+<p><strong>ViewGroup.invalidateChildParent</strong></p>
+<div align="center">
+<img src="/2021/10/28/View%E6%B5%8B%E9%87%8F%E6%B5%81%E7%A8%8B%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/图6.jpg" alt="img1" style="zoom: 50%;">
+</div>
+
+<p><strong>ViewRootImpl.invalidateRectOnScreen</strong></p>
+<div align="center">
+<img src="/2021/10/28/View%E6%B5%8B%E9%87%8F%E6%B5%81%E7%A8%8B%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90/图7.png" alt="img1" style="zoom: 50%;">
+</div>
+
+<p><strong>加入重绘区域合集</strong></p>
+<p><code>localDirty.union(dirty.left,dirty.top,dirty.right,dirty.bottom)</code></p>
+<p>本次invalidate的dirty区域同之前的dirty区域合并。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">final</span> <span class="keyword">boolean</span> intersected = localDirty.intersect(<span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">                (<span class="keyword">int</span>) (mWidth * appScale + <span class="number">0.5f</span>), (<span class="keyword">int</span>) (mHeight * appScale + <span class="number">0.5f</span>));</span><br><span class="line"><span class="keyword">if</span> (!intersected) &#123;</span><br><span class="line">    localDirty.setEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>判断要重绘的区域是不是在屏幕内，也就是判断dirty和屏幕区域是否有交叉，屏幕外的就不用绘制了。</p>
+<p><code>scheduleTraversals()</code></p>
+<p>开始遍历绘制。</p>
+<p><strong>invalidate()使用场景</strong></p>
+<ol>
+<li>直接调用invalidate方法，请求重新draw()。但只会绘制调用者本身。</li>
+<li>setSelection()方法：请求重新draw，但只会绘制调用者本身</li>
+<li>setVisibilify()：当View可视状态在INVISIBLE转换到VISIBILE时候，会间接调用invalidate()继而绘制该view</li>
+<li>setEnabled()：请求重新draw()，但不会重新绘制任何视图包括视图调用者本身。</li>
+</ol>
+<hr>
+<p>&nbsp;</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2021/11/03/%E7%A1%AC%E4%BB%B6/" style="float: left;">
+        ← 硬件
+    </a>
+    
+    
+    <a class="pull-right" href="/2021/10/27/%E4%BB%8E%E4%BB%BB%E6%84%8F%E4%BD%8D%E7%BD%AE%E7%BC%A9%E6%94%BE%E5%88%B0%E5%B1%8F%E5%B9%95%E5%A4%A7%E5%B0%8F/">
+        从任意位置缩放到屏幕大小 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+
+  <script src="https://unpkg.com/mermaid@8.8.3/dist/mermaid.min.js"></script>
+  <script>
+
+      mermaid.initialize({theme: 'forest'});
+  
+  </script>
+
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

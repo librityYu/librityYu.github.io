@@ -91,9 +91,11 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
+				    <li><a href="/categories/Andorid/" class="animsition-link">Andorid<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(5)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(6)</small></a></li>
 				    
 				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
@@ -124,6 +126,8 @@
 				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/硬件/" class="animsition-link">硬件<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
 				    
@@ -333,9 +337,6 @@
 
       
 <!-- ============================ Footer =========================== -->
-
-
-
 <footer>
     <div class="container">
             <div class="copy">
@@ -366,13 +367,16 @@
             <div class="clearfix"> </div>
         </div>
 </footer>
-  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
-    }
-  </script>
+
 <!-- ============================ END Footer =========================== -->
+
+  <script src="https://unpkg.com/mermaid@8.8.3/dist/mermaid.min.js"></script>
+  <script>
+
+      mermaid.initialize({theme: 'forest'});
+  
+  </script>
+
       <!-- Load our scripts -->
 <!-- Resizable 'on-demand' full-height hero -->
 <script type="text/javascript">
@@ -392,14 +396,8 @@
 </script>
 <script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
 <script src="/js/scripts.js"></script><!-- Theme scripts -->
-{% if theme.mermaid.enable %}
-  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({{ JSON.stringify(theme.mermaid.options) }});
-    }
-  </script>
-{% endif %}
+
+
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="/fancybox/jquery.fancybox.pack.js"></script>

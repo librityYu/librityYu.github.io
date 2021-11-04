@@ -91,9 +91,11 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
+				    <li><a href="/categories/Andorid/" class="animsition-link">Andorid<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(5)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(6)</small></a></li>
 				    
 				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
@@ -124,6 +126,8 @@
 				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/硬件/" class="animsition-link">硬件<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
 				    
@@ -251,6 +255,115 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2021/11/03/硬件/">硬件</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-11-03T08:14:22.000Z" itemprop="datePublished">
+          2021-11-03
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        ROM存储器是一次写入。
+Flash存储器可以进行多次写入。
+在电脑系统里电源启动会先执行ROM里面的程序，也就是常见的bios程序，他用来选择进入哪个具体系统。（BOIS是一个固化在ROM芯片中的程序）
+graph LR;
+  计算机运行模式-->内核态
+  计算机运行模式-->用户态
+
+操作系统运行在内核态上，内核态也称管态和核心态。
+操作系用拥有硬件的访问权，可以执行机器能够运行的任何指令。
+软件的其余部分运行在用户态。用户接口程
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/11/03/硬件/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/10/28/View测量流程深度分析/">View测量流程深度分析</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-10-28T07:10:12.000Z" itemprop="datePublished">
+          2021-10-28
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        &nbsp;&nbsp;在看View源码的时候，有一个算数的知识我们一定要掌握，就是&amp; | ^ 这三个运算符的叠加使用。
+
+a&amp;~b： 清除标志位b
+a|b ：增加标志位b
+a&amp;b：取出标志位b
+a^b：取出a与b的不同部分
+
+setFlag(int flags,int mask)在View的构造函数里面有两个变量：viewFlagValues 和 viewFlagMasks。他们通过|运算符把元素添加到里面，这
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/10/28/View测量流程深度分析/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/10/27/从任意位置缩放到屏幕大小/">从任意位置缩放到屏幕大小</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-10-27T07:32:11.000Z" itemprop="datePublished">
+          2021-10-27
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        
+
+代码实例：
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889package com.example.androidx_branch.scalest
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/10/27/从任意位置缩放到屏幕大小/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2021/10/25/Kotlin协程/">Kotlin协程</a></h3>
                     <span>
                         <span class="post-meta">
@@ -295,10 +408,14 @@
                 <div class="col-md-8">
                     <p>
                       
-                        接口解析过程：
-123456interface ApiInterFace &#123;    // 下载文件    @Streaming    @GET    suspend fun downloadFile(@Url fileUrl: String?): Response&lt;ResponseBody&gt;&#125;
+                        
+在阅读源码的时候，里面大量使用到了Type这类。那这个类是干嘛的呢？
+java泛型在运行时会被擦除，我们就无法得到在编译时期的泛型信息。因此java提供了
+Type,它可以让我们在运行的时候也能得到这些信息。
+类型擦除是指泛型在运行的时候会去擦除泛型的类信息
 
-&nbsp;&nbsp;使用Retrofit调用create(Class service)得时候，会去解析我们
+接口解析过程：
+123456interface ApiInterFace &#123;    // 下载文件    @Streaming    @GET    suspend 
                       
                     </p>
                     
@@ -494,112 +611,6 @@ C
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/10/05/打包时添加内容脚本插件/">打包时添加内容脚本插件</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-10-05T07:54:44.000Z" itemprop="datePublished">
-          2021-10-05
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        ####需求：为每次打包生成内容数据信息
-Gradle自定义插件有三种方式：https://zhuanlan.zhihu.com/p/158588813
-1. 在build.gradle
-直接在app目录下的build.gradle文件中写
-1234567891011class MyPlugin implements Plugin&lt;Project&gt;&#123;    @Override    void apply(Proje
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/10/05/打包时添加内容脚本插件/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/09/30/Gradle知识学习/">Gradle知识学习</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-09-30T06:29:18.000Z" itemprop="datePublished">
-          2021-09-30
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        Cheer Up!
-Gradle生命周期
-初始化阶段
-
-配置阶段
-
-执行阶段
-
-
-1. 初始化阶段Gradle根据setting.gradle文件的配置为项目创建Project实例。
-2. 配置阶段​    Gradle构造一个模型表示任务，并参与构建中来。增量式构建决定我们的task是否需要运行。配置阶段完成后。整个build的project以及内部的Task关系就确定了。这个阶段非常适合为项目或指定task设置所需要的配置数据。配置
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/09/30/Gradle知识学习/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/09/27/Gralde源码理解/">Gralde源码理解</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-09-27T02:51:59.000Z" itemprop="datePublished">
-          2021-09-27
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        1. 找到源码所在位置：路径：D:\SoftWare\AndroidStudio\Gradle\caches\modules-2\files-2.1\com.android.tools.build\gradle\3.5.3\d691064e7d03aae18e3d13b03c76c3fef9b2c252\gradle-3.5.3-sources.jar
-
-在gradle/3.5.3的目录下会有两个目录 一个存放的是class文件 一个存
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/09/27/Gralde源码理解/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           
           <a class="pull-right" href="/page/2/">Older Posts →</a>
@@ -617,9 +628,6 @@ Gradle生命周期
 
       
 <!-- ============================ Footer =========================== -->
-
-
-
 <footer>
     <div class="container">
             <div class="copy">
@@ -650,13 +658,16 @@ Gradle生命周期
             <div class="clearfix"> </div>
         </div>
 </footer>
-  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
-    }
-  </script>
+
 <!-- ============================ END Footer =========================== -->
+
+  <script src="https://unpkg.com/mermaid@8.8.3/dist/mermaid.min.js"></script>
+  <script>
+
+      mermaid.initialize({theme: 'forest'});
+  
+  </script>
+
       <!-- Load our scripts -->
 <!-- Resizable 'on-demand' full-height hero -->
 <script type="text/javascript">
@@ -676,14 +687,8 @@ Gradle生命周期
 </script>
 <script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
 <script src="/js/scripts.js"></script><!-- Theme scripts -->
-{% if theme.mermaid.enable %}
-  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({{ JSON.stringify(theme.mermaid.options) }});
-    }
-  </script>
-{% endif %}
+
+
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="/fancybox/jquery.fancybox.pack.js"></script>

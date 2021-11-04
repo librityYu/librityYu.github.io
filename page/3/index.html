@@ -91,9 +91,11 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
+				    <li><a href="/categories/Andorid/" class="animsition-link">Andorid<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(5)</small></a></li>
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(6)</small></a></li>
 				    
 				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
 				    
@@ -124,6 +126,8 @@
 				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
 				    
 				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/硬件/" class="animsition-link">硬件<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
 				    
@@ -247,6 +251,107 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/08/22/TCP-TP/">TCP/TP</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-08-22T01:52:51.000Z" itemprop="datePublished">
+          2021-08-22
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        
+OSI模型有七层：物理层 -&gt; 链路层 -&gt; 网络层 -&gt; 传输层 -&gt; 会话层 -&gt; 表示层 -&gt; 应用层
+
+ARPANET模型有五层：链路层 -&gt; 网络层 -&gt; 网络层 -&gt; 传输层 -&gt; 应用层
+
+
+地址解析协议：ARP
+IP发送给链路层协议的PDU称为IP数据报，大的分组放入链路层PDU(称为帧)需要进行压缩处理，这个过程叫做分片。
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/08/22/TCP-TP/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/08/17/viewPager移动过程/">viewPager移动过程</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-08-17T01:19:10.000Z" itemprop="datePublished">
+          2021-08-17
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        监听viewPager移动：
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() &#123;    @Override    public v
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/08/17/viewPager移动过程/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2021/08/13/SnapHelper实现recycleiview只能滑一页的原理/">SnapHelper实现recycleiview只能滑一页的原理</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2021-08-13T01:36:01.000Z" itemprop="datePublished">
+          2021-08-13
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        SnapHelper通过调用attachToRecycleview方法，将recycleview对象传递到封装类SnapHelper里面。
+内部调用了Recycleview.addOnScrollListener 和 setOnFlingListener 方法用来监听我们recycleview滑动。
+12345// Recycleview.java// onFling用来监听惯性滑动。 这个监听recycleiview只能拥有一份pub
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2021/08/13/SnapHelper实现recycleiview只能滑一页的原理/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -496,111 +601,6 @@ Git配置时出现Could not open a connection to your authentication agent_也�
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/07/13/kotlin代理/">kotlin代理</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-07-13T01:20:14.000Z" itemprop="datePublished">
-          2021-07-13
-      </time>
-    
-    
-    | 
-    <a href='/tags/kotlin/'>kotlin</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        委托代理在kotlin里面代理都是通过by关键字来实现得。代理顾名思义就是重写setValue方法和getValue方法，将某一类型得数据按照我们设计好的某种工厂方式加工出来。比如by lazy，我们希望使用他的代理都可以实现懒加载得功能，帮助开发者省下每次都要写懒加载得方式。
-实现代理得思路就是重写setVaule方法和getValue方法。如果是var声明的变量那么就可以重写setValue和getValue。如果是val声明的就只
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/07/13/kotlin代理/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/07/09/Android重启功能/">Android重启功能</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-07-09T07:15:16.000Z" itemprop="datePublished">
-          2021-07-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        1234567891011121314private fun onLogoutAndRestartApp() &#123;    ActivityManagerUtil.get().finishAllActivity(); //杀死全部activity    var h = Handler(Looper.getMainLooper())    h.postDelayed(Runnable &#123;        restartApp
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/07/09/Android重启功能/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/29/Java运算符/">Java运算符</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-29T09:57:41.000Z" itemprop="datePublished">
-          2021-06-29
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        一：与运算符（&amp;）运算规则：
-0&amp;0=0；0&amp;1=0；1&amp;0=0；1&amp;1=1
-即：两个同时为1，结果为1，否则为0
-例如：3&amp;5
-十进制3转为二进制的3：0000 0011
-十进制5转为二进制的5：0000 0101
-————————结果：0000 0001 -&gt;转为十进制：1
-即：3&amp;5 = 1
-二：或运算（|）运算规则：
-0|0=0；  0|1=1；  1|0=1；   
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/29/Java运算符/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           <a class="pull-left" href="/page/2/">← Newer Posts</a>
           <a class="pull-right" href="/page/4/">Older Posts →</a>
@@ -618,9 +618,6 @@ Git配置时出现Could not open a connection to your authentication agent_也�
 
       
 <!-- ============================ Footer =========================== -->
-
-
-
 <footer>
     <div class="container">
             <div class="copy">
@@ -651,13 +648,16 @@ Git配置时出现Could not open a connection to your authentication agent_也�
             <div class="clearfix"> </div>
         </div>
 </footer>
-  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
-    }
-  </script>
+
 <!-- ============================ END Footer =========================== -->
+
+  <script src="https://unpkg.com/mermaid@8.8.3/dist/mermaid.min.js"></script>
+  <script>
+
+      mermaid.initialize({theme: 'forest'});
+  
+  </script>
+
       <!-- Load our scripts -->
 <!-- Resizable 'on-demand' full-height hero -->
 <script type="text/javascript">
@@ -677,14 +677,8 @@ Git配置时出现Could not open a connection to your authentication agent_也�
 </script>
 <script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
 <script src="/js/scripts.js"></script><!-- Theme scripts -->
-{% if theme.mermaid.enable %}
-  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({{ JSON.stringify(theme.mermaid.options) }});
-    }
-  </script>
-{% endif %}
+
+
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="/fancybox/jquery.fancybox.pack.js"></script>
