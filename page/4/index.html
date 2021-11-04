@@ -1,707 +1,223 @@
-<!DOCTYPE html>
-<!--[if lte IE 8 ]>
-<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--
-***************  *      *     *
-      8          *    *       *
-      8          *  *         *
-      8          **           *
-      8          *  *         *
-      8          *    *       *
-      8          *      *     *
-      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
--->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
-<!--<![endif]-->
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta property="og:type" content="website">
+<meta property="og:title" content="Liberty&#39;s Blog">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="Liberty&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Liberty">
+<meta name="twitter:card" content="summary"><title>Liberty's Blog</title><link ref="canonical" href="http://example.com/page/4/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
 
-<head>
-  <title>Hexo</title>
-  <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="Hexo">
-    <meta name="author" content="John Doe">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/日记/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">日记</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Liberty's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/07/14/jetPack-Databind/">jetPack-Databind</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-07-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-07-14</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>使用DataBing如果只是想展示数据的话，你的数据类就和常规的一样就好了。如果你想ui监听到你的数据改变的话，你的数据类就需要继承类BaseObservable，参数需要用@Bindable进行声明。</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> : <span class="type">BaseObservable &#123;</span></span></span><br><span class="line">    <span class="meta">@Bindable</span></span><br><span class="line">    <span class="keyword">var</span> name: String = <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-    <!-- Favicon, (keep icon in root folder) -->
-    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+<p>使用@Bindable声明的参数我们在类BR可以找到生成的对应参数名子：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BR</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> _all = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> name = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
-    
-    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
-    
+<p>数据变化我们需要调用notifyPropertyChanged(propertyId) 或者 notifyChange()。一个是指针对某一个id进行更新，一个是针对全部的数据进行更新。</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> : <span class="type">BaseObservable &#123;</span></span></span><br><span class="line">    <span class="meta">@Bindable</span></span><br><span class="line">    <span class="keyword">var</span> name: String = <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">set</span>(value) &#123;</span><br><span class="line">            field = value</span><br><span class="line">            notifyPropertyChanged(BR.name)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-    <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
-    <![endif]-->
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/07/13/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%99%BB%E5%BD%95%E5%A4%9A%E4%B8%AAGitHub%E6%96%B9%E5%BC%8F/">一台电脑登录多个GitHub方式</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-07-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-07-13</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://blog.csdn.net/wolfking0608/article/details/78512171">如何在同一台电脑上使用两个github账户_wolfking0608的博客-CSDN博客</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.cnblogs.com/xjnotxj/p/5845574.html">一台电脑上的git同时使用两个github账户 - 小蒋不素小蒋 - 博客园 (cnblogs.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_19393857/article/details/81629431">Git配置时出现Could not open a connection to your authentication agent_也许云知道的博客-CSDN博客</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<ol>
+<li>首先生成多个SSH Key(给不同账号配置对应的私钥)</li>
+</ol>
+<blockquote>
+<p>注意不能覆盖以前的，这里指定了生成的私钥名字id_rsa_work_two</p>
+</blockquote>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;your-email-address&quot;  -f /c/Users/你自己的目录/.ssh/id_rsa_work_two</span><br></pre></td></tr></table></div></figure>
 
-    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
-    <script src="/js/jquery-1.11.1.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+<p>执行完毕会在：C:\Users\你自己的目录.ssh 生成文件id_rsa_work_two 和 id_rsa_work_two.pub</p>
+<ol start="2">
+<li><p>把 id_rsa_work_two.pub里面的值填到github上面：</p>
+<img src="/2021/07/13/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%99%BB%E5%BD%95%E5%A4%9A%E4%B8%AAGitHub%E6%96%B9%E5%BC%8F/图1.png" alt="img1" style="zoom: 50%;"></li>
+<li><p>把key添加到ssh agent上，由于默认使用的是.ssh/id_rsa，所以你需要显示告诉ssh agent加上新的key</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent bash</span><br><span class="line">ssh-add ~/.ssh/id_rsa_work_two</span><br></pre></td></tr></table></div></figure>
 
-    <!-- Load these in the <head> for quicker IE8+ load times -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
+<blockquote>
+<p>想要查看的话执行：<strong>ssh-add -l</strong></p>
+</blockquote>
+</li>
+<li><p>配置.ssh/config</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ vi .ssh/config</span><br><span class="line"></span><br><span class="line"># 加上以下内容</span><br><span class="line">#default github</span><br><span class="line">Host github-A</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line">    IdentitiesOnly yes</span><br><span class="line">	</span><br><span class="line">Host github-B</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_work_two</span><br><span class="line">    IdentitiesOnly yes</span><br></pre></td></tr></table></div></figure>
 
-  
-  
-  
+<p>到这里git的配置完成了。</p>
+<p>可以进行远程测试：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh –T github-A</span><br><span class="line"></span><br><span class="line">$ ssh –T github-B</span><br></pre></td></tr></table></div></figure>
 
-  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
-</head>
+<p>将代码进行上传，这里有一点需要注意，我们远程的写法需要改变。需要填上刚才配置config的HOST的名字:</p>
+<p><strong>原来的写法</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com: 11699/learngit.git</span><br></pre></td></tr></table></div></figure>
 
-<!--
-<body class="home-template">
--->
-<body id="index" class="lightnav animsition">
-
-      <!-- ============================ Off-canvas navigation =========================== -->
-
-    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
-        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
-        </div>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu">
-            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
-            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
-            <!-- Dropdown Menu -->
-			 
-            <li>
-                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
-                <ul class="sb-submenu">
-                    
-                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
-                    
-                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
-                    
-                </ul>
-            </li>
-            
-            
-        	<li>
-        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
-            	<ul class="sb-submenu">
-				  	
-				    <li><a href="/categories/Andorid/" class="animsition-link">Andorid<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(6)</small></a></li>
-				    
-				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
-				    
-				    <li><a href="/categories/Handler/" class="animsition-link">Handler<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/kotlin/" class="animsition-link">kotlin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(3)</small></a></li>
-				    
-				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
-				    
-				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/硬件/" class="animsition-link">硬件<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
-				    
-				</ul>
-        	</li>
-			
-            
-            <li>
-                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
-                <ul class="sb-submenu">
-                    
-                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
-                    
-                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
-                    
-                </ul>
-            </li>
-            
-        </ul>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu secondary">
-            
-            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
-            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
-        </ul>
-    </div>
-    
-    <!-- ============================ END Off-canvas navigation =========================== -->
-
-    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
-
-        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-        <div id="navigation" class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <!-- Nav logo -->
-                    <div class="logo">
-                        <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
-                        </a>
-                    </div>
-                    <!-- // Nav logo -->
-                    <!-- Info-bar -->
-                    <nav>
-                        <ul class="nav">
-                            <li><a href="/" class="animsition-link">Hexo</a></li>
-                            <li class="nolink"><span>Always </span>Creative.</li>
-                            
-                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                            
-                            
-                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
-                            
-                            
-                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
-                            
-                            
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
-                            
-                            
-                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
-                            
-                            <li class="nolink"><span>Welcome!</span></li>
-                        </ul>
-                    </nav>
-                    <!--// Info-bar -->
-                </div>
-                <!-- // .container -->
-                <div class="learnmore sb-toggle-right">More</div>
-                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar before"></span>
-                <span class="icon-bar main"></span>
-                <span class="icon-bar after"></span>
-                </button>
-            </div>
-            <!-- // .navbar-inner -->
-        </div>
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-<!-- ============================ Content =========================== -->
-
-<section id="intro">
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/07/13/kotlin代理/">kotlin代理</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-07-13T01:20:14.000Z" itemprop="datePublished">
-          2021-07-13
-      </time>
-    
-    
-    | 
-    <a href='/tags/kotlin/'>kotlin</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        委托代理在kotlin里面代理都是通过by关键字来实现得。代理顾名思义就是重写setValue方法和getValue方法，将某一类型得数据按照我们设计好的某种工厂方式加工出来。比如by lazy，我们希望使用他的代理都可以实现懒加载得功能，帮助开发者省下每次都要写懒加载得方式。
-实现代理得思路就是重写setVaule方法和getValue方法。如果是var声明的变量那么就可以重写setValue和getValue。如果是val声明的就只
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/07/13/kotlin代理/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/07/09/Android重启功能/">Android重启功能</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-07-09T07:15:16.000Z" itemprop="datePublished">
-          2021-07-09
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        1234567891011121314private fun onLogoutAndRestartApp() &#123;    ActivityManagerUtil.get().finishAllActivity(); //杀死全部activity    var h = Handler(Looper.getMainLooper())    h.postDelayed(Runnable &#123;        restartApp
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/07/09/Android重启功能/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/29/Java运算符/">Java运算符</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-29T09:57:41.000Z" itemprop="datePublished">
-          2021-06-29
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        一：与运算符（&amp;）运算规则：
-0&amp;0=0；0&amp;1=0；1&amp;0=0；1&amp;1=1
-即：两个同时为1，结果为1，否则为0
-例如：3&amp;5
-十进制3转为二进制的3：0000 0011
-十进制5转为二进制的5：0000 0101
-————————结果：0000 0001 -&gt;转为十进制：1
-即：3&amp;5 = 1
-二：或运算（|）运算规则：
-0|0=0；  0|1=1；  1|0=1；   
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/29/Java运算符/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/25/ViewGroup很少会用到得东西/">ViewGroup很少会用到得东西</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-25T07:00:36.000Z" itemprop="datePublished">
-          2021-06-25
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        轻量级的移除和添加view，addView和removeView都是重量级的操作，会触发重绘，导致卡顿。
-
-detachViewFromParent(View view, int index, LayoutParams params)
-
-removeDetachedView(View view,boolean animate)
-
-
-效果：
-
-
-实现：
-12345678910111213141516171819202122232425pr
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/25/ViewGroup很少会用到得东西/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/24/java阻塞队列之ArrayBlockingQueue/">java阻塞队列之ArrayBlockingQueue</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-24T02:22:38.000Z" itemprop="datePublished">
-          2021-06-24
-      </time>
-    
-    
-    | 
-    <a href='/tags/语言/'>语言</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        java阻塞队列之ArrayBlockingQueue - 北漂程序员 - 博客园 (cnblogs.com)
-take：取出一个元素，它会将线程挂起，直到被中断或者取出成功。
-poll：取出一个元素，取不到返回null，取得到返回值。不会挂起线程。
-put：判断元素是否null，然后判断当前队列中的元素数量和队列的长度，如果二者相等则阻塞当前线程；
-offer：队列中的元素数量和队列长度相等，则直接返回false，否则执行enqueu
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/24/java阻塞队列之ArrayBlockingQueue/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/23/Pr学习/">Pr学习</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-23T00:39:31.000Z" itemprop="datePublished">
-          2021-06-23
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        d 
-手动标记卡点:听音乐，然后通过按M进行标记  按Shift+M：移动标记点
-利用插件进行标记 beatedit
-
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/23/Pr学习/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/22/Recycleview滑动分析/">Recycleview滑动分析</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-22T08:58:55.000Z" itemprop="datePublished">
-          2021-06-22
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                          通过使用as的Profiler监听cpu的运行状况，我们可以更容易的了解到Recycleview滑动的执行过程。由下图可以看到，recycle view的滑动一次调用了：
-123456789RecyclerView.onTouchEvent()RecyclerView.scrollByInternal()RecyclerView.scrollStep()LinearLayoutManager.scrollVerticallyBy()
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/22/Recycleview滑动分析/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/18/Kotlin之Flow学习/">Kotlin之Flow学习</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-18T03:11:59.000Z" itemprop="datePublished">
-          2021-06-18
-      </time>
-    
-    
-    | 
-    <a href='/tags/kotlin/'>kotlin</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        官方：kotlinx.coroutines.flow - kotlinx-coroutines-core
-流到底是什么？流是可以实现断断续续的收集数据。
-冷流 :只有订阅者订阅时，才开始执行发射数据流的代码。并且冷流和订阅者只能是一对一的关系，当有多个不同的订阅者时，消息是重新完整发送的。也就是说对冷流而言，有多个订阅者的时候，他们各自的事件是独立的。
-热流:无论有没有订阅者订阅，事件始终都会发生。当 热流有多个订阅者时，热流与订阅者们
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/18/Kotlin之Flow学习/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/18/通过协程的方式下载文件/">通过协程的方式下载文件</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-18T01:18:34.000Z" itemprop="datePublished">
-          2021-06-18
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        首先构建Retrofit:
-1234567OkHttpClient client = new OkHttpClient.Builder()                .build();Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&quot;www.baidu.com&quot;)                .client(client)  
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/18/通过协程的方式下载文件/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2021/06/10/Android消息机制/">Android消息机制</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2021-06-10T13:53:25.000Z" itemprop="datePublished">
-          2021-06-10
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        同步屏障博客： Handler同步屏障机制的原理和使用场景_u013728021的博客-CSDN博客
-Android中同步屏障的应用及简析 - 简书 (jianshu.com)
-什么是同步屏障：
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Handler的消息分为两种：同步消息和异步消息。
-123456789101112//Message.java 获取这个消息属于哪种public 
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2021/06/10/Android消息机制/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <nav class="pagination" role="pagination">
-          <a class="pull-left" href="/page/3/">← Newer Posts</a>
-          <a class="pull-right" href="/page/5/">Older Posts →</a>
-        </nav>
-    </div>
-</section>
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
-        </div>
-    </div>
-</section>
-<!-- ============================ END Content =========================== -->
-
-      
-<!-- ============================ Footer =========================== -->
-<footer>
-    <div class="container">
-            <div class="copy">
-                <p>
-                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
-                </p>
-                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
-            </div>
-            <div class="social">
-                <ul>
-                    
-                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
-                    
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-</footer>
-
-<!-- ============================ END Footer =========================== -->
-
-  <script src="https://unpkg.com/mermaid@8.8.3/dist/mermaid.min.js"></script>
-  <script>
-
-      mermaid.initialize({theme: 'forest'});
-  
-  </script>
-
-      <!-- Load our scripts -->
-<!-- Resizable 'on-demand' full-height hero -->
-<script type="text/javascript">
-    var resizeHero = function () {
-        var hero = $(".cover,.heightblock"),
-            window1 = $(window);
-        hero.css({
-            "height": window1.height()
-        });
-    };
-
-    resizeHero();
-
-    $(window).resize(function () {
-        resizeHero();
-    });
-</script>
-<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-<script src="/js/scripts.js"></script><!-- Theme scripts -->
+<p><strong>现在</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github-B:librityYu/Whatif.git</span><br></pre></td></tr></table></div></figure>
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$('#intro').find('img').each(function(){
-  var alt = this.alt;
+<p>还想在完美点可以给仓库设置单独的用户名：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name &quot;one_name&quot; ; git config user.email &quot;one_email&quot;</span><br><span class="line"></span><br><span class="line">$ git config user.name &quot;two_name&quot; ; git config user.email &quot;two_email&quot;</span><br></pre></td></tr></table></div></figure></li>
+</ol>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/07/13/kotlin%E4%BB%A3%E7%90%86/">kotlin代理</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-07-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-07-13</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="委托代理">
+          <a href="#委托代理" class="heading-link"><i class="fas fa-link"></i></a><a href="#委托代理" class="headerlink" title="委托代理"></a>委托代理</h1>
+      <p>在kotlin里面代理都是通过by关键字来实现得。代理顾名思义就是重写setValue方法和getValue方法，将某一类型得数据按照我们设计好的某种工厂方式加工出来。比如by lazy，我们希望使用他的代理都可以实现懒加载得功能，帮助开发者省下每次都要写懒加载得方式。</p>
+<p>实现代理得思路就是重写setVaule方法和getValue方法。如果是var声明的变量那么就可以重写setValue和getValue。如果是val声明的就只能重写getValue。当然我们还可以自定义提供委托需要重载方法provideDelegate操作符。可以扩展创建属性实现所委托对象的逻辑。</p>
+<p>这里先来演示一个简单的，代理getVaule和setValue：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kotlin.reflect.KProperty</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Delegate</span> </span>&#123;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(thisRef: <span class="type">Any</span>?, property: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="variable">$thisRef</span>, thank you for delegating &#x27;<span class="subst">$&#123;property.name&#125;</span>&#x27; to me!&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">setValue</span><span class="params">(thisRef: <span class="type">Any</span>?, property: <span class="type">KProperty</span>&lt;*&gt;, value: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;<span class="variable">$value</span> has been assigned to &#x27;<span class="subst">$&#123;property.name&#125;</span>&#x27; in <span class="variable">$thisRef</span>.&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> p: String <span class="keyword">by</span> Delegate()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> e = Example()</span><br><span class="line">    println(e.p)     <span class="comment">//Example@33a17727, thank you for delegating ‘p’ to me!</span></span><br><span class="line">    e.p = <span class="string">&quot;NEW&quot;</span>      <span class="comment">//NEW has been assigned to ‘p’ in Example@33a17727.</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-  if (alt){
-    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
-  }
+<p>属性委托要求：</p>
+<p><strong>对于val: 委托必须提供一个操作符函数 getValue()，该函数具有以下参数：</strong></p>
+<ul>
+<li><p>thisRef —–必须与属性所有者类型（对于扩展属性–指被扩展的类型）相同或者是其超类</p>
+</li>
+<li><p>property<code>—— 必须是类型</code>KProperty&lt;*&gt;` 或其超类型。</p>
+</li>
+</ul>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Resource</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Owner</span> </span>&#123;</span><br><span class="line">    <span class="keyword">val</span> valResource: Resource <span class="keyword">by</span> ResourceDelegate()</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResourceDelegate</span> </span>&#123;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(thisRef: <span class="type">Owner</span>, property: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: Resource &#123;</span><br><span class="line">        <span class="keyword">return</span> Resource()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
-});
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+<p><strong>对于var委托必须额外提供一个操作符函数 <code>setValue()</code>， 该函数具有以下参数：</strong></p>
+<ul>
+<li><code>thisRef</code> —— 必须与 <em>属性所有者</em> 类型（对于扩展属性——指被扩展的类型）相同或者是其超类型。</li>
+<li><code>property</code> —— 必须是类型 <code>KProperty&lt;*&gt;</code> 或其超类型。</li>
+<li><code>value</code> — 必须与属性类型相同（或者是其超类型）。</li>
+</ul>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Resource</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Owner</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> varResource: Resource <span class="keyword">by</span> ResourceDelegate()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResourceDelegate</span></span>(<span class="keyword">private</span> <span class="keyword">var</span> resource: Resource = Resource()) &#123;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(thisRef: <span class="type">Owner</span>, property: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: Resource &#123;</span><br><span class="line">        <span class="keyword">return</span> resource</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">setValue</span><span class="params">(thisRef: <span class="type">Owner</span>, property: <span class="type">KProperty</span>&lt;*&gt;, value: <span class="type">Any</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (value <span class="keyword">is</span> Resource) &#123;</span><br><span class="line">            resource = value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="提供委托">
+          <a href="#提供委托" class="heading-link"><i class="fas fa-link"></i></a><a href="#提供委托" class="headerlink" title="# 提供委托"></a># 提供委托</h3>
+      <p><code>provideDelegate</code> 的参数与 <code>getValue</code> 相同：</p>
+<ul>
+<li><code>thisRef</code> —— 必须与 <em>属性所有者</em> 类型（对于扩展属性——指被扩展的类型）相同或者是它的超类型；</li>
+<li><code>property</code> —— 必须是类型 <code>KProperty&lt;*&gt;</code> 或其超类型。</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kotlin.properties.ReadOnlyProperty</span><br><span class="line"><span class="keyword">import</span> kotlin.reflect.KProperty</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResourceDelegate</span>&lt;<span class="type">T</span>&gt;</span>(<span class="keyword">var</span> num:T) : ReadOnlyProperty&lt;MyUI, T&gt; &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(thisRef: <span class="type">MyUI</span>, property: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: T &#123;</span><br><span class="line">        <span class="keyword">return</span> num</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResourceLoader</span>&lt;<span class="type">T</span>&gt;</span>(<span class="keyword">var</span> id: Teacher&lt;T&gt;) &#123;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">provideDelegate</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">            thisRef: <span class="type">MyUI</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">            prop: <span class="type">KProperty</span>&lt;*&gt;</span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span>: ReadOnlyProperty&lt;MyUI, T&gt; &#123;</span><br><span class="line">        checkProperty(thisRef, prop.name)</span><br><span class="line">        <span class="comment">// 创建委托</span></span><br><span class="line">        <span class="keyword">return</span> ResourceDelegate(id.tNum)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">checkProperty</span><span class="params">(thisRef: <span class="type">MyUI</span>, name: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyUI</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">bindResource</span><span class="params">(id: <span class="type">Teacher</span>&lt;<span class="type">T</span>&gt;)</span></span>: ResourceLoader&lt;T&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> ResourceLoader&lt;T&gt;(id)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> image <span class="keyword">by</span> bindResource(Teacher&lt;<span class="built_in">Int</span>&gt;(<span class="number">150</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> s = MyUI()</span><br><span class="line">    System.<span class="keyword">out</span>.println(s.image)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/07/09/Android%E9%87%8D%E5%90%AF%E5%8A%9F%E8%83%BD/">Android重启功能</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-07-09</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-07-09</span></span></div></header><div class="post-body"><div class="post-excerpt"><figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">onLogoutAndRestartApp</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ActivityManagerUtil.<span class="keyword">get</span>().finishAllActivity(); <span class="comment">//杀死全部activity</span></span><br><span class="line">    <span class="keyword">var</span> h = Handler(Looper.getMainLooper())</span><br><span class="line">    h.postDelayed(Runnable &#123;</span><br><span class="line">        restartApp(AppCache.getContext())</span><br><span class="line">        Process.killProcess(Process.myPid())</span><br><span class="line">    &#125;, <span class="number">200</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">restartApp</span><span class="params">(context: <span class="type">Context</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> i = context.packageManager.getLaunchIntentForPackage(context.packageName)</span><br><span class="line">    i!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)</span><br><span class="line">    context.startActivity(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
 
 
-      
-</body>
-</html>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lin.baselib.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.Manifest;</span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.app.Application;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.RequiresPermission;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.ref.WeakReference;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> created by honghengqiang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020/10/9 21:14</span></span><br><span class="line"><span class="comment"> * email honghengqiang@gmail.com</span></span><br><span class="line"><span class="comment"> * description:</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityManagerUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Stack&lt;WeakReference&lt;Activity&gt;&gt; activityStack;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ActivityManagerUtil instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ActivityManagerUtil</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        activityStack = <span class="keyword">new</span> Stack&lt;WeakReference&lt;Activity&gt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ActivityManagerUtil <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (ActivityManagerUtil.class) &#123;</span><br><span class="line">            <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> ActivityManagerUtil();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(Application application)</span> </span>&#123;</span><br><span class="line">        application.registerActivityLifecycleCallbacks(<span class="keyword">new</span> InnerActivityLifecycle());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取activity个数</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activityStack == <span class="keyword">null</span>) &#123;</span><br><span class="line">            activityStack = <span class="keyword">new</span> Stack&lt;WeakReference&lt;Activity&gt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> activityStack.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否有这个activity（这个activity是否在activity栈内）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cls</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasActivity</span><span class="params">(Class&lt;? extends Activity&gt; cls)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; activityStack.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (activityStack.get(i) != <span class="keyword">null</span> &amp; activityStack.get(i).get() != <span class="keyword">null</span> &amp;&amp; activityStack.get(i).get().getClass().equals(cls)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取指定的Activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Activity <span class="title">getActivity</span><span class="params">(Class&lt;? extends Activity&gt; cls)</span> </span>&#123;</span><br><span class="line">        WeakReference&lt;Activity&gt; weakReference = findWeakByActivityCls(cls);</span><br><span class="line">        <span class="keyword">if</span> (weakReference != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> weakReference.get();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> WeakReference&lt;Activity&gt; <span class="title">findWeakByActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (WeakReference&lt;Activity&gt; weakReference : activityStack) &#123;</span><br><span class="line">            <span class="keyword">if</span> (weakReference.get() != <span class="keyword">null</span> &amp;&amp; weakReference.get() == activity) &#123;</span><br><span class="line">                <span class="keyword">return</span> weakReference;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> WeakReference&lt;Activity&gt; <span class="title">findWeakByActivityCls</span><span class="params">(Class&lt;? extends Activity&gt; activityClass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (WeakReference&lt;Activity&gt; weakReference : activityStack) &#123;</span><br><span class="line">            <span class="keyword">if</span> (weakReference.get() != <span class="keyword">null</span> &amp;&amp; weakReference.get().getClass().equals(activityClass)) &#123;</span><br><span class="line">                <span class="keyword">return</span> weakReference;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取当前activity</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Activity <span class="title">currentActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!activityStack.isEmpty()) &#123;</span><br><span class="line">            WeakReference&lt;Activity&gt; temp = activityStack.lastElement();</span><br><span class="line">            <span class="keyword">if</span> (temp.get() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> temp.get();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 销毁栈顶的activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishTopActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        WeakReference&lt;Activity&gt; activity = activityStack.lastElement();</span><br><span class="line">        <span class="keyword">if</span> (activity != <span class="keyword">null</span> &amp;&amp; activity.get() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            activity.get().finish();</span><br><span class="line"></span><br><span class="line">            activityStack.remove(activity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 销毁指定的activity</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> activityClass</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishActivity</span><span class="params">(Class&lt;? extends Activity&gt; activityClass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; activityStack.size(); i++) &#123;</span><br><span class="line">            WeakReference&lt;Activity&gt; activity = activityStack.elementAt(i);</span><br><span class="line">            <span class="keyword">if</span> (activity != <span class="keyword">null</span> &amp;&amp; activity.get() != <span class="keyword">null</span> &amp;&amp; activity.get().getClass().equals(activityClass)) &#123;</span><br><span class="line">                finishActivity(activity.get());</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 销毁指定的activity</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activity != <span class="keyword">null</span>) &#123;</span><br><span class="line">            WeakReference&lt;Activity&gt; weakReference = findWeakByActivity(activity);</span><br><span class="line">            <span class="keyword">if</span> (weakReference != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (weakReference.get() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    weakReference.get().finish();</span><br><span class="line">                &#125;</span><br><span class="line">                activityStack.remove(weakReference);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 销毁所有activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishAllActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activityStack == <span class="keyword">null</span> || activityStack.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (WeakReference&lt;Activity&gt; weakReference : activityStack) &#123;</span><br><span class="line">            <span class="keyword">if</span> (weakReference != <span class="keyword">null</span> &amp;&amp; weakReference.get() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                weakReference.get().finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        activityStack.clear();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 销毁所有activity，保留最开始的activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">popAllActivityKeepTop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (size() &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            Activity activity = currentActivity();</span><br><span class="line">            <span class="keyword">if</span> (activity == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            finishActivity(activity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 销毁所有activity，保留指定activity</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cls</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">popAllActivityExceptOne</span><span class="params">(Class&lt;? extends Activity&gt; cls)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activityStack.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> size = activityStack.size();</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= size) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            WeakReference&lt;Activity&gt; weakReference = activityStack.get(i);</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">if</span> (weakReference == <span class="keyword">null</span> || weakReference.get() == <span class="keyword">null</span>) &#123;</span><br><span class="line">                i--;</span><br><span class="line">                activityStack.remove(weakReference);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (weakReference.get().getClass().equals(cls)) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            weakReference.get().finish();</span><br><span class="line">            activityStack.remove(weakReference);</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequiresPermission(value = Manifest.permission.KILL_BACKGROUND_PROCESSES)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quitApp</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            finishAllActivity();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取packagemanager的实例</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            android.app.ActivityManager activityMgr = (android.app.ActivityManager) context</span><br><span class="line">                    .getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line">            activityMgr.killBackgroundProcesses(context.getPackageName());</span><br><span class="line">            activityStack = <span class="keyword">null</span>;</span><br><span class="line">            instance = <span class="keyword">null</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.exit(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加activity</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">pushActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        Log.i(<span class="string">&quot;ActivityManager&quot;</span>, <span class="string">&quot;当前入栈activity ===&gt;&gt;&gt;&quot;</span> + activity.getClass().getSimpleName());</span><br><span class="line">        <span class="keyword">if</span> (activityStack == <span class="keyword">null</span>) &#123;</span><br><span class="line">            activityStack = <span class="keyword">new</span> Stack&lt;WeakReference&lt;Activity&gt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        WeakReference&lt;Activity&gt; item = findWeakByActivity(activity);</span><br><span class="line">        <span class="keyword">if</span> (item == <span class="keyword">null</span>) &#123;</span><br><span class="line">            activityStack.add(<span class="keyword">new</span> WeakReference&lt;Activity&gt;(activity));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 移除activity, 但是不销毁</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        Log.i(<span class="string">&quot;ActivityManager&quot;</span>, <span class="string">&quot;当前出栈activity ===&gt;&gt;&gt;&quot;</span> + activity.getClass().getSimpleName());</span><br><span class="line">        <span class="keyword">for</span> (WeakReference&lt;Activity&gt; weakReference : activityStack) &#123;</span><br><span class="line">            <span class="keyword">if</span> (weakReference != <span class="keyword">null</span> &amp;&amp; weakReference.get() != <span class="keyword">null</span> &amp;&amp; weakReference.get() == activity) &#123;</span><br><span class="line">                activityStack.remove(weakReference);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerActivityLifecycle</span> <span class="keyword">implements</span> <span class="title">Application</span>.<span class="title">ActivityLifecycleCallbacks</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(Activity activity, Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">            pushActivity(activity);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityStarted</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityResumed</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityPaused</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityStopped</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivitySaveInstanceState</span><span class="params">(Activity activity, Bundle outState)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityDestroyed</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">            removeActivity(activity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/06/29/Java%E8%BF%90%E7%AE%97%E7%AC%A6/">Java运算符</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-11-04</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h2 id="一：与运算符（-amp-）">
+          <a href="#一：与运算符（-amp-）" class="heading-link"><i class="fas fa-link"></i></a><a href="#一：与运算符（-amp-）" class="headerlink" title="一：与运算符（&amp;）"></a>一：与运算符（&amp;）</h2>
+      <p>运算规则：</p>
+<p>0&amp;0=0；0&amp;1=0；1&amp;0=0；1&amp;1=1</p>
+<p>即：两个同时为1，结果为1，否则为0</p>
+<p>例如：3&amp;5</p>
+<p>十进制3转为二进制的3：0000 0011</p>
+<p>十进制5转为二进制的5：0000 0101</p>
+<p>————————结果：0000 0001 -&gt;转为十进制：1</p>
+<p>即：3&amp;5 = 1</p>
+
+        <h2 id="二：或运算（-）">
+          <a href="#二：或运算（-）" class="heading-link"><i class="fas fa-link"></i></a><a href="#二：或运算（-）" class="headerlink" title="二：或运算（|）"></a>二：或运算（|）</h2>
+      <p>运算规则：</p>
+<p>0|0=0；  0|1=1；  1|0=1；   1|1=1；</p>
+<p>即 ：参加运算的两个对象，一个为1，其值为1。</p>
+<p>例如：3|5　即 00000011 | 0000 0101 = 00000111，因此，3|5=7。　</p>
+
+        <h2 id="三：异或运算符（-）">
+          <a href="#三：异或运算符（-）" class="heading-link"><i class="fas fa-link"></i></a><a href="#三：异或运算符（-）" class="headerlink" title="三：异或运算符（^）"></a>三：异或运算符（^）</h2>
+      <p>运算规则：0^0=0；  0^1=1；  1^0=1；   1^1=0；</p>
+<p>即：参加运算的两个对象，如果两个位为“异”（值不同），则该位结果为1，否则为0。</p>
+<p>例如：3^5 =  0000 0011 | 0000 0101 =0000 0110，因此，3^5 = 6</p>
+
+        <h1 id="应用">
+          <a href="#应用" class="heading-link"><i class="fas fa-link"></i></a><a href="#应用" class="headerlink" title="应用"></a><strong>应用</strong></h1>
+      <p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://blog.csdn.net/dabaoonline/article/details/50163977">Android源码中常见的一些flag的运算的理解</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>a&amp;~b：  清除标志位b</p>
+<p>a|b :        添加标志位b</p>
+<p>a&amp;b：     取出标志位b</p>
+<p>a^b：      取出a与b的不同部分</p>
+<p>例子： a = 101  b = 010</p>
+<p>那么：a |= b   a= 111 可以看到b的标志位全部被添加进去了</p>
+<p>a &amp;= b 那么 a = 111 &amp; 010 = 010  可以看到取出了标志位b</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/06/25/ViewGroup%E5%BE%88%E5%B0%91%E4%BC%9A%E7%94%A8%E5%88%B0%E5%BE%97%E4%B8%9C%E8%A5%BF/">ViewGroup很少会用到得东西</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-25</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-25</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>轻量级的移除和添加view，addView和removeView都是重量级的操作，会触发重绘，导致卡顿。</p>
+<ul>
+<li><p>detachViewFromParent(View view, int index, LayoutParams params)</p>
+</li>
+<li><p>removeDetachedView(View view,boolean animate)</p>
+</li>
+</ul>
+<p>效果：</p>
+<img src="/2021/06/25/ViewGroup%E5%BE%88%E5%B0%91%E4%BC%9A%E7%94%A8%E5%88%B0%E5%BE%97%E4%B8%9C%E8%A5%BF/0m6kk-k1ufo.gif" alt="图片替换文本" width="250" height="500" align="bottom" style="zoom:33%;">
+
+<p>实现：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">moveToTop</span><span class="params">(target: <span class="type">View</span>)</span></span> &#123;</span><br><span class="line">       <span class="keyword">var</span> mViewGroup = conn</span><br><span class="line">       <span class="comment">//先确定现在在哪个位置</span></span><br><span class="line">       <span class="keyword">val</span> startIndex: <span class="built_in">Int</span> = mViewGroup.indexOfChild(target)</span><br><span class="line">       <span class="comment">//计算一共需要几次交换，就可到达最上面</span></span><br><span class="line">       <span class="keyword">val</span> count: <span class="built_in">Int</span> = mViewGroup.childCount - <span class="number">1</span> - startIndex</span><br><span class="line">       <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0</span> until count) &#123;</span><br><span class="line">           <span class="comment">//更新索引</span></span><br><span class="line">           <span class="keyword">val</span> fromIndex: <span class="built_in">Int</span> = mViewGroup.indexOfChild(target)</span><br><span class="line">           <span class="comment">//目标是它的上层</span></span><br><span class="line">           <span class="keyword">val</span> toIndex = fromIndex + <span class="number">1</span></span><br><span class="line">           <span class="comment">//获取需要交换位置的两个子View</span></span><br><span class="line">           <span class="keyword">val</span> to: View = mViewGroup.getChildAt(toIndex)</span><br><span class="line"></span><br><span class="line">           <span class="comment">//先把它们拿出来  这个方法是project的，所以我们需要自定义viewgroup然后重载这个方法变成public</span></span><br><span class="line">           mViewGroup.detachViewFromParent(toIndex)</span><br><span class="line">           mViewGroup.detachViewFromParent(fromIndex)</span><br><span class="line"></span><br><span class="line">           <span class="comment">//再放回去，但是放回去的位置(索引)互换了</span></span><br><span class="line">           mViewGroup.attachViewToParent(to, fromIndex, to.layoutParams)</span><br><span class="line">           mViewGroup.attachViewToParent(target, toIndex, target.layoutParams)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//刷新</span></span><br><span class="line">       mViewGroup.invalidate()</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></div></figure>
+
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/06/24/java%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97%E4%B9%8BArrayBlockingQueue/">java阻塞队列之ArrayBlockingQueue</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-24</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-24</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.cnblogs.com/teach/p/10665199.html">java阻塞队列之ArrayBlockingQueue - 北漂程序员 - 博客园 (cnblogs.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>take：取出一个元素，它会将线程挂起，直到被中断或者取出成功。</p>
+<p>poll：取出一个元素，取不到返回null，取得到返回值。不会挂起线程。</p>
+<p>put：判断元素是否null，然后判断当前队列中的元素数量和队列的长度，如果二者相等则阻塞当前线程；</p>
+<p>offer：队列中的元素数量和队列长度相等，则直接返回false，否则执行enqueue方法，put方法会将线程挂起，直到被中断或插入成功。</p>
+
+        <h2 id="比较：">
+          <a href="#比较：" class="heading-link"><i class="fas fa-link"></i></a><a href="#比较：" class="headerlink" title="比较："></a>比较：</h2>
+      <img src="/2021/06/24/java%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97%E4%B9%8BArrayBlockingQueue/比较.png" alt="img1" style="zoom: 67%;">
+
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/06/23/Pr%E5%AD%A6%E4%B9%A0/">Pr学习</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-23</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>d </p>
+
+        <h1 id="手动标记卡点">
+          <a href="#手动标记卡点" class="heading-link"><i class="fas fa-link"></i></a><a href="#手动标记卡点" class="headerlink" title="手动标记卡点:"></a>手动标记卡点:</h1>
+      <p>听音乐，然后通过按M进行标记  按Shift+M：移动标记点</p>
+
+        <h1 id="利用插件进行标记">
+          <a href="#利用插件进行标记" class="heading-link"><i class="fas fa-link"></i></a><a href="#利用插件进行标记" class="headerlink" title="利用插件进行标记"></a>利用插件进行标记</h1>
+      <p> beatedit</p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/06/22/Recycleview%E6%BB%91%E5%8A%A8%E5%88%86%E6%9E%90/">Recycleview滑动分析</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-22</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-25</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>  通过使用as的Profiler监听cpu的运行状况，我们可以更容易的了解到Recycleview滑动的执行过程。由下图可以看到，recycle view的滑动一次调用了：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">RecyclerView.onTouchEvent()</span><br><span class="line">RecyclerView.scrollByInternal()</span><br><span class="line">RecyclerView.scrollStep()</span><br><span class="line">LinearLayoutManager.scrollVerticallyBy()</span><br><span class="line">LinearLayoutManager.scrollBy()</span><br><span class="line">OrientationHelper.offsetChildren()</span><br><span class="line">LayoutManager.offsetChildrenVertical()</span><br><span class="line">RecyclerView.offsetChildrenVertical()</span><br><span class="line">View.offsetTopAndBottom()</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="/2021/06/22/Recycleview%E6%BB%91%E5%8A%A8%E5%88%86%E6%9E%90/%E6%BB%91%E5%8A%A8%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B.png" alt="img1"></p>
+<p><strong>获取Recycleview滑了多少距离得一个好方式：</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getScollYDistance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LinearLayoutManager layoutManager = (LinearLayoutManager) <span class="keyword">this</span>.getLayoutManager();</span><br><span class="line">    <span class="keyword">int</span> position = layoutManager.findFirstVisibleItemPosition();</span><br><span class="line">    View firstVisiableChildView = layoutManager.findViewByPosition(position);</span><br><span class="line">    <span class="keyword">int</span> itemHeight = firstVisiableChildView.getHeight();</span><br><span class="line">    <span class="keyword">return</span> (position) * itemHeight - firstVisiableChildView.getTop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<img src="/2021/06/22/Recycleview%E6%BB%91%E5%8A%A8%E5%88%86%E6%9E%90/获取滑动距离.png" alt="img1" style="zoom:50%;">
+
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/06/18/Kotlin%E4%B9%8BFlow%E5%AD%A6%E4%B9%A0/">Kotlin之Flow学习</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-08-16</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>官方：<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/index.html">kotlinx.coroutines.flow - kotlinx-coroutines-core</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>流到底是什么？流是可以实现断断续续的收集数据。</p>
+<p><strong>冷流</strong> :只有订阅者订阅时，才开始执行发射数据流的代码。并且冷流和订阅者只能是一对一的关系，当有多个不同的订阅者时，消息是重新完整发送的。也就是说对冷流而言，有多个订阅者的时候，他们各自的事件是独立的。</p>
+<p><strong>热流</strong>:无论有没有订阅者订阅，事件始终都会发生。当 热流有多个订阅者时，热流与订阅者们的关系是一对多的关系，可以与多个订阅者共享信息。</p>
+<p><strong>创建Flow:</strong></p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = flow&lt;<span class="built_in">Int</span>&gt; &#123; emit(<span class="number">1</span>) &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>single() : 这个流只能返回一个结果</strong></p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = f.map &#123;<span class="string">&quot;笑了&quot;</span>+ it + <span class="string">&quot;下&quot;</span>&#125;</span><br><span class="line">              .map &#123;<span class="string">&quot;小王&quot;</span>+ it&#125;</span><br><span class="line">              .single()</span><br><span class="line"><span class="comment">// 打印结果：result = &quot;小王笑了1下&quot;</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>collect: 打印每次的emit结果：</strong></p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = flow&lt;<span class="built_in">Int</span>&gt; &#123;emit(<span class="number">1</span>)emit(<span class="number">2</span>)&#125;</span><br><span class="line">f.map &#123;<span class="string">&quot;笑了&quot;</span>+ it + <span class="string">&quot;下&quot;</span>&#125;</span><br><span class="line"> .collect&#123;result-&gt;</span><br><span class="line">     Log.i(<span class="string">&quot;zjc&quot;</span>,<span class="string">&quot;<span class="subst">$&#123;result&#125;</span>&quot;</span>)</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">// 答应结果： 笑了1下  笑了2下</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>flowOn: 指定当前流在哪个线程执行，他不会影响下一个流的执行线程：</strong></p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lifecycleScope.launch &#123;</span><br><span class="line">     f.map &#123;Log.i(<span class="string">&quot;zjc&quot;</span>,<span class="string">&quot;<span class="subst">$&#123;Thread.currentThread().name&#125;</span>&quot;</span>)&#125;<span class="comment">// 子线程</span></span><br><span class="line">     .flowOn(Dispatchers.IO)</span><br><span class="line">     .map &#123;Log.i(<span class="string">&quot;zjc&quot;</span>,<span class="string">&quot;<span class="subst">$&#123;Thread.currentThread().name&#125;</span>&quot;</span>)&#125;<span class="comment">// 主线程</span></span><br><span class="line">     .flowOn(Dispatchers.Main).collect &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>filter操作符  我们可以对结果集添加过滤条件</strong></p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">loadData1</span><span class="params">()</span></span> = flow &#123;</span><br><span class="line">    println(<span class="string">&quot;进入加载数据的方法&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.3</span>) &#123;</span><br><span class="line">        delay(<span class="number">1000</span>)</span><br><span class="line">        emit(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> runBlocking &#123;</span><br><span class="line">        loadData1().filter &#123;</span><br><span class="line">            it &gt; <span class="number">1</span></span><br><span class="line">        &#125;.collect &#123;</span><br><span class="line">            println(it)</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">// 结果：2 3</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>buffer操作符，尽可能减少发送数据和处理事件的时间</strong> <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://huanglinqing.blog.csdn.net/article/details/109476671?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-2.control">Kotlin Flow 看这一篇 带你入门~_黄林晴-CSDN博客</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> startTime: <span class="built_in">Long</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> endTime: <span class="built_in">Long</span> = <span class="number">0</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">loadData1</span><span class="params">()</span></span> = flow &#123;</span><br><span class="line">    startTime = System.currentTimeMillis() / <span class="number">1000</span></span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.3</span>) &#123;</span><br><span class="line">        delay(<span class="number">1000</span>)</span><br><span class="line">        emit(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    runBlocking &#123;</span><br><span class="line">        loadData1().collect &#123; value -&gt;</span><br><span class="line">            delay(<span class="number">2000</span>)</span><br><span class="line">            println(<span class="string">&quot;<span class="variable">$value</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        endTime = System.currentTimeMillis() / <span class="number">1000</span></span><br><span class="line">        println(<span class="string">&quot;处理时间:<span class="subst">$&#123;endTime - startTime&#125;</span>s&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*1 2 3</span></span><br><span class="line"><span class="comment">*处理时间 9s</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></div></figure>
+
+<p>现在改成buffer</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    runBlocking &#123;</span><br><span class="line">        loadData1().buffer().collect &#123; value -&gt;</span><br><span class="line">            delay(<span class="number">2000</span>)</span><br><span class="line">            println(<span class="string">&quot;<span class="variable">$value</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        endTime = System.currentTimeMillis() / <span class="number">1000</span></span><br><span class="line">        println(<span class="string">&quot;处理时间:<span class="subst">$&#123;endTime - startTime&#125;</span>s&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*1 2 3</span></span><br><span class="line"><span class="comment">*处理时间 8s</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></div></figure>
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">libertyYu</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">54</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">24</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">标签</div></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

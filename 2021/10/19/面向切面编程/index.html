@@ -1,247 +1,53 @@
-<!DOCTYPE html>
-<!--[if lte IE 8 ]>
-<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--
-***************  *      *     *
-      8          *    *       *
-      8          *  *         *
-      8          **           *
-      8          *  *         *
-      8          *    *       *
-      8          *      *     *
-      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
--->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
-<!--<![endif]-->
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="Aop是一种编程思想，面向切面编程的编程思想。  深入理解Android之AOP  ​    具体实现的框架有：          #ta,#ta tr th, #ta tr td { border:1px solid #CCCCCC; }         #ta { text-align: center; border-collapse: collapse;}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向切面编程">
+<meta property="og:url" content="http://example.com/2021/10/19/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Liberty&#39;s Blog">
+<meta property="og:description" content="Aop是一种编程思想，面向切面编程的编程思想。  深入理解Android之AOP  ​    具体实现的框架有：          #ta,#ta tr th, #ta tr td { border:1px solid #CCCCCC; }         #ta { text-align: center; border-collapse: collapse;}">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/10/19/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/图2.jpg">
+<meta property="og:image" content="http://example.com/2021/10/19/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/图3.png">
+<meta property="og:image" content="http://example.com/2021/10/19/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/图4.png">
+<meta property="og:image" content="http://example.com/2021/10/19/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/图5.png">
+<meta property="og:image" content="http://example.com/2021/10/19/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/图6.png">
+<meta property="article:published_time" content="2021-10-19T01:22:38.000Z">
+<meta property="article:modified_time" content="2021-10-21T08:00:11.725Z">
+<meta property="article:author" content="Liberty">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/10/19/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/图2.jpg"><title>面向切面编程 | Liberty's Blog</title><link ref="canonical" href="http://example.com/2021/10/19/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
 
-<head>
-  <title>面向切面编程 | Hexo</title>
-  <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="Hexo">
-    <meta name="author" content="John Doe">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-
-    <!-- Favicon, (keep icon in root folder) -->
-    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
-
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
-    
-    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
-    
-
-    <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
-    <![endif]-->
-
-    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
-    <script src="/js/jquery-1.11.1.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
-
-    <!-- Load these in the <head> for quicker IE8+ load times -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
-
-  
-  
-  
-
-  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
-</head>
-
-<!--
-<body class="post-template">
--->
-<body id="index" class="lightnav animsition">
-
-      <!-- ============================ Off-canvas navigation =========================== -->
-
-    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
-        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
-        </div>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu">
-            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
-            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
-            <!-- Dropdown Menu -->
-			 
-            <li>
-                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
-                <ul class="sb-submenu">
-                    
-                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
-                    
-                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
-                    
-                </ul>
-            </li>
-            
-            
-        	<li>
-        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
-            	<ul class="sb-submenu">
-				  	
-				    <li><a href="/categories/Andorid/" class="animsition-link">Andorid<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(6)</small></a></li>
-				    
-				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
-				    
-				    <li><a href="/categories/Handler/" class="animsition-link">Handler<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/kotlin/" class="animsition-link">kotlin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(3)</small></a></li>
-				    
-				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
-				    
-				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/硬件/" class="animsition-link">硬件<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
-				    
-				</ul>
-        	</li>
-			
-            
-            <li>
-                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
-                <ul class="sb-submenu">
-                    
-                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
-                    
-                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
-                    
-                </ul>
-            </li>
-            
-        </ul>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu secondary">
-            
-            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
-            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
-        </ul>
-    </div>
-    
-    <!-- ============================ END Off-canvas navigation =========================== -->
-
-    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
-
-        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-        <div id="navigation" class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <!-- Nav logo -->
-                    <div class="logo">
-                        <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
-                        </a>
-                    </div>
-                    <!-- // Nav logo -->
-                    <!-- Info-bar -->
-                    <nav>
-                        <ul class="nav">
-                            <li><a href="/" class="animsition-link">Hexo</a></li>
-                            <li class="nolink"><span>Always </span>Creative.</li>
-                            
-                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                            
-                            
-                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
-                            
-                            
-                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
-                            
-                            
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
-                            
-                            
-                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
-                            
-                            <li class="nolink"><span>Welcome!</span></li>
-                        </ul>
-                    </nav>
-                    <!--// Info-bar -->
-                </div>
-                <!-- // .container -->
-                <div class="learnmore sb-toggle-right">More</div>
-                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar before"></span>
-                <span class="icon-bar main"></span>
-                <span class="icon-bar after"></span>
-                </button>
-            </div>
-            <!-- // .navbar-inner -->
-        </div>
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-
-      
-<section id="intro">
-    <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2021-10-19T01:22:38.000Z" itemprop="datePublished">
-          2021-10-19
-      </time>
-    
-</span>
-                <h1>面向切面编程</h1>
-            </div>
-        </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<p><strong>Aop是一种编程思想，面向切面编程的编程思想。</strong></p>
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/日记/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">日记</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Liberty's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">面向切面编程</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-10-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-10-21</span></span></div></header><div class="post-body"><p><strong>Aop是一种编程思想，面向切面编程的编程思想。</strong></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/innost/article/details/49387395">深入理解Android之AOP</a></p>
+<p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://blog.csdn.net/innost/article/details/49387395">深入理解Android之AOP</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 </blockquote>
 <p>​    具体实现的框架有：</p>
 <style>
         #ta,#ta tr th, #ta tr td { border:1px solid #CCCCCC; }
         #ta { text-align: center; border-collapse: collapse;}   
 </style>
-<table id="ta">
+<div class="table-container"><table id="ta">
     <tr>
         <td>方法</td>
         <td>说明</td>
@@ -270,11 +76,14 @@
         <td>Qzone超级补丁，TInker热修复</td>
         <td>Javassit的java Api更易于使用，ASM性能更好</td>
     </tr>
-</table>
+</table></div>
 
 <br>
 
-<h1 id="AspectJ"><a href="#AspectJ" class="headerlink" title="AspectJ"></a>AspectJ</h1><br>
+
+        <h1 id="AspectJ">
+          <a href="#AspectJ" class="heading-link"><i class="fas fa-link"></i></a><a href="#AspectJ" class="headerlink" title="AspectJ"></a>AspectJ</h1>
+      <br>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个框架有几个重要的概念，JoinPoints：切入点，也就是在那个方法进行切入。Advice：切入的方式，是在这个方法之前切入还是之后切入，还是周围切入也就是之前和之后同时切入。</p>
 <p><strong>在Idea使用AspecJ框架流程：</strong></p>
@@ -300,15 +109,18 @@
 <div align="center"><img src="/2021/10/19/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B/图6.png" alt="img-0" style="zoom: 33%;"></div>
 
 <p>​    至此我们就可以使用aspectj框架了。</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/153317556">@Pointcut 的 12 种用法，你知道几种？ - 知乎 (zhihu.com)</a></p>
-<h4 id="切入点标签"><a href="#切入点标签" class="headerlink" title="切入点标签"></a><strong>切入点标签</strong></h4><ul>
+<p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/153317556">@Pointcut 的 12 种用法，你知道几种？ - 知乎 (zhihu.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h4 id="切入点标签">
+          <a href="#切入点标签" class="heading-link"><i class="fas fa-link"></i></a><a href="#切入点标签" class="headerlink" title="切入点标签"></a><strong>切入点标签</strong></h4>
+      <ul>
 <li><p><strong>@Pointcut</strong></p>
 <p>​    用来指定切入点，他的作用仅仅用来帮我们定义切入点，不能在这个切入点里面写任何代码，他是搭配@Before @After @Around标签来使用的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Aspect1</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* main.Service1.*(..))&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pointcut1</span><span class="params">(JoinPoint joinPoint)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;PointCut执行了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Aspect1</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* main.Service1.*(..))&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pointcut1</span><span class="params">(JoinPoint joinPoint)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;PointCut执行了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
 <p>​    按照这个例子写我们的程序会报错：<font color="red">Pointcuts without an if() expression should have an empty method body</font></p>
 <p>​    正确的写法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Aspect1</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* main.Service1.*(..))&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pointcut1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(value = &quot;pointcut1()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">(JoinPoint joinPoint)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;前置通知&quot;</span>+joinPoint);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After(value = &quot;pointcut1()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">after</span><span class="params">(JoinPoint joinPoint)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;后置通知&quot;</span>+joinPoint);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//@4：定义了一个异常通知，这个通知对刚刚上面我们定义的切入点中的所有方法有效</span></span><br><span class="line">    <span class="meta">@AfterThrowing(value = &quot;pointcut1()&quot;, throwing = &quot;e&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterThrowing</span><span class="params">(JoinPoint joinPoint, Exception e)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//发生异常之后输出异常信息</span></span><br><span class="line">        System.out.println(joinPoint + <span class="string">&quot;,发生异常：&quot;</span> + e.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Service1 service1 = <span class="keyword">new</span> Service1();</span><br><span class="line">        service1.m1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出结果：</span></span><br><span class="line"><span class="comment">// 前置通知execution(void main.Service1.m1())</span></span><br><span class="line"><span class="comment">// 我是m1方法</span></span><br><span class="line"><span class="comment">// 后置通知execution(void main.Service1.m1())</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Aspect1</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* main.Service1.*(..))&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pointcut1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(value = &quot;pointcut1()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">(JoinPoint joinPoint)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;前置通知&quot;</span>+joinPoint);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After(value = &quot;pointcut1()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">after</span><span class="params">(JoinPoint joinPoint)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;后置通知&quot;</span>+joinPoint);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//@4：定义了一个异常通知，这个通知对刚刚上面我们定义的切入点中的所有方法有效</span></span><br><span class="line">    <span class="meta">@AfterThrowing(value = &quot;pointcut1()&quot;, throwing = &quot;e&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterThrowing</span><span class="params">(JoinPoint joinPoint, Exception e)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//发生异常之后输出异常信息</span></span><br><span class="line">        System.out.println(joinPoint + <span class="string">&quot;,发生异常：&quot;</span> + e.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Service1 service1 = <span class="keyword">new</span> Service1();</span><br><span class="line">        service1.m1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出结果：</span></span><br><span class="line"><span class="comment">// 前置通知execution(void main.Service1.m1())</span></span><br><span class="line"><span class="comment">// 我是m1方法</span></span><br><span class="line"><span class="comment">// 后置通知execution(void main.Service1.m1())</span></span><br></pre></td></tr></table></div></figure>
 
 <p><strong>在我们找到切入点的时候</strong></p>
 </li>
@@ -327,7 +139,10 @@
 <p>注意这些标签都是用来帮助我们去寻找插入点 也就是 切入点</p>
 </blockquote>
 <p>切入点的标签知道了，现在就是表达式标签了。表达式标签也就是刚才我们写在@Pointcut括号里面的那一堆东西。</p>
-<h4 id="表达式标签"><a href="#表达式标签" class="headerlink" title="表达式标签"></a><strong>表达式标签</strong></h4><table id="ta">
+
+        <h4 id="表达式标签">
+          <a href="#表达式标签" class="heading-link"><i class="fas fa-link"></i></a><a href="#表达式标签" class="headerlink" title="表达式标签"></a><strong>表达式标签</strong></h4>
+      <div class="table-container"><table id="ta">
     <tr>
         <td>标签</td>
         <td>描述</td>
@@ -372,14 +187,20 @@
         <td>bean</td>
         <td>Spring AOP扩展的，AspectJ没有对于指示符，用于匹配特定名称的Bean对象的执行方法</td>
     </tr>
-</table>
+</table></div>
 
 <br>
 
-<h5 id="表达式标签使用介绍："><a href="#表达式标签使用介绍：" class="headerlink" title="表达式标签使用介绍："></a>表达式标签使用介绍：</h5><h4 id="executation"><a href="#executation" class="headerlink" title="executation"></a>executation</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">executation(@注解? 修饰符匹配？ 返回值类型 类路径？方法名匹配 异常类型匹配？)</span><br><span class="line"><span class="comment">// 带问号的是不必须参数</span></span><br></pre></td></tr></table></figure>
+
+        <h5 id="表达式标签使用介绍：">
+          <a href="#表达式标签使用介绍：" class="heading-link"><i class="fas fa-link"></i></a><a href="#表达式标签使用介绍：" class="headerlink" title="表达式标签使用介绍："></a>表达式标签使用介绍：</h5>
+      
+        <h4 id="executation">
+          <a href="#executation" class="heading-link"><i class="fas fa-link"></i></a><a href="#executation" class="headerlink" title="executation"></a>executation</h4>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">executation(@注解? 修饰符匹配？ 返回值类型 类路径？方法名匹配 异常类型匹配？)</span><br><span class="line"><span class="comment">// 带问号的是不必须参数</span></span><br></pre></td></tr></table></div></figure>
 
 <p><strong>案例：</strong></p>
-<table id="ta">
+<div class="table-container"><table id="ta">
      <tr>
         <td>表达式</td>
         <td>描述</td>
@@ -416,187 +237,48 @@
         <td>* Service1.*(..,String)</td>
         <td>匹配Service1中最后要给参数为String的方法</td>
     </tr>
-</table>
+</table></div>
 
-<h4 id="within"><a href="#within" class="headerlink" title="within"></a>within</h4><p>用法：within(类型表达式)：目标对象target的类型是否和within中指定的类型匹配</p>
+
+        <h4 id="within">
+          <a href="#within" class="heading-link"><i class="fas fa-link"></i></a><a href="#within" class="headerlink" title="within"></a>within</h4>
+      <p>用法：within(类型表达式)：目标对象target的类型是否和within中指定的类型匹配</p>
 <p>匹配原则：target.getClass().equals(within表达式中指定的类型)</p>
 <p>自我解释：只匹配对应类的数据，你不是目标类我就不会匹配上</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.javacode2018.aop.demo9.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是m1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是m2&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C2</span> <span class="keyword">extends</span> <span class="title">C1</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.m2();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是m3&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AspectTest2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pointcut(&quot;within(C1)&quot;)</span> <span class="comment">//@1</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(&quot;pc()&quot;)</span> <span class="comment">//@2</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeAdvice</span><span class="params">(JoinPoint joinpoint)</span> </span>&#123;</span><br><span class="line">        System.out.println(joinpoint);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出结果：我是m1 我是m2 我是m3  </span></span><br><span class="line"><span class="comment">// 看结果可知并没有走到切面里面去</span></span><br><span class="line"><span class="comment">//	修改</span></span><br><span class="line"><span class="meta">@Pointcut(&quot;within(C1+)&quot;)</span> </span><br><span class="line"><span class="meta">@Pointcut(&quot;within(C2)&quot;)</span> </span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.javacode2018.aop.demo9.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是m1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是m2&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C2</span> <span class="keyword">extends</span> <span class="title">C1</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.m2();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是m3&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AspectTest2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pointcut(&quot;within(C1)&quot;)</span> <span class="comment">//@1</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(&quot;pc()&quot;)</span> <span class="comment">//@2</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeAdvice</span><span class="params">(JoinPoint joinpoint)</span> </span>&#123;</span><br><span class="line">        System.out.println(joinpoint);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出结果：我是m1 我是m2 我是m3  </span></span><br><span class="line"><span class="comment">// 看结果可知并没有走到切面里面去</span></span><br><span class="line"><span class="comment">//	修改</span></span><br><span class="line"><span class="meta">@Pointcut(&quot;within(C1+)&quot;)</span> </span><br><span class="line"><span class="meta">@Pointcut(&quot;within(C2)&quot;)</span> </span><br></pre></td></tr></table></div></figure>
 
 
 
-<h4 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h4><p>需求1：自定义注解，然后获取被注解标记的方法的入参，注解值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.METHOD&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> note2 &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Service2</span> </span>&#123;</span><br><span class="line">    <span class="meta">@note2(value = &quot;我是权限&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">m3</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是m3方法&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;我是返回值&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="Demo">
+          <a href="#Demo" class="heading-link"><i class="fas fa-link"></i></a><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h4>
+      <p>需求1：自定义注解，然后获取被注解标记的方法的入参，注解值</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.METHOD&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> note2 &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Aspect1</span> </span>&#123;</span><br><span class="line">    <span class="comment">//找到被note2标记的方法 并获得注解的值</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(@main.note2 String *(..)) &amp;&amp; @annotation(noValue)&amp;&amp;args(num)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logPoint</span><span class="params">(note2 noValue,<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Around(value = &quot;logPoint(noValue,num)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">aopFour</span><span class="params">(JoinPoint joinPoint,note2 noValue,<span class="keyword">int</span> num)</span>  </span>&#123;</span><br><span class="line">        System.out.println(noValue.value()+<span class="string">&quot;  &quot;</span>+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Service2</span> </span>&#123;</span><br><span class="line">    <span class="meta">@note2(value = &quot;我是权限&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">m3</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是m3方法&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;我是返回值&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Service2 service2 = <span class="keyword">new</span> Service2();</span><br><span class="line">        service2.m3(<span class="number">90</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 执行结果：</span></span><br><span class="line"><span class="comment">// 我是权限  90  </span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Aspect1</span> </span>&#123;</span><br><span class="line">    <span class="comment">//找到被note2标记的方法 并获得注解的值</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(@main.note2 String *(..)) &amp;&amp; @annotation(noValue)&amp;&amp;args(num)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logPoint</span><span class="params">(note2 noValue,<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Around(value = &quot;logPoint(noValue,num)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">aopFour</span><span class="params">(JoinPoint joinPoint,note2 noValue,<span class="keyword">int</span> num)</span>  </span>&#123;</span><br><span class="line">        System.out.println(noValue.value()+<span class="string">&quot;  &quot;</span>+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Service2 service2 = <span class="keyword">new</span> Service2();</span><br><span class="line">        service2.m3(<span class="number">90</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 执行结果：</span></span><br><span class="line"><span class="comment">// 我是权限  90  </span></span><br></pre></td></tr></table></div></figure>
 
 <p>上面这个案例可以看到我们的Service2的m3方法是有返回值的，那我们在切面里面想获取返回值可以这么修改：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Aspect1</span> </span>&#123;</span><br><span class="line">    <span class="comment">//找到被note2标记的方法 并获得注解的值</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(@main.note2 String *(..)) &amp;&amp; @annotation(noValue)&amp;&amp;args(num)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logPoint</span><span class="params">(note2 noValue,<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterReturning(value = &quot;logPoint(noValue,num)&quot;,returning = &quot;rvt&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">aopFour</span><span class="params">(JoinPoint joinPoint,note2 noValue,<span class="keyword">int</span> num,String rvt)</span>  </span>&#123;</span><br><span class="line">        System.out.println(noValue.value()+<span class="string">&quot;  &quot;</span>+num+<span class="string">&quot;   &quot;</span>+rvt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Aspect1</span> </span>&#123;</span><br><span class="line">    <span class="comment">//找到被note2标记的方法 并获得注解的值</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(@main.note2 String *(..)) &amp;&amp; @annotation(noValue)&amp;&amp;args(num)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logPoint</span><span class="params">(note2 noValue,<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterReturning(value = &quot;logPoint(noValue,num)&quot;,returning = &quot;rvt&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">aopFour</span><span class="params">(JoinPoint joinPoint,note2 noValue,<span class="keyword">int</span> num,String rvt)</span>  </span>&#123;</span><br><span class="line">        System.out.println(noValue.value()+<span class="string">&quot;  &quot;</span>+num+<span class="string">&quot;   &quot;</span>+rvt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-<h1 id="AspectJ-命令常用参数介绍"><a href="#AspectJ-命令常用参数介绍" class="headerlink" title="AspectJ 命令常用参数介绍"></a>AspectJ 命令常用参数介绍</h1><p>1 <strong>-inpath:</strong> .class文件路径，可以是在jar文件中也可以是在文件目录中，路径应该包含那些AspectJ相关的文件，只有这些文件才会被AspectJ处理。输出文件会包含这些.class 。该路径就是一个单一参数，多个路径的话用分隔符隔开。</p>
+
+        <h1 id="AspectJ-命令常用参数介绍">
+          <a href="#AspectJ-命令常用参数介绍" class="heading-link"><i class="fas fa-link"></i></a><a href="#AspectJ-命令常用参数介绍" class="headerlink" title="AspectJ 命令常用参数介绍"></a>AspectJ 命令常用参数介绍</h1>
+      <p>1 <strong>-inpath:</strong> .class文件路径，可以是在jar文件中也可以是在文件目录中，路径应该包含那些AspectJ相关的文件，只有这些文件才会被AspectJ处理。输出文件会包含这些.class 。该路径就是一个单一参数，多个路径的话用分隔符隔开。</p>
 <p>2 <strong>-classpath:</strong> 指定去哪找用户使用到的.class文件，路径可以是zip文件也可以是文件目录，该路径就是一个单一参数，多个路径的话用分隔符隔开。</p>
 <p>3 <strong>-aspectPath:</strong> 需要被处理的切面路径，存在于jar文件或者文件目录中。在Andorid中使用的话一般指的是被@Aspect注解标示的class文件路径。需要注意的是编译版本需要与Java编译版本一致。classpath指定的路径应该包含所有的aspectpath指定的.class文件。不过默认情况下，inPath和aspectPath中的路径不一定非要放置在classPath中，因为编译器会自动处理把它们加入。路径格式与classpath和inpath样，都需要用分隔符隔开。</p>
 <p>4 **-bootClasspath: ** 重载跟VM相关的bootClasspath，例如在Android中使用android-27的源码进行编译。路径格式与之前一样。</p>
 <p>5 <strong>-d:</strong>  指定由AspectJ处理后的.class文件存放目录，如果不指定的话会放置在当前的工作目录中。</p>
 <p>6 <strong>-outjar:</strong> 指定被AspectJ处理后的jar包存放的文件目录，</p>
-
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-        </div>
-        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
-    
-    <a class="pull-left" href="/2021/10/22/%E8%BD%AF%E4%BB%B6%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9%E9%9B%86%E5%90%88/" style="float: left;">
-        ← 软件目录修改集合
-    </a>
-    
-    
-    <a class="pull-right" href="/2021/10/18/Epoxy%E5%AD%A6%E4%B9%A0/">
-        Epoxy学习 →
-    </a>
-    
-</nav>
-
-        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
-  /**
-   * 搜狐畅言
-   */
-
-  /*
-  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
-
-  window.onload = function () {
-    (function () {
-      var appid = 'cytXXXX';
-      var conf = 'prod_xxxxxxxxxxxxxxxxx';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      var loadJs = function (d, a, id) {
-        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-        var b = document.createElement("script");
-        b.setAttribute("type", "text/javascript");
-        b.setAttribute("charset", "UTF-8");
-        b.setAttribute("src", d);
-        if (id) {
-          b.setAttribute("id", id);
-        }
-        if (typeof a === "function") {
-          if (window.attachEvent) {
-            b.onreadystatechange = function () {
-              var e = b.readyState;
-              if (e === "loaded" || e === "complete") {
-                b.onreadystatechange = null;
-                a()
-              }
-            }
-          } else {
-            b.onload = a
-          }
-        }
-        c.appendChild(b)
-      };
-
-      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
-        window.changyan.api.config({
-          appid: appid,
-          conf: conf
-        })
-      });
-    })();
-  }
-  */
-
-</script>
-</div>
-    </div>
-</section>
-
-
-      
-<!-- ============================ Footer =========================== -->
-<footer>
-    <div class="container">
-            <div class="copy">
-                <p>
-                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
-                </p>
-                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
-            </div>
-            <div class="social">
-                <ul>
-                    
-                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
-                    
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-</footer>
-
-<!-- ============================ END Footer =========================== -->
-
-  <script src="https://unpkg.com/mermaid@8.8.3/dist/mermaid.min.js"></script>
-  <script>
-
-      mermaid.initialize({theme: 'forest'});
-  
-  </script>
-
-      <!-- Load our scripts -->
-<!-- Resizable 'on-demand' full-height hero -->
-<script type="text/javascript">
-    var resizeHero = function () {
-        var hero = $(".cover,.heightblock"),
-            window1 = $(window);
-        hero.css({
-            "height": window1.height()
-        });
-    };
-
-    resizeHero();
-
-    $(window).resize(function () {
-        resizeHero();
-    });
-</script>
-<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-<script src="/js/scripts.js"></script><!-- Theme scripts -->
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$('#intro').find('img').each(function(){
-  var alt = this.alt;
-
-  if (alt){
-    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
-  }
-
-  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
-});
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-
-      
-</body>
-</html>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/10/22/%E8%BD%AF%E4%BB%B6%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9%E9%9B%86%E5%90%88/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">软件目录修改集合</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/10/18/Epoxy%E5%AD%A6%E4%B9%A0/"><span class="paginator-prev__text">Epoxy学习</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AspectJ"><span class="toc-number">1.</span> <span class="toc-text">
+          AspectJ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E5%85%A5%E7%82%B9%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">
+          切入点标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">
+          表达式标签</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%87%E7%AD%BE%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="toc-number">1.0.0.2.1.</span> <span class="toc-text">
+          表达式标签使用介绍：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#executation"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">
+          executation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#within"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">
+          within</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Demo"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">
+          Demo</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AspectJ-%E5%91%BD%E4%BB%A4%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">
+          AspectJ 命令常用参数介绍</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">libertyYu</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">54</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">24</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

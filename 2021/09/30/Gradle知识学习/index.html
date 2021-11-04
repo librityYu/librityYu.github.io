@@ -1,239 +1,42 @@
-<!DOCTYPE html>
-<!--[if lte IE 8 ]>
-<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--
-***************  *      *     *
-      8          *    *       *
-      8          *  *         *
-      8          **           *
-      8          *  *         *
-      8          *    *       *
-      8          *      *     *
-      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
--->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
-<!--<![endif]-->
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="Cheer Up!                     Gradle生命周期        初始化阶段  配置阶段  执行阶段                       1. 初始化阶段       Gradle根据setting.gradle文件的配置为项目创建Project实例。                     2. 配置阶段       ​    Gradle构造一个模型表示任">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle知识学习">
+<meta property="og:url" content="http://example.com/2021/09/30/Gradle%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Liberty&#39;s Blog">
+<meta property="og:description" content="Cheer Up!                     Gradle生命周期        初始化阶段  配置阶段  执行阶段                       1. 初始化阶段       Gradle根据setting.gradle文件的配置为项目创建Project实例。                     2. 配置阶段       ​    Gradle构造一个模型表示任">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-30T06:29:18.000Z">
+<meta property="article:modified_time" content="2021-09-30T07:20:27.335Z">
+<meta property="article:author" content="Liberty">
+<meta name="twitter:card" content="summary"><title>Gradle知识学习 | Liberty's Blog</title><link ref="canonical" href="http://example.com/2021/09/30/Gradle%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
 
-<head>
-  <title>Gradle知识学习 | Hexo</title>
-  <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="Hexo">
-    <meta name="author" content="John Doe">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/日记/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">日记</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Liberty's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Gradle知识学习</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-09-30</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-09-30</span></span></div></header><div class="post-body"><p>Cheer Up!</p>
 
-    <!-- Favicon, (keep icon in root folder) -->
-    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
-
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
-    
-    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
-    
-
-    <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
-    <![endif]-->
-
-    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
-    <script src="/js/jquery-1.11.1.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
-
-    <!-- Load these in the <head> for quicker IE8+ load times -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
-
-  
-  
-  
-
-  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
-</head>
-
-<!--
-<body class="post-template">
--->
-<body id="index" class="lightnav animsition">
-
-      <!-- ============================ Off-canvas navigation =========================== -->
-
-    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
-        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
-        </div>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu">
-            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
-            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
-            <!-- Dropdown Menu -->
-			 
-            <li>
-                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
-                <ul class="sb-submenu">
-                    
-                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
-                    
-                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
-                    
-                </ul>
-            </li>
-            
-            
-        	<li>
-        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
-            	<ul class="sb-submenu">
-				  	
-				    <li><a href="/categories/Andorid/" class="animsition-link">Andorid<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(6)</small></a></li>
-				    
-				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
-				    
-				    <li><a href="/categories/Handler/" class="animsition-link">Handler<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/kotlin/" class="animsition-link">kotlin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(3)</small></a></li>
-				    
-				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
-				    
-				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/硬件/" class="animsition-link">硬件<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
-				    
-				</ul>
-        	</li>
-			
-            
-            <li>
-                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
-                <ul class="sb-submenu">
-                    
-                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
-                    
-                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
-                    
-                </ul>
-            </li>
-            
-        </ul>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu secondary">
-            
-            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
-            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
-        </ul>
-    </div>
-    
-    <!-- ============================ END Off-canvas navigation =========================== -->
-
-    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
-
-        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-        <div id="navigation" class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <!-- Nav logo -->
-                    <div class="logo">
-                        <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
-                        </a>
-                    </div>
-                    <!-- // Nav logo -->
-                    <!-- Info-bar -->
-                    <nav>
-                        <ul class="nav">
-                            <li><a href="/" class="animsition-link">Hexo</a></li>
-                            <li class="nolink"><span>Always </span>Creative.</li>
-                            
-                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                            
-                            
-                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
-                            
-                            
-                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
-                            
-                            
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
-                            
-                            
-                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
-                            
-                            <li class="nolink"><span>Welcome!</span></li>
-                        </ul>
-                    </nav>
-                    <!--// Info-bar -->
-                </div>
-                <!-- // .container -->
-                <div class="learnmore sb-toggle-right">More</div>
-                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar before"></span>
-                <span class="icon-bar main"></span>
-                <span class="icon-bar after"></span>
-                </button>
-            </div>
-            <!-- // .navbar-inner -->
-        </div>
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-
-      
-<section id="intro">
-    <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2021-09-30T06:29:18.000Z" itemprop="datePublished">
-          2021-09-30
-      </time>
-    
-</span>
-                <h1>Gradle知识学习</h1>
-            </div>
-        </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<p>Cheer Up!</p>
-<h2 id="Gradle生命周期"><a href="#Gradle生命周期" class="headerlink" title="Gradle生命周期"></a>Gradle生命周期</h2><ol>
+        <h2 id="Gradle生命周期">
+          <a href="#Gradle生命周期" class="heading-link"><i class="fas fa-link"></i></a><a href="#Gradle生命周期" class="headerlink" title="Gradle生命周期"></a>Gradle生命周期</h2>
+      <ol>
 <li><p>初始化阶段</p>
 </li>
 <li><p>配置阶段</p>
@@ -241,13 +44,25 @@
 <li><p>执行阶段</p>
 </li>
 </ol>
-<h3 id="1-初始化阶段"><a href="#1-初始化阶段" class="headerlink" title="1. 初始化阶段"></a>1. 初始化阶段</h3><p>Gradle根据setting.gradle文件的配置为项目创建Project实例。</p>
-<h3 id="2-配置阶段"><a href="#2-配置阶段" class="headerlink" title="2. 配置阶段"></a>2. 配置阶段</h3><p>​    Gradle构造一个模型表示任务，并参与构建中来。增量式构建决定我们的task是否需要运行。配置阶段完成后。整个build的project以及内部的Task关系就确定了。这个阶段非常适合为项目或指定task设置所需要的配置数据。配置阶段的实质为解析每个被加入构建项目的build.gradle脚本，比如通过apply方法引入插件，为插件扩展属性进行配置等等。。。。</p>
+
+        <h3 id="1-初始化阶段">
+          <a href="#1-初始化阶段" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-初始化阶段" class="headerlink" title="1. 初始化阶段"></a>1. 初始化阶段</h3>
+      <p>Gradle根据setting.gradle文件的配置为项目创建Project实例。</p>
+
+        <h3 id="2-配置阶段">
+          <a href="#2-配置阶段" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-配置阶段" class="headerlink" title="2. 配置阶段"></a>2. 配置阶段</h3>
+      <p>​    Gradle构造一个模型表示任务，并参与构建中来。增量式构建决定我们的task是否需要运行。配置阶段完成后。整个build的project以及内部的Task关系就确定了。这个阶段非常适合为项目或指定task设置所需要的配置数据。配置阶段的实质为解析每个被加入构建项目的build.gradle脚本，比如通过apply方法引入插件，为插件扩展属性进行配置等等。。。。</p>
 <p>​    注意：项目的每一次构建的任何配置代码都可以被执行-即使你只运行gradle tasks。</p>
-<h3 id="3-执行阶段"><a href="#3-执行阶段" class="headerlink" title="3. 执行阶段"></a>3. 执行阶段</h3><p>​    在执行阶段，所有的task按照配置阶段规定好的顺序，一次执行。我们通常会在根据任务执行的生命周期去动态在合适的位置插入我们自己的运行期间执行的代码断。</p>
+
+        <h3 id="3-执行阶段">
+          <a href="#3-执行阶段" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-执行阶段" class="headerlink" title="3. 执行阶段"></a>3. 执行阶段</h3>
+      <p>​    在执行阶段，所有的task按照配置阶段规定好的顺序，一次执行。我们通常会在根据任务执行的生命周期去动态在合适的位置插入我们自己的运行期间执行的代码断。</p>
 <p>​    许多生命周期方法都被定义在了Gradle 和 Project方法里面。不要害怕使用生命周期钩子，它相反就是为了给开发者使用提供方便而设计出来的。</p>
 <hr>
-<h2 id="生命周期监听方法"><a href="#生命周期监听方法" class="headerlink" title="生命周期监听方法"></a>生命周期监听方法</h2><p>​    如果我们想在Gradle特定的阶段去Hook指定的任务，那么我们需要对如何监听生命周期的回调有一些了解。</p>
+
+        <h2 id="生命周期监听方法">
+          <a href="#生命周期监听方法" class="heading-link"><i class="fas fa-link"></i></a><a href="#生命周期监听方法" class="headerlink" title="生命周期监听方法"></a>生命周期监听方法</h2>
+      <p>​    如果我们想在Gradle特定的阶段去Hook指定的任务，那么我们需要对如何监听生命周期的回调有一些了解。</p>
 <p>​    Gradle和Project对象提供了一些方法供我们使用：</p>
 <p>​    生命周期监听的设置有两个方法：</p>
 <pre><code> 1. 实现一个特定的监听接口
@@ -281,40 +96,76 @@
 <p>可以看到每个方法都有两个不同参数，一个接收闭包，一个接收Action作为回调。注意，一些生命周期的方法只会在合适的位置上才会发生。</p>
 </li>
 </ul>
-<h4 id="beforeEvaluate"><a href="#beforeEvaluate" class="headerlink" title="beforeEvaluate"></a>beforeEvaluate</h4><p>beforeEvalute() 在project开始配置前调用。这个方法很容易误用，你要是直接在子模块的build.gradle中使用肯定是不会被调用的。应为project都没配置好所以也就什么事情也不会发生。这个代码块的添加只能放在父工程的build.gradle中：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.project.subprojects &#123; sub -&gt;</span><br><span class="line">    sub.beforeEvaluate &#123; project</span><br><span class="line">        println(<span class="string">&quot;### Evaluate before of &quot;</span>+project.path)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="afterEvaluate"><a href="#afterEvaluate" class="headerlink" title="afterEvaluate"></a>afterEvaluate</h4><p>afaterEvaluate() 是一般比较常见的一个配置，只要在project配置成功均会被调用，不论在父模块还是在子模块。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">project.afterEvaluate &#123; pro-&gt;</span><br><span class="line">    println(<span class="string">&quot;### Evaluate after of &quot;</span> + pro.path)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="beforeEvaluate">
+          <a href="#beforeEvaluate" class="heading-link"><i class="fas fa-link"></i></a><a href="#beforeEvaluate" class="headerlink" title="beforeEvaluate"></a>beforeEvaluate</h4>
+      <p>beforeEvalute() 在project开始配置前调用。这个方法很容易误用，你要是直接在子模块的build.gradle中使用肯定是不会被调用的。应为project都没配置好所以也就什么事情也不会发生。这个代码块的添加只能放在父工程的build.gradle中：</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.project.subprojects &#123; sub -&gt;</span><br><span class="line">    sub.beforeEvaluate &#123; project</span><br><span class="line">        println(<span class="string">&quot;### Evaluate before of &quot;</span>+project.path)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-<h4 id="afterProject"><a href="#afterProject" class="headerlink" title="afterProject"></a>afterProject</h4><p>设置一个project配置完成后即执行的闭包或者action。</p>
+
+        <h4 id="afterEvaluate">
+          <a href="#afterEvaluate" class="heading-link"><i class="fas fa-link"></i></a><a href="#afterEvaluate" class="headerlink" title="afterEvaluate"></a>afterEvaluate</h4>
+      <p>afaterEvaluate() 是一般比较常见的一个配置，只要在project配置成功均会被调用，不论在父模块还是在子模块。</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">project.afterEvaluate &#123; pro-&gt;</span><br><span class="line">    println(<span class="string">&quot;### Evaluate after of &quot;</span> + pro.path)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="afterProject">
+          <a href="#afterProject" class="heading-link"><i class="fas fa-link"></i></a><a href="#afterProject" class="headerlink" title="afterProject"></a>afterProject</h4>
+      <p>设置一个project配置完成后即执行的闭包或者action。</p>
 <p>afterPeoject在配置参数失败后传入两个参数，前者当前project，后者显示失败信息。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.getGradle().afterProject&#123;project,projectState-&gt;</span><br><span class="line">    <span class="keyword">if</span>(projectState.failure)&#123;</span><br><span class="line">        println(<span class="string">&quot;Evaluate afterProject of &quot;</span>+ project + <span class="string">&quot;Falued&quot;</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        println(<span class="string">&quot;Evaluate afterPeoject of &quot;</span>+ project + <span class="string">&quot;Successed&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.getGradle().afterProject&#123;project,projectState-&gt;</span><br><span class="line">    <span class="keyword">if</span>(projectState.failure)&#123;</span><br><span class="line">        println(<span class="string">&quot;Evaluate afterProject of &quot;</span>+ project + <span class="string">&quot;Falued&quot;</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        println(<span class="string">&quot;Evaluate afterPeoject of &quot;</span>+ project + <span class="string">&quot;Successed&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-<h4 id="beforeProject"><a href="#beforeProject" class="headerlink" title="beforeProject"></a>beforeProject</h4><p>设置一个project配置前执行的闭包，子模块的该方法声明在root project中回调才会执行，root project的该方法声明在setting.gradle中才执行。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.beforeProject &#123; p -&gt;</span><br><span class="line">    println(<span class="string">&quot;Evaluation beforeProject&quot;</span>+p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="buildFinished"><a href="#buildFinished" class="headerlink" title="buildFinished"></a>buildFinished</h4><p>构建结束时的回调，此时所有的任务都执行完毕，一个构建结果的对象BuildResult作为参数传递给闭包。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.buildFinished &#123; r -&gt;</span><br><span class="line">    println(<span class="string">&quot;buildFinished &quot;</span>+r.failure)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="beforeProject">
+          <a href="#beforeProject" class="heading-link"><i class="fas fa-link"></i></a><a href="#beforeProject" class="headerlink" title="beforeProject"></a>beforeProject</h4>
+      <p>设置一个project配置前执行的闭包，子模块的该方法声明在root project中回调才会执行，root project的该方法声明在setting.gradle中才执行。</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.beforeProject &#123; p -&gt;</span><br><span class="line">    println(<span class="string">&quot;Evaluation beforeProject&quot;</span>+p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-<h4 id="projectEvaluated"><a href="#projectEvaluated" class="headerlink" title="projectEvaluated"></a>projectEvaluated</h4><p>所有的peoject都配置完成后的回调，此时，所有的project都配置完毕，准备开始生成task图。gradle对象作为参数传递给闭包。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.projectsEvaluated &#123;gradle -&gt;</span><br><span class="line">    println(<span class="string">&quot;projectsEvaluated&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="projectsLoaded"><a href="#projectsLoaded" class="headerlink" title="projectsLoaded"></a>projectsLoaded</h4><p>当setting中的所有project都创建好时执行闭包回调，gradle对象会作为参数传递给闭包。这个方法比较特殊，只有声明在适当的位置才会发生，如果这个声明周期挂接闭包声明在build.gradle文件，那么将不会发生这个事件。应为项目创建发生在初始阶段。放在setting.gradle中是可以执行的。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.projectsLoaded &#123;gradle -&gt;</span><br><span class="line">    println(<span class="string">&quot;@@@@@@@ projectsLoaded&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="buildFinished">
+          <a href="#buildFinished" class="heading-link"><i class="fas fa-link"></i></a><a href="#buildFinished" class="headerlink" title="buildFinished"></a>buildFinished</h4>
+      <p>构建结束时的回调，此时所有的任务都执行完毕，一个构建结果的对象BuildResult作为参数传递给闭包。</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.buildFinished &#123; r -&gt;</span><br><span class="line">    println(<span class="string">&quot;buildFinished &quot;</span>+r.failure)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
-<h4 id="settingsEvaluated"><a href="#settingsEvaluated" class="headerlink" title="settingsEvaluated"></a>settingsEvaluated</h4><p>当 settings.gradle 加载并配置完毕后执行闭包回调，setting对象已经配置好并且准备开始加载构建 project。这个回调在 build.gradle 中声明也是不起作用的，在 settings.gradle 中声明是可以的。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.settingsEvaluated &#123;</span><br><span class="line">    println(<span class="string">&quot;@@@@@@@ settingsEvaluated&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        <h4 id="projectEvaluated">
+          <a href="#projectEvaluated" class="heading-link"><i class="fas fa-link"></i></a><a href="#projectEvaluated" class="headerlink" title="projectEvaluated"></a>projectEvaluated</h4>
+      <p>所有的peoject都配置完成后的回调，此时，所有的project都配置完毕，准备开始生成task图。gradle对象作为参数传递给闭包。</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.projectsEvaluated &#123;gradle -&gt;</span><br><span class="line">    println(<span class="string">&quot;projectsEvaluated&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="projectsLoaded">
+          <a href="#projectsLoaded" class="heading-link"><i class="fas fa-link"></i></a><a href="#projectsLoaded" class="headerlink" title="projectsLoaded"></a>projectsLoaded</h4>
+      <p>当setting中的所有project都创建好时执行闭包回调，gradle对象会作为参数传递给闭包。这个方法比较特殊，只有声明在适当的位置才会发生，如果这个声明周期挂接闭包声明在build.gradle文件，那么将不会发生这个事件。应为项目创建发生在初始阶段。放在setting.gradle中是可以执行的。</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.projectsLoaded &#123;gradle -&gt;</span><br><span class="line">    println(<span class="string">&quot;@@@@@@@ projectsLoaded&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="settingsEvaluated">
+          <a href="#settingsEvaluated" class="heading-link"><i class="fas fa-link"></i></a><a href="#settingsEvaluated" class="headerlink" title="settingsEvaluated"></a>settingsEvaluated</h4>
+      <p>当 settings.gradle 加载并配置完毕后执行闭包回调，setting对象已经配置好并且准备开始加载构建 project。这个回调在 build.gradle 中声明也是不起作用的，在 settings.gradle 中声明是可以的。</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.settingsEvaluated &#123;</span><br><span class="line">    println(<span class="string">&quot;@@@@@@@ settingsEvaluated&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <p>前面说过设置监听还有两个方法，通过接口监听。</p>
-<h3 id="addProjectEvaluationListener"><a href="#addProjectEvaluationListener" class="headerlink" title="addProjectEvaluationListener"></a>addProjectEvaluationListener</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gradle.addProjectEvaluationListener(<span class="keyword">new</span> ProjectEvaluationListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> beforeEvaluate(Project project) &#123;</span><br><span class="line">        println <span class="string">&quot; add project evaluation lister beforeEvaluate,project path is: &quot;</span>+project</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> afterEvaluate(Project project, ProjectState state) &#123;</span><br><span class="line">        println <span class="string">&quot; add project evaluation lister afterProject,project path is:&quot;</span>+project</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="addListener"><a href="#addListener" class="headerlink" title="addListener"></a>addListener</h3><p>添加一个实现来listener接口的对象到build</p>
-<h3 id="addBuildListener"><a href="#addBuildListener" class="headerlink" title="addBuildListener"></a>addBuildListener</h3><p>添加一个BuildListener对象到Build</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">gradle.addBuildListener(<span class="keyword">new</span> BuildListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> buildStarted(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### buildStarted&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> settingsEvaluated(Settings settings) &#123;</span><br><span class="line">        println(<span class="string">&quot;### settingsEvaluated&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> projectsLoaded(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### projectsLoaded&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> projectsEvaluated(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### projectsEvaluated&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> buildFinished(BuildResult result) &#123;</span><br><span class="line">        println(<span class="string">&quot;### buildFinished&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+        <h3 id="addProjectEvaluationListener">
+          <a href="#addProjectEvaluationListener" class="heading-link"><i class="fas fa-link"></i></a><a href="#addProjectEvaluationListener" class="headerlink" title="addProjectEvaluationListener"></a>addProjectEvaluationListener</h3>
+      <figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gradle.addProjectEvaluationListener(<span class="keyword">new</span> ProjectEvaluationListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> beforeEvaluate(Project project) &#123;</span><br><span class="line">        println <span class="string">&quot; add project evaluation lister beforeEvaluate,project path is: &quot;</span>+project</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> afterEvaluate(Project project, ProjectState state) &#123;</span><br><span class="line">        println <span class="string">&quot; add project evaluation lister afterProject,project path is:&quot;</span>+project</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
 
-<h3 id="Task执行图"><a href="#Task执行图" class="headerlink" title="Task执行图"></a>Task执行图</h3><p>在配置时，Gradle决定在执行阶段要运行的task顺序，他们依赖关系的内部结构被建模为一个有向无环图。我们称之为task执行图。它可以用TaskExecutionGraph来表示。可以通过gradle.taskGraph来获取。在TaskExecutationGraph中也可以设置一些Task生命周期回到。</p>
+
+        <h3 id="addListener">
+          <a href="#addListener" class="heading-link"><i class="fas fa-link"></i></a><a href="#addListener" class="headerlink" title="addListener"></a>addListener</h3>
+      <p>添加一个实现来listener接口的对象到build</p>
+
+        <h3 id="addBuildListener">
+          <a href="#addBuildListener" class="heading-link"><i class="fas fa-link"></i></a><a href="#addBuildListener" class="headerlink" title="addBuildListener"></a>addBuildListener</h3>
+      <p>添加一个BuildListener对象到Build</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">gradle.addBuildListener(<span class="keyword">new</span> BuildListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> buildStarted(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### buildStarted&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> settingsEvaluated(Settings settings) &#123;</span><br><span class="line">        println(<span class="string">&quot;### settingsEvaluated&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> projectsLoaded(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### projectsLoaded&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> projectsEvaluated(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### projectsEvaluated&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> buildFinished(BuildResult result) &#123;</span><br><span class="line">        println(<span class="string">&quot;### buildFinished&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="Task执行图">
+          <a href="#Task执行图" class="heading-link"><i class="fas fa-link"></i></a><a href="#Task执行图" class="headerlink" title="Task执行图"></a>Task执行图</h3>
+      <p>在配置时，Gradle决定在执行阶段要运行的task顺序，他们依赖关系的内部结构被建模为一个有向无环图。我们称之为task执行图。它可以用TaskExecutionGraph来表示。可以通过gradle.taskGraph来获取。在TaskExecutationGraph中也可以设置一些Task生命周期回到。</p>
 <ul>
 <li>addTaskExecutationGraphListener(TaskExecutionGraphListener listener)</li>
 <li>addTaskExecutionListener(TaskExecutionListener listener)</li>
@@ -322,188 +173,73 @@
 <li>beforeTask(Action action)，beforeTask(Closure closure)</li>
 <li>whenReady(Action action)，whenReady(Closure closure)</li>
 </ul>
-<h4 id="addTaskExecutionGraphListener"><a href="#addTaskExecutionGraphListener" class="headerlink" title="addTaskExecutionGraphListener"></a>addTaskExecutionGraphListener</h4><p>添加 task 执行图的监听器，当执行图配置好会执行通知。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gradle.taskGraph.addTaskExecutionGraphListener(<span class="keyword">new</span> TaskExecutionGraphListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> graphPopulated(TaskExecutionGraph graph) &#123;</span><br><span class="line">        println(<span class="string">&quot;@@@ gradle.taskGraph.graphPopulated &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h4 id="addTaskExecutionListener"><a href="#addTaskExecutionListener" class="headerlink" title="addTaskExecutionListener"></a>addTaskExecutionListener</h4><p>添加 task 执行监听器，当 task 执行前或者执行完毕会执行回调发出通知。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gradle.taskGraph.addTaskExecutionListener(<span class="keyword">new</span> TaskExecutionListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> beforeExecute(Task task) &#123;</span><br><span class="line">        println(<span class="string">&quot;@@@ gradle.taskGraph.beforeTask &quot;</span>+task)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> afterExecute(Task task, TaskState state) &#123;</span><br><span class="line">        println(<span class="string">&quot;@@@ gradle.taskGraph.afterTask &quot;</span>+task)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+        <h4 id="addTaskExecutionGraphListener">
+          <a href="#addTaskExecutionGraphListener" class="heading-link"><i class="fas fa-link"></i></a><a href="#addTaskExecutionGraphListener" class="headerlink" title="addTaskExecutionGraphListener"></a>addTaskExecutionGraphListener</h4>
+      <p>添加 task 执行图的监听器，当执行图配置好会执行通知。</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gradle.taskGraph.addTaskExecutionGraphListener(<span class="keyword">new</span> TaskExecutionGraphListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> graphPopulated(TaskExecutionGraph graph) &#123;</span><br><span class="line">        println(<span class="string">&quot;@@@ gradle.taskGraph.graphPopulated &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
 
-<h4 id="afterTask"><a href="#afterTask" class="headerlink" title="afterTask"></a>afterTask</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.taskGraph.afterTask &#123; task -&gt;</span><br><span class="line">    println(<span class="string">&quot;### gradle.taskGraph.afterTask &quot;</span>+task)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="beforeTask"><a href="#beforeTask" class="headerlink" title="beforeTask"></a>beforeTask</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.taskGraph.beforeTask &#123; task -&gt;</span><br><span class="line">    println(<span class="string">&quot;### gradle.taskGraph.beforeTask &quot;</span>+task)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="addTaskExecutionListener">
+          <a href="#addTaskExecutionListener" class="heading-link"><i class="fas fa-link"></i></a><a href="#addTaskExecutionListener" class="headerlink" title="addTaskExecutionListener"></a>addTaskExecutionListener</h4>
+      <p>添加 task 执行监听器，当 task 执行前或者执行完毕会执行回调发出通知。</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gradle.taskGraph.addTaskExecutionListener(<span class="keyword">new</span> TaskExecutionListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> beforeExecute(Task task) &#123;</span><br><span class="line">        println(<span class="string">&quot;@@@ gradle.taskGraph.beforeTask &quot;</span>+task)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> afterExecute(Task task, TaskState state) &#123;</span><br><span class="line">        println(<span class="string">&quot;@@@ gradle.taskGraph.afterTask &quot;</span>+task)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
 
-<h4 id="whenReady"><a href="#whenReady" class="headerlink" title="whenReady"></a>whenReady</h4><p>设置一个 task 执行图准备好后的闭包或者回调方法。<br>该 taskGrahp 作为参数传递给闭包。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.taskGraph.whenReady &#123; taskGrahp -&gt;</span><br><span class="line">    println(<span class="string">&quot;@@@ gradle.taskGraph.whenReady &quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        <h4 id="afterTask">
+          <a href="#afterTask" class="heading-link"><i class="fas fa-link"></i></a><a href="#afterTask" class="headerlink" title="afterTask"></a>afterTask</h4>
+      <figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.taskGraph.afterTask &#123; task -&gt;</span><br><span class="line">    println(<span class="string">&quot;### gradle.taskGraph.afterTask &quot;</span>+task)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="beforeTask">
+          <a href="#beforeTask" class="heading-link"><i class="fas fa-link"></i></a><a href="#beforeTask" class="headerlink" title="beforeTask"></a>beforeTask</h4>
+      <figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.taskGraph.beforeTask &#123; task -&gt;</span><br><span class="line">    println(<span class="string">&quot;### gradle.taskGraph.beforeTask &quot;</span>+task)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="whenReady">
+          <a href="#whenReady" class="heading-link"><i class="fas fa-link"></i></a><a href="#whenReady" class="headerlink" title="whenReady"></a>whenReady</h4>
+      <p>设置一个 task 执行图准备好后的闭包或者回调方法。<br>该 taskGrahp 作为参数传递给闭包。</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gradle.taskGraph.whenReady &#123; taskGrahp -&gt;</span><br><span class="line">    println(<span class="string">&quot;@@@ gradle.taskGraph.whenReady &quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
 <hr>
-<h3 id="生命周期执行顺序"><a href="#生命周期执行顺序" class="headerlink" title="生命周期执行顺序"></a>生命周期执行顺序</h3><p>我们通过在生命周期回调中添加打印的方法来看下顺序：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">task hello &#123;</span><br><span class="line">    doFirst &#123;</span><br><span class="line">        println <span class="string">&#x27;*** task hello doFirst&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    doLast &#123;</span><br><span class="line">        println <span class="string">&#x27;*** task hello doLast&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    println <span class="string">&#x27;*** config task hello&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        <h3 id="生命周期执行顺序">
+          <a href="#生命周期执行顺序" class="heading-link"><i class="fas fa-link"></i></a><a href="#生命周期执行顺序" class="headerlink" title="生命周期执行顺序"></a>生命周期执行顺序</h3>
+      <p>我们通过在生命周期回调中添加打印的方法来看下顺序：</p>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">task hello &#123;</span><br><span class="line">    doFirst &#123;</span><br><span class="line">        println <span class="string">&#x27;*** task hello doFirst&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    doLast &#123;</span><br><span class="line">        println <span class="string">&#x27;*** task hello doLast&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    println <span class="string">&#x27;*** config task hello&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
 <p>为了保证生命周期的各个回调方法都被执行，我们在 settings.gradle 中添加各个回调方法。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">gradle.addBuildListener(<span class="keyword">new</span> BuildListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> buildStarted(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### gradle.buildStarted&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> settingsEvaluated(Settings settings) &#123;</span><br><span class="line">        println(<span class="string">&quot;### gradle.settingsEvaluated&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> projectsLoaded(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### gradle.projectsLoaded&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> projectsEvaluated(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### gradle.projectsEvaluated&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> buildFinished(BuildResult result) &#123;</span><br><span class="line">        println(<span class="string">&quot;### gradle.buildFinished&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">gradle.afterProject &#123; project,projectState -&gt;</span><br><span class="line">    <span class="keyword">if</span>(projectState.failure)&#123;</span><br><span class="line">        println <span class="string">&quot;### gradld.afterProject &quot;</span>+project+<span class="string">&quot; FAILED&quot;</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        println <span class="string">&quot;### gradle.afterProject &quot;</span>+project+<span class="string">&quot; succeeded&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gradle.beforeProject &#123; p -&gt;</span><br><span class="line">    println(<span class="string">&quot;### gradle.beforeProject &quot;</span>+p)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gradle.allprojects(<span class="keyword">new</span> Action&lt;Project&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> execute(Project project) &#123;</span><br><span class="line">        project.beforeEvaluate &#123; project</span><br><span class="line">            println <span class="string">&quot;### project.beforeEvaluate &quot;</span>+project</span><br><span class="line">        &#125;</span><br><span class="line">        project.afterEvaluate &#123; pro -&gt;</span><br><span class="line">            println(<span class="string">&quot;### project.afterEvaluate &quot;</span> + pro)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gradle.taskGraph.addTaskExecutionListener(<span class="keyword">new</span> TaskExecutionListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> beforeExecute(Task task) &#123;</span><br><span class="line">        <span class="keyword">if</span> (task.name.equals(<span class="string">&quot;hello&quot;</span>))&#123;</span><br><span class="line">            println(<span class="string">&quot;@@@ gradle.taskGraph.beforeTask &quot;</span>+task)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> afterExecute(Task task, TaskState state) &#123;</span><br><span class="line">        <span class="keyword">if</span> (task.name.equals(<span class="string">&quot;hello&quot;</span>))&#123;</span><br><span class="line">            println(<span class="string">&quot;@@@ gradle.taskGraph.afterTask &quot;</span>+task)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">gradle.taskGraph.addTaskExecutionGraphListener(<span class="keyword">new</span> TaskExecutionGraphListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> graphPopulated(TaskExecutionGraph graph) &#123;</span><br><span class="line">        println(<span class="string">&quot;@@@ gradle.taskGraph.graphPopulated &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">gradle.taskGraph.whenReady &#123; taskGrahp -&gt;</span><br><span class="line">    println(<span class="string">&quot;@@@ gradle.taskGraph.whenReady &quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">gradle.addBuildListener(<span class="keyword">new</span> BuildListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> buildStarted(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### gradle.buildStarted&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> settingsEvaluated(Settings settings) &#123;</span><br><span class="line">        println(<span class="string">&quot;### gradle.settingsEvaluated&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> projectsLoaded(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### gradle.projectsLoaded&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> projectsEvaluated(Gradle gradle) &#123;</span><br><span class="line">        println(<span class="string">&quot;### gradle.projectsEvaluated&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> buildFinished(BuildResult result) &#123;</span><br><span class="line">        println(<span class="string">&quot;### gradle.buildFinished&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">gradle.afterProject &#123; project,projectState -&gt;</span><br><span class="line">    <span class="keyword">if</span>(projectState.failure)&#123;</span><br><span class="line">        println <span class="string">&quot;### gradld.afterProject &quot;</span>+project+<span class="string">&quot; FAILED&quot;</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        println <span class="string">&quot;### gradle.afterProject &quot;</span>+project+<span class="string">&quot; succeeded&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gradle.beforeProject &#123; p -&gt;</span><br><span class="line">    println(<span class="string">&quot;### gradle.beforeProject &quot;</span>+p)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gradle.allprojects(<span class="keyword">new</span> Action&lt;Project&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> execute(Project project) &#123;</span><br><span class="line">        project.beforeEvaluate &#123; project</span><br><span class="line">            println <span class="string">&quot;### project.beforeEvaluate &quot;</span>+project</span><br><span class="line">        &#125;</span><br><span class="line">        project.afterEvaluate &#123; pro -&gt;</span><br><span class="line">            println(<span class="string">&quot;### project.afterEvaluate &quot;</span> + pro)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gradle.taskGraph.addTaskExecutionListener(<span class="keyword">new</span> TaskExecutionListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> beforeExecute(Task task) &#123;</span><br><span class="line">        <span class="keyword">if</span> (task.name.equals(<span class="string">&quot;hello&quot;</span>))&#123;</span><br><span class="line">            println(<span class="string">&quot;@@@ gradle.taskGraph.beforeTask &quot;</span>+task)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> afterExecute(Task task, TaskState state) &#123;</span><br><span class="line">        <span class="keyword">if</span> (task.name.equals(<span class="string">&quot;hello&quot;</span>))&#123;</span><br><span class="line">            println(<span class="string">&quot;@@@ gradle.taskGraph.afterTask &quot;</span>+task)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">gradle.taskGraph.addTaskExecutionGraphListener(<span class="keyword">new</span> TaskExecutionGraphListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> graphPopulated(TaskExecutionGraph graph) &#123;</span><br><span class="line">        println(<span class="string">&quot;@@@ gradle.taskGraph.graphPopulated &quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">gradle.taskGraph.whenReady &#123; taskGrahp -&gt;</span><br><span class="line">    println(<span class="string">&quot;@@@ gradle.taskGraph.whenReady &quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
 <p>执行 task info</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">./gradlew hello</span><br><span class="line">### gradle.settingsEvaluated</span><br><span class="line">### gradle.projectsLoaded</span><br><span class="line"></span><br><span class="line">&gt; Configure <span class="attr">project :</span> </span><br><span class="line">### gradle.beforeProject root project <span class="string">&#x27;TestSomething&#x27;</span></span><br><span class="line">### project.beforeEvaluate root project <span class="string">&#x27;TestSomething&#x27;</span></span><br><span class="line">### gradle.afterProject root project <span class="string">&#x27;TestSomething&#x27;</span> succeeded</span><br><span class="line">### project.afterEvaluate root project <span class="string">&#x27;TestSomething&#x27;</span></span><br><span class="line"></span><br><span class="line">&gt; Configure <span class="attr">project :</span>app </span><br><span class="line">### gradle.beforeProject project <span class="string">&#x27;:app&#x27;</span></span><br><span class="line">### project.beforeEvaluate project <span class="string">&#x27;:app&#x27;</span></span><br><span class="line">*** config task hello</span><br><span class="line">### gradle.afterProject project <span class="string">&#x27;:app&#x27;</span> succeeded</span><br><span class="line">### project.afterEvaluate project <span class="string">&#x27;:app&#x27;</span></span><br><span class="line"></span><br><span class="line">&gt; Configure <span class="attr">project :</span>common </span><br><span class="line">### gradle.beforeProject project <span class="string">&#x27;:common&#x27;</span></span><br><span class="line">### project.beforeEvaluate project <span class="string">&#x27;:common&#x27;</span></span><br><span class="line">### gradle.afterProject project <span class="string">&#x27;:common&#x27;</span> succeeded</span><br><span class="line">### project.afterEvaluate project <span class="string">&#x27;:common&#x27;</span></span><br><span class="line"></span><br><span class="line">### gradle.projectsEvaluated</span><br><span class="line">@@@ gradle.taskGraph.graphPopulated </span><br><span class="line">@@@ gradle.taskGraph.whenReady </span><br><span class="line"></span><br><span class="line">&gt; <span class="attr">Task :</span><span class="attr">app:</span>hello </span><br><span class="line">@@@ gradle.taskGraph.beforeTask task <span class="string">&#x27;:app:hello&#x27;</span></span><br><span class="line">*** task hello doFirst</span><br><span class="line">*** task hello doLast</span><br><span class="line">@@@ gradle.taskGraph.afterTask task <span class="string">&#x27;:app:hello&#x27;</span></span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL <span class="keyword">in</span> <span class="number">1</span>s</span><br><span class="line"><span class="number">1</span> actionable <span class="attr">task:</span> <span class="number">1</span> execu</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">./gradlew hello</span><br><span class="line">### gradle.settingsEvaluated</span><br><span class="line">### gradle.projectsLoaded</span><br><span class="line"></span><br><span class="line">&gt; Configure <span class="attr">project :</span> </span><br><span class="line">### gradle.beforeProject root project <span class="string">&#x27;TestSomething&#x27;</span></span><br><span class="line">### project.beforeEvaluate root project <span class="string">&#x27;TestSomething&#x27;</span></span><br><span class="line">### gradle.afterProject root project <span class="string">&#x27;TestSomething&#x27;</span> succeeded</span><br><span class="line">### project.afterEvaluate root project <span class="string">&#x27;TestSomething&#x27;</span></span><br><span class="line"></span><br><span class="line">&gt; Configure <span class="attr">project :</span>app </span><br><span class="line">### gradle.beforeProject project <span class="string">&#x27;:app&#x27;</span></span><br><span class="line">### project.beforeEvaluate project <span class="string">&#x27;:app&#x27;</span></span><br><span class="line">*** config task hello</span><br><span class="line">### gradle.afterProject project <span class="string">&#x27;:app&#x27;</span> succeeded</span><br><span class="line">### project.afterEvaluate project <span class="string">&#x27;:app&#x27;</span></span><br><span class="line"></span><br><span class="line">&gt; Configure <span class="attr">project :</span>common </span><br><span class="line">### gradle.beforeProject project <span class="string">&#x27;:common&#x27;</span></span><br><span class="line">### project.beforeEvaluate project <span class="string">&#x27;:common&#x27;</span></span><br><span class="line">### gradle.afterProject project <span class="string">&#x27;:common&#x27;</span> succeeded</span><br><span class="line">### project.afterEvaluate project <span class="string">&#x27;:common&#x27;</span></span><br><span class="line"></span><br><span class="line">### gradle.projectsEvaluated</span><br><span class="line">@@@ gradle.taskGraph.graphPopulated </span><br><span class="line">@@@ gradle.taskGraph.whenReady </span><br><span class="line"></span><br><span class="line">&gt; <span class="attr">Task :</span><span class="attr">app:</span>hello </span><br><span class="line">@@@ gradle.taskGraph.beforeTask task <span class="string">&#x27;:app:hello&#x27;</span></span><br><span class="line">*** task hello doFirst</span><br><span class="line">*** task hello doLast</span><br><span class="line">@@@ gradle.taskGraph.afterTask task <span class="string">&#x27;:app:hello&#x27;</span></span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL <span class="keyword">in</span> <span class="number">1</span>s</span><br><span class="line"><span class="number">1</span> actionable <span class="attr">task:</span> <span class="number">1</span> execu</span><br></pre></td></tr></table></div></figure>
 
 <p>因此，生命周期回调的执行顺序是：</p>
 <ul>
 <li>gradle.settingsEvaluated-&gt;<br>gradle.projectsLoaded-&gt;<br>gradle.beforeProject-&gt;<br>project.beforeEvaluate-&gt;<br>gradle.afterProject-&gt;<br>project.afterEvaluate-&gt;<br>gradle.projectsEvaluated-&gt;<br>gradle.taskGraph.graphPopulated-&gt;<br>gradle.taskGraph.whenReady-&gt;<br>gradle.buildFinished</li>
 </ul>
-<p>非常好的博客：<a target="_blank" rel="noopener" href="https://www.heqiangfly.com/2016/03/18/development-tool-gradle-lifecycle/">https://www.heqiangfly.com/2016/03/18/development-tool-gradle-lifecycle/</a></p>
-
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-        </div>
-        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
-    
-    <a class="pull-left" href="/2021/10/05/%E6%89%93%E5%8C%85%E6%97%B6%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9%E8%84%9A%E6%9C%AC%E6%8F%92%E4%BB%B6/" style="float: left;">
-        ← 打包时添加内容脚本插件
-    </a>
-    
-    
-    <a class="pull-right" href="/2021/09/27/Gralde%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/">
-        Gralde源码理解 →
-    </a>
-    
-</nav>
-
-        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
-  /**
-   * 搜狐畅言
-   */
-
-  /*
-  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
-
-  window.onload = function () {
-    (function () {
-      var appid = 'cytXXXX';
-      var conf = 'prod_xxxxxxxxxxxxxxxxx';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      var loadJs = function (d, a, id) {
-        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-        var b = document.createElement("script");
-        b.setAttribute("type", "text/javascript");
-        b.setAttribute("charset", "UTF-8");
-        b.setAttribute("src", d);
-        if (id) {
-          b.setAttribute("id", id);
-        }
-        if (typeof a === "function") {
-          if (window.attachEvent) {
-            b.onreadystatechange = function () {
-              var e = b.readyState;
-              if (e === "loaded" || e === "complete") {
-                b.onreadystatechange = null;
-                a()
-              }
-            }
-          } else {
-            b.onload = a
-          }
-        }
-        c.appendChild(b)
-      };
-
-      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
-        window.changyan.api.config({
-          appid: appid,
-          conf: conf
-        })
-      });
-    })();
-  }
-  */
-
-</script>
-</div>
-    </div>
-</section>
-
-
-      
-<!-- ============================ Footer =========================== -->
-<footer>
-    <div class="container">
-            <div class="copy">
-                <p>
-                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
-                </p>
-                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
-            </div>
-            <div class="social">
-                <ul>
-                    
-                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
-                    
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-</footer>
-
-<!-- ============================ END Footer =========================== -->
-
-  <script src="https://unpkg.com/mermaid@8.8.3/dist/mermaid.min.js"></script>
-  <script>
-
-      mermaid.initialize({theme: 'forest'});
-  
-  </script>
-
-      <!-- Load our scripts -->
-<!-- Resizable 'on-demand' full-height hero -->
-<script type="text/javascript">
-    var resizeHero = function () {
-        var hero = $(".cover,.heightblock"),
-            window1 = $(window);
-        hero.css({
-            "height": window1.height()
-        });
-    };
-
-    resizeHero();
-
-    $(window).resize(function () {
-        resizeHero();
-    });
-</script>
-<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-<script src="/js/scripts.js"></script><!-- Theme scripts -->
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$('#intro').find('img').each(function(){
-  var alt = this.alt;
-
-  if (alt){
-    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
-  }
-
-  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
-});
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-
-      
-</body>
-</html>
+<p>非常好的博客：<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.heqiangfly.com/2016/03/18/development-tool-gradle-lifecycle/">https://www.heqiangfly.com/2016/03/18/development-tool-gradle-lifecycle/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/10/05/%E6%89%93%E5%8C%85%E6%97%B6%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9%E8%84%9A%E6%9C%AC%E6%8F%92%E4%BB%B6/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">打包时添加内容脚本插件</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/09/27/Gralde%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/"><span class="paginator-prev__text">Gralde源码理解</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gradle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.</span> <span class="toc-text">
+          Gradle生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%B6%E6%AE%B5"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1. 初始化阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E9%98%B6%E6%AE%B5"><span class="toc-number">1.2.</span> <span class="toc-text">
+          2. 配置阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%89%A7%E8%A1%8C%E9%98%B6%E6%AE%B5"><span class="toc-number">1.3.</span> <span class="toc-text">
+          3. 执行阶段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9B%91%E5%90%AC%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">
+          生命周期监听方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#beforeEvaluate"><span class="toc-number">2.0.1.</span> <span class="toc-text">
+          beforeEvaluate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#afterEvaluate"><span class="toc-number">2.0.2.</span> <span class="toc-text">
+          afterEvaluate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#afterProject"><span class="toc-number">2.0.3.</span> <span class="toc-text">
+          afterProject</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#beforeProject"><span class="toc-number">2.0.4.</span> <span class="toc-text">
+          beforeProject</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#buildFinished"><span class="toc-number">2.0.5.</span> <span class="toc-text">
+          buildFinished</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#projectEvaluated"><span class="toc-number">2.0.6.</span> <span class="toc-text">
+          projectEvaluated</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#projectsLoaded"><span class="toc-number">2.0.7.</span> <span class="toc-text">
+          projectsLoaded</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#settingsEvaluated"><span class="toc-number">2.0.8.</span> <span class="toc-text">
+          settingsEvaluated</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addProjectEvaluationListener"><span class="toc-number">2.1.</span> <span class="toc-text">
+          addProjectEvaluationListener</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addListener"><span class="toc-number">2.2.</span> <span class="toc-text">
+          addListener</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addBuildListener"><span class="toc-number">2.3.</span> <span class="toc-text">
+          addBuildListener</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task%E6%89%A7%E8%A1%8C%E5%9B%BE"><span class="toc-number">2.4.</span> <span class="toc-text">
+          Task执行图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#addTaskExecutionGraphListener"><span class="toc-number">2.4.1.</span> <span class="toc-text">
+          addTaskExecutionGraphListener</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#addTaskExecutionListener"><span class="toc-number">2.4.2.</span> <span class="toc-text">
+          addTaskExecutionListener</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#afterTask"><span class="toc-number">2.4.3.</span> <span class="toc-text">
+          afterTask</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#beforeTask"><span class="toc-number">2.4.4.</span> <span class="toc-text">
+          beforeTask</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#whenReady"><span class="toc-number">2.4.5.</span> <span class="toc-text">
+          whenReady</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">2.5.</span> <span class="toc-text">
+          生命周期执行顺序</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">libertyYu</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">54</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">24</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

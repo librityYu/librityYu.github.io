@@ -1,404 +1,48 @@
-<!DOCTYPE html>
-<!--[if lte IE 8 ]>
-<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--
-***************  *      *     *
-      8          *    *       *
-      8          *  *         *
-      8          **           *
-      8          *  *         *
-      8          *    *       *
-      8          *      *     *
-      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
--->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
-<!--<![endif]-->
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="首先构建Retrofit: 1234567OkHttpClient client &#x3D; new OkHttpClient.Builder()                .build();Retrofit retrofit &#x3D; new Retrofit.Builder()                .baseUrl(&quot;www.baidu.com&quot;)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过协程的方式下载文件">
+<meta property="og:url" content="http://example.com/2021/06/18/%E9%80%9A%E8%BF%87%E5%8D%8F%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Liberty&#39;s Blog">
+<meta property="og:description" content="首先构建Retrofit: 1234567OkHttpClient client &#x3D; new OkHttpClient.Builder()                .build();Retrofit retrofit &#x3D; new Retrofit.Builder()                .baseUrl(&quot;www.baidu.com&quot;)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-18T01:18:34.000Z">
+<meta property="article:modified_time" content="2021-06-18T03:11:05.579Z">
+<meta property="article:author" content="Liberty">
+<meta name="twitter:card" content="summary"><title>通过协程的方式下载文件 | Liberty's Blog</title><link ref="canonical" href="http://example.com/2021/06/18/%E9%80%9A%E8%BF%87%E5%8D%8F%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
 
-<head>
-  <title>通过协程的方式下载文件 | Hexo</title>
-  <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="Hexo">
-    <meta name="author" content="John Doe">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/日记/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">日记</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Liberty's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">通过协程的方式下载文件</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-18</span></span></div></header><div class="post-body"><p>首先构建Retrofit:</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient.Builder()</span><br><span class="line">                .build();</span><br><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()</span><br><span class="line">                .baseUrl(<span class="string">&quot;www.baidu.com&quot;</span>)</span><br><span class="line">                .client(client)</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .build();</span><br></pre></td></tr></table></div></figure>
 
-    <!-- Favicon, (keep icon in root folder) -->
-    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
-
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
-    
-    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
-    
-
-    <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
-    <![endif]-->
-
-    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
-    <script src="/js/jquery-1.11.1.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
-
-    <!-- Load these in the <head> for quicker IE8+ load times -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
-
-  
-  
-  
-
-  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
-</head>
-
-<!--
-<body class="post-template">
--->
-<body id="index" class="lightnav animsition">
-
-      <!-- ============================ Off-canvas navigation =========================== -->
-
-    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
-        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
-        </div>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu">
-            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
-            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
-            <!-- Dropdown Menu -->
-			 
-            <li>
-                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
-                <ul class="sb-submenu">
-                    
-                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
-                    
-                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
-                    
-                </ul>
-            </li>
-            
-            
-        	<li>
-        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
-            	<ul class="sb-submenu">
-				  	
-				    <li><a href="/categories/Andorid/" class="animsition-link">Andorid<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Androguard/" class="animsition-link">Androguard<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(6)</small></a></li>
-				    
-				    <li><a href="/categories/Git/" class="animsition-link">Git<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Gradle/" class="animsition-link">Gradle<small>(4)</small></a></li>
-				    
-				    <li><a href="/categories/Handler/" class="animsition-link">Handler<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Koltin/" class="animsition-link">Koltin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Kotlin/" class="animsition-link">Kotlin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Pr/" class="animsition-link">Pr<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/kotlin/" class="animsition-link">kotlin<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/xposed/" class="animsition-link">xposed<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/其他/" class="animsition-link">其他<small>(3)</small></a></li>
-				    
-				    <li><a href="/categories/实战/" class="animsition-link">实战<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/技术/" class="animsition-link">技术<small>(17)</small></a></li>
-				    
-				    <li><a href="/categories/效果/" class="animsition-link">效果<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/硬件/" class="animsition-link">硬件<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/网络/" class="animsition-link">网络<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/语言/" class="animsition-link">语言<small>(2)</small></a></li>
-				    
-				</ul>
-        	</li>
-			
-            
-            <li>
-                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
-                <ul class="sb-submenu">
-                    
-                    <li><a target="_blank" rel="noopener" href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
-                    
-                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
-                    
-                </ul>
-            </li>
-            
-        </ul>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu secondary">
-            
-            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
-            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
-        </ul>
-    </div>
-    
-    <!-- ============================ END Off-canvas navigation =========================== -->
-
-    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
-
-        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-        <div id="navigation" class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <!-- Nav logo -->
-                    <div class="logo">
-                        <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
-                        </a>
-                    </div>
-                    <!-- // Nav logo -->
-                    <!-- Info-bar -->
-                    <nav>
-                        <ul class="nav">
-                            <li><a href="/" class="animsition-link">Hexo</a></li>
-                            <li class="nolink"><span>Always </span>Creative.</li>
-                            
-                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                            
-                            
-                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
-                            
-                            
-                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
-                            
-                            
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
-                            
-                            
-                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
-                            
-                            <li class="nolink"><span>Welcome!</span></li>
-                        </ul>
-                    </nav>
-                    <!--// Info-bar -->
-                </div>
-                <!-- // .container -->
-                <div class="learnmore sb-toggle-right">More</div>
-                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar before"></span>
-                <span class="icon-bar main"></span>
-                <span class="icon-bar after"></span>
-                </button>
-            </div>
-            <!-- // .navbar-inner -->
-        </div>
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-
-      
-<section id="intro">
-    <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2021-06-18T01:18:34.000Z" itemprop="datePublished">
-          2021-06-18
-      </time>
-    
-</span>
-                <h1>通过协程的方式下载文件</h1>
-            </div>
-        </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<p>首先构建Retrofit:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient.Builder()</span><br><span class="line">                .build();</span><br><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()</span><br><span class="line">                .baseUrl(<span class="string">&quot;www.baidu.com&quot;</span>)</span><br><span class="line">                .client(client)</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .build();</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">DownLoadService</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下载文件 fileUrl:文件的网络路径</span></span><br><span class="line">    <span class="meta">@Streaming</span></span><br><span class="line">    <span class="meta">@GET</span></span><br><span class="line">    <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">downloadFileWithDynamicUrlAsync</span><span class="params">(<span class="meta">@Url</span> fileUrl: <span class="type">String</span>?)</span></span>: Response&lt;ResponseBody&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">DownLoadService</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 下载文件 fileUrl:文件的网络路径</span></span><br><span class="line">    <span class="meta">@Streaming</span></span><br><span class="line">    <span class="meta">@GET</span></span><br><span class="line">    <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">downloadFileWithDynamicUrlAsync</span><span class="params">(<span class="meta">@Url</span> fileUrl: <span class="type">String</span>?)</span></span>: Response&lt;ResponseBody&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
 <p>进行网络请求：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app_dir = AppCache.getContext().getExternalFilesDir(<span class="string">&quot;&quot;</span>)?.absolutePath</span><br><span class="line"> <span class="keyword">var</span> IMAGE_DOWNLOAD_DIR = <span class="string">&quot;<span class="variable">$IMAGE_BASE_DIR</span>/download/&quot;</span>          <span class="comment">// 原图保存目录</span></span><br><span class="line"><span class="comment">// downloadPath 文件下载地址</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">downLoad</span><span class="params">(downloadPath:<span class="type">String</span>)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 首先需要判断保存图片的目录存不存在 不存在创建</span></span><br><span class="line">        <span class="keyword">var</span> fileRoot = File(IMAGE_DOWNLOAD_DIR)</span><br><span class="line">        <span class="keyword">if</span> (!fileRoot.exists()) &#123;</span><br><span class="line">            fileRoot.mkdirs()</span><br><span class="line">        &#125;</span><br><span class="line">      lifecycleScope.launch &#123;</span><br><span class="line">            <span class="keyword">var</span> responseBoy = retrofit.create(DownLoadService::<span class="keyword">class</span>.java).downService.downloadFileWithDynamicUrlAsync(downloadPath)</span><br><span class="line">            <span class="comment">/**到这里我们就已经可以获取到对应文件的所有数据了</span></span><br><span class="line"><span class="comment">            val body = responseBoy.body() ?: throw RuntimeException(&quot;下载出错&quot;)</span></span><br><span class="line"><span class="comment">            //文件总长度</span></span><br><span class="line"><span class="comment">            val length = body.contentLength()</span></span><br><span class="line"><span class="comment">            //文件minetype</span></span><br><span class="line"><span class="comment">            val contentType = body.contentType()</span></span><br><span class="line"><span class="comment">            val ios = body.byteStream()</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">          <span class="comment">// 我们需要读取请求得到的字节数据 然后写入文件</span></span><br><span class="line">           dowload(</span><br><span class="line">                <span class="keyword">this</span><span class="symbol">@PictureDetailsActivity</span>,</span><br><span class="line">                responseBoy</span><br><span class="line">            ) &#123;</span><br><span class="line">                setFileName = &#123;</span><br><span class="line">                    fileName  <span class="comment">//如果在下载文件前知道文件的类型的话 可以直接在这里写上 **.jpg 或者 **.txt  记得一定要写明他的类型</span></span><br><span class="line">                &#125;</span><br><span class="line">                success &#123;url-&gt;</span><br><span class="line">                    ImageView.setImageURI(FileUtil.getUrl(url.path.toString())</span><br><span class="line">                &#125;</span><br><span class="line">                error &#123;</span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span><span class="symbol">@PictureDetailsActivity</span>, <span class="string">&quot;原图下载失败&quot;</span>, Toast.LENGTH_SHORT).show()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;.startDowload()</span><br><span class="line">      &#125;</span><br><span class="line">          </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app_dir = AppCache.getContext().getExternalFilesDir(<span class="string">&quot;&quot;</span>)?.absolutePath</span><br><span class="line"> <span class="keyword">var</span> IMAGE_DOWNLOAD_DIR = <span class="string">&quot;<span class="variable">$IMAGE_BASE_DIR</span>/download/&quot;</span>          <span class="comment">// 原图保存目录</span></span><br><span class="line"><span class="comment">// downloadPath 文件下载地址</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">downLoad</span><span class="params">(downloadPath:<span class="type">String</span>)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 首先需要判断保存图片的目录存不存在 不存在创建</span></span><br><span class="line">        <span class="keyword">var</span> fileRoot = File(IMAGE_DOWNLOAD_DIR)</span><br><span class="line">        <span class="keyword">if</span> (!fileRoot.exists()) &#123;</span><br><span class="line">            fileRoot.mkdirs()</span><br><span class="line">        &#125;</span><br><span class="line">      lifecycleScope.launch &#123;</span><br><span class="line">            <span class="keyword">var</span> responseBoy = retrofit.create(DownLoadService::<span class="keyword">class</span>.java).downService.downloadFileWithDynamicUrlAsync(downloadPath)</span><br><span class="line">            <span class="comment">/**到这里我们就已经可以获取到对应文件的所有数据了</span></span><br><span class="line"><span class="comment">            val body = responseBoy.body() ?: throw RuntimeException(&quot;下载出错&quot;)</span></span><br><span class="line"><span class="comment">            //文件总长度</span></span><br><span class="line"><span class="comment">            val length = body.contentLength()</span></span><br><span class="line"><span class="comment">            //文件minetype</span></span><br><span class="line"><span class="comment">            val contentType = body.contentType()</span></span><br><span class="line"><span class="comment">            val ios = body.byteStream()</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">          <span class="comment">// 我们需要读取请求得到的字节数据 然后写入文件</span></span><br><span class="line">           dowload(</span><br><span class="line">                <span class="keyword">this</span><span class="symbol">@PictureDetailsActivity</span>,</span><br><span class="line">                responseBoy</span><br><span class="line">            ) &#123;</span><br><span class="line">                setFileName = &#123;</span><br><span class="line">                    fileName  <span class="comment">//如果在下载文件前知道文件的类型的话 可以直接在这里写上 **.jpg 或者 **.txt  记得一定要写明他的类型</span></span><br><span class="line">                &#125;</span><br><span class="line">                success &#123;url-&gt;</span><br><span class="line">                    ImageView.setImageURI(FileUtil.getUrl(url.path.toString())</span><br><span class="line">                &#125;</span><br><span class="line">                error &#123;</span><br><span class="line">                    Toast.makeText(<span class="keyword">this</span><span class="symbol">@PictureDetailsActivity</span>, <span class="string">&quot;原图下载失败&quot;</span>, Toast.LENGTH_SHORT).show()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;.startDowload()</span><br><span class="line">      &#125;</span><br><span class="line">          </span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 
 <p>写流读取工具：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.chat.module_chat.util</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.ContentResolver</span><br><span class="line"><span class="keyword">import</span> okhttp3.ResponseBody</span><br><span class="line"><span class="keyword">import</span> retrofit2.Response</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Yu</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2021/6/1 8:59</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> TODO</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> android.content.Context</span><br><span class="line"><span class="keyword">import</span> android.net.Uri</span><br><span class="line"><span class="keyword">import</span> android.os.Environment</span><br><span class="line"><span class="keyword">import</span> android.util.Log</span><br><span class="line"><span class="keyword">import</span> android.webkit.MimeTypeMap</span><br><span class="line"><span class="keyword">import</span> com.lin.baselib.util.TUIKitConstants</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.Dispatchers</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.InternalCoroutinesApi</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.flow.collect</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.withContext</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedInputStream</span><br><span class="line"><span class="keyword">import</span> java.io.File</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.flow.flow</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.flow.flowOn</span><br><span class="line"><span class="keyword">import</span> okhttp3.MediaType</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by jingzz on 2020/7/9.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typealias</span> DOWLOAD_ERROR = (Throwable) -&gt; <span class="built_in">Unit</span></span><br><span class="line"><span class="keyword">typealias</span> DOWLOAD_PROCESS = (downloadedSize: <span class="built_in">Long</span>, length: <span class="built_in">Long</span>, process: <span class="built_in">Float</span>) -&gt; <span class="built_in">Unit</span></span><br><span class="line"><span class="keyword">typealias</span> DOWLOAD_SUCCESS = (uri: Uri) -&gt; <span class="built_in">Unit</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">dowload</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    context: <span class="type">Context</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">    response: <span class="type">Response</span>&lt;<span class="type">ResponseBody</span>&gt;,</span></span></span><br><span class="line"><span class="params"><span class="function">    block: <span class="type">DowloadBuild</span>.() -&gt; <span class="type">Unit</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>: DowloadBuild &#123;</span><br><span class="line">    <span class="keyword">val</span> build = DowloadBuild(response, context)</span><br><span class="line">    build.block()</span><br><span class="line">    <span class="keyword">return</span> build</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DowloadBuild</span></span>(<span class="keyword">val</span> response: Response&lt;ResponseBody&gt;, <span class="keyword">var</span> mContext: Context) &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> error: DOWLOAD_ERROR = &#123;&#125; <span class="comment">//错误贺词</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> process: DOWLOAD_PROCESS = &#123; downloadedSize, filsLength, process -&gt; &#125; <span class="comment">//进度</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> success: DOWLOAD_SUCCESS = &#123;&#125; <span class="comment">//下载完成</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> context: Context = mContext <span class="comment">//全局context</span></span><br><span class="line">    <span class="keyword">var</span> setUri: () -&gt; Uri? = &#123; <span class="literal">null</span> &#125; <span class="comment">//设置下载的uri</span></span><br><span class="line">    <span class="keyword">var</span> setFileName: () -&gt; String? = &#123; <span class="literal">null</span> &#125; <span class="comment">//设置文件名</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">process</span><span class="params">(process: <span class="type">DOWLOAD_PROCESS</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.process = process</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">error</span><span class="params">(error: <span class="type">DOWLOAD_ERROR</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.error = error</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">success</span><span class="params">(success: <span class="type">DOWLOAD_SUCCESS</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.success = success</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">startDowload</span><span class="params">()</span></span> &#123;</span><br><span class="line">        withContext(Dispatchers.Main) &#123;</span><br><span class="line">            <span class="comment">//使用流获取下载进度</span></span><br><span class="line">            flow.flowOn(Dispatchers.IO)</span><br><span class="line">                .collect &#123;</span><br><span class="line">                    <span class="keyword">when</span> (it) &#123;</span><br><span class="line">                        <span class="keyword">is</span> DowloadStatus.DowloadErron -&gt; error(it.t)</span><br><span class="line">                        <span class="keyword">is</span> DowloadStatus.DowloadProcess -&gt; process(</span><br><span class="line">                            it.currentLength,</span><br><span class="line">                            it.length,</span><br><span class="line">                            it.process</span><br><span class="line">                        )</span><br><span class="line">                        <span class="keyword">is</span> DowloadStatus.DowloadSuccess -&gt; success(it.uri)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> flow = flow&lt;DowloadStatus&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">val</span> body = response.body() ?: <span class="keyword">throw</span> RuntimeException(<span class="string">&quot;下载出错&quot;</span>)</span><br><span class="line">            <span class="comment">//文件总长度</span></span><br><span class="line">            <span class="keyword">val</span> length = body.contentLength()</span><br><span class="line">            <span class="comment">//文件minetype</span></span><br><span class="line">            <span class="keyword">val</span> contentType = body.contentType()</span><br><span class="line">            <span class="keyword">val</span> ios = body.byteStream()</span><br><span class="line">            <span class="keyword">var</span> uri: Uri? = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">var</span> file: File? = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">val</span> ops = kotlin.run &#123;</span><br><span class="line">                setUri()?.let &#123;</span><br><span class="line">                    <span class="comment">//url转OutPutStream</span></span><br><span class="line">                    uri = it</span><br><span class="line">                    context.contentResolver.openOutputStream(it)</span><br><span class="line">                &#125; ?: kotlin.run &#123;</span><br><span class="line">                    <span class="keyword">val</span> fileName = setFileName() ?: kotlin.run &#123;</span><br><span class="line">                        <span class="comment">//如果连文件名都不给，那就自己生成文件名</span></span><br><span class="line">                        <span class="string">&quot;<span class="subst">$&#123;System.currentTimeMillis()&#125;</span>.<span class="subst">$&#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">                            contentType!!.subtype</span></span></span><br><span class="line"><span class="subst"><span class="string">                        &#125;</span>&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    file =</span><br><span class="line">                        File(<span class="string">&quot;<span class="subst">$&#123;TUIKitConstants.IMAGE_DOWNLOAD_DIR&#125;</span><span class="variable">$fileName</span>&quot;</span>)</span><br><span class="line">                    FileOutputStream(file)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//下载的长度</span></span><br><span class="line">            <span class="keyword">var</span> currentLength: <span class="built_in">Int</span> = <span class="number">0</span></span><br><span class="line">            <span class="comment">//写入文件</span></span><br><span class="line">            <span class="keyword">val</span> bufferSize = <span class="number">1024</span> * <span class="number">8</span></span><br><span class="line">            <span class="keyword">val</span> buffer = ByteArray(bufferSize)</span><br><span class="line">            <span class="keyword">val</span> bufferedInputStream = BufferedInputStream(ios, bufferSize)</span><br><span class="line">            <span class="keyword">var</span> readLength: <span class="built_in">Int</span> = <span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> (bufferedInputStream.read(buffer, <span class="number">0</span>, bufferSize)</span><br><span class="line">                    .also &#123; readLength = it &#125; != -<span class="number">1</span></span><br><span class="line">            ) &#123;</span><br><span class="line">                ops.write(buffer, <span class="number">0</span>, readLength)</span><br><span class="line">                currentLength += readLength</span><br><span class="line">                emit(</span><br><span class="line">                    DowloadStatus.DowloadProcess(</span><br><span class="line">                        currentLength.toLong(),</span><br><span class="line">                        length,</span><br><span class="line">                        currentLength.toFloat() / length.toFloat()</span><br><span class="line">                    )</span><br><span class="line">                )</span><br><span class="line">            &#125;</span><br><span class="line">            bufferedInputStream.close()</span><br><span class="line">            ops.close()</span><br><span class="line">            ios.close()</span><br><span class="line">            <span class="keyword">if</span> (uri != <span class="literal">null</span>) &#123;</span><br><span class="line">                emit(DowloadStatus.DowloadSuccess(uri!!))</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (file != <span class="literal">null</span>) &#123;</span><br><span class="line">                emit(DowloadStatus.DowloadSuccess(Uri.fromFile(file)))</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">            emit(DowloadStatus.DowloadErron(e))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">DowloadStatus</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">DowloadProcess</span></span>(<span class="keyword">val</span> currentLength: <span class="built_in">Long</span>, <span class="keyword">val</span> length: <span class="built_in">Long</span>, <span class="keyword">val</span> process: <span class="built_in">Float</span>) :</span><br><span class="line">        DowloadStatus()</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">DowloadErron</span></span>(<span class="keyword">val</span> t: Throwable) : DowloadStatus()</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">DowloadSuccess</span></span>(<span class="keyword">val</span> uri: Uri) : DowloadStatus()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.chat.module_chat.util</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.ContentResolver</span><br><span class="line"><span class="keyword">import</span> okhttp3.ResponseBody</span><br><span class="line"><span class="keyword">import</span> retrofit2.Response</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Yu</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2021/6/1 8:59</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> TODO</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> android.content.Context</span><br><span class="line"><span class="keyword">import</span> android.net.Uri</span><br><span class="line"><span class="keyword">import</span> android.os.Environment</span><br><span class="line"><span class="keyword">import</span> android.util.Log</span><br><span class="line"><span class="keyword">import</span> android.webkit.MimeTypeMap</span><br><span class="line"><span class="keyword">import</span> com.lin.baselib.util.TUIKitConstants</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.Dispatchers</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.InternalCoroutinesApi</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.flow.collect</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.withContext</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedInputStream</span><br><span class="line"><span class="keyword">import</span> java.io.File</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.flow.flow</span><br><span class="line"><span class="keyword">import</span> kotlinx.coroutines.flow.flowOn</span><br><span class="line"><span class="keyword">import</span> okhttp3.MediaType</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by jingzz on 2020/7/9.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typealias</span> DOWLOAD_ERROR = (Throwable) -&gt; <span class="built_in">Unit</span></span><br><span class="line"><span class="keyword">typealias</span> DOWLOAD_PROCESS = (downloadedSize: <span class="built_in">Long</span>, length: <span class="built_in">Long</span>, process: <span class="built_in">Float</span>) -&gt; <span class="built_in">Unit</span></span><br><span class="line"><span class="keyword">typealias</span> DOWLOAD_SUCCESS = (uri: Uri) -&gt; <span class="built_in">Unit</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">dowload</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    context: <span class="type">Context</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">    response: <span class="type">Response</span>&lt;<span class="type">ResponseBody</span>&gt;,</span></span></span><br><span class="line"><span class="params"><span class="function">    block: <span class="type">DowloadBuild</span>.() -&gt; <span class="type">Unit</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>: DowloadBuild &#123;</span><br><span class="line">    <span class="keyword">val</span> build = DowloadBuild(response, context)</span><br><span class="line">    build.block()</span><br><span class="line">    <span class="keyword">return</span> build</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DowloadBuild</span></span>(<span class="keyword">val</span> response: Response&lt;ResponseBody&gt;, <span class="keyword">var</span> mContext: Context) &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> error: DOWLOAD_ERROR = &#123;&#125; <span class="comment">//错误贺词</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> process: DOWLOAD_PROCESS = &#123; downloadedSize, filsLength, process -&gt; &#125; <span class="comment">//进度</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> success: DOWLOAD_SUCCESS = &#123;&#125; <span class="comment">//下载完成</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> context: Context = mContext <span class="comment">//全局context</span></span><br><span class="line">    <span class="keyword">var</span> setUri: () -&gt; Uri? = &#123; <span class="literal">null</span> &#125; <span class="comment">//设置下载的uri</span></span><br><span class="line">    <span class="keyword">var</span> setFileName: () -&gt; String? = &#123; <span class="literal">null</span> &#125; <span class="comment">//设置文件名</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">process</span><span class="params">(process: <span class="type">DOWLOAD_PROCESS</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.process = process</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">error</span><span class="params">(error: <span class="type">DOWLOAD_ERROR</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.error = error</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">success</span><span class="params">(success: <span class="type">DOWLOAD_SUCCESS</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.success = success</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">startDowload</span><span class="params">()</span></span> &#123;</span><br><span class="line">        withContext(Dispatchers.Main) &#123;</span><br><span class="line">            <span class="comment">//使用流获取下载进度</span></span><br><span class="line">            flow.flowOn(Dispatchers.IO)</span><br><span class="line">                .collect &#123;</span><br><span class="line">                    <span class="keyword">when</span> (it) &#123;</span><br><span class="line">                        <span class="keyword">is</span> DowloadStatus.DowloadErron -&gt; error(it.t)</span><br><span class="line">                        <span class="keyword">is</span> DowloadStatus.DowloadProcess -&gt; process(</span><br><span class="line">                            it.currentLength,</span><br><span class="line">                            it.length,</span><br><span class="line">                            it.process</span><br><span class="line">                        )</span><br><span class="line">                        <span class="keyword">is</span> DowloadStatus.DowloadSuccess -&gt; success(it.uri)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> flow = flow&lt;DowloadStatus&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">val</span> body = response.body() ?: <span class="keyword">throw</span> RuntimeException(<span class="string">&quot;下载出错&quot;</span>)</span><br><span class="line">            <span class="comment">//文件总长度</span></span><br><span class="line">            <span class="keyword">val</span> length = body.contentLength()</span><br><span class="line">            <span class="comment">//文件minetype</span></span><br><span class="line">            <span class="keyword">val</span> contentType = body.contentType()</span><br><span class="line">            <span class="keyword">val</span> ios = body.byteStream()</span><br><span class="line">            <span class="keyword">var</span> uri: Uri? = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">var</span> file: File? = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">val</span> ops = kotlin.run &#123;</span><br><span class="line">                setUri()?.let &#123;</span><br><span class="line">                    <span class="comment">//url转OutPutStream</span></span><br><span class="line">                    uri = it</span><br><span class="line">                    context.contentResolver.openOutputStream(it)</span><br><span class="line">                &#125; ?: kotlin.run &#123;</span><br><span class="line">                    <span class="keyword">val</span> fileName = setFileName() ?: kotlin.run &#123;</span><br><span class="line">                        <span class="comment">//如果连文件名都不给，那就自己生成文件名</span></span><br><span class="line">                        <span class="string">&quot;<span class="subst">$&#123;System.currentTimeMillis()&#125;</span>.<span class="subst">$&#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">                            contentType!!.subtype</span></span></span><br><span class="line"><span class="subst"><span class="string">                        &#125;</span>&quot;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    file =</span><br><span class="line">                        File(<span class="string">&quot;<span class="subst">$&#123;TUIKitConstants.IMAGE_DOWNLOAD_DIR&#125;</span><span class="variable">$fileName</span>&quot;</span>)</span><br><span class="line">                    FileOutputStream(file)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//下载的长度</span></span><br><span class="line">            <span class="keyword">var</span> currentLength: <span class="built_in">Int</span> = <span class="number">0</span></span><br><span class="line">            <span class="comment">//写入文件</span></span><br><span class="line">            <span class="keyword">val</span> bufferSize = <span class="number">1024</span> * <span class="number">8</span></span><br><span class="line">            <span class="keyword">val</span> buffer = ByteArray(bufferSize)</span><br><span class="line">            <span class="keyword">val</span> bufferedInputStream = BufferedInputStream(ios, bufferSize)</span><br><span class="line">            <span class="keyword">var</span> readLength: <span class="built_in">Int</span> = <span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> (bufferedInputStream.read(buffer, <span class="number">0</span>, bufferSize)</span><br><span class="line">                    .also &#123; readLength = it &#125; != -<span class="number">1</span></span><br><span class="line">            ) &#123;</span><br><span class="line">                ops.write(buffer, <span class="number">0</span>, readLength)</span><br><span class="line">                currentLength += readLength</span><br><span class="line">                emit(</span><br><span class="line">                    DowloadStatus.DowloadProcess(</span><br><span class="line">                        currentLength.toLong(),</span><br><span class="line">                        length,</span><br><span class="line">                        currentLength.toFloat() / length.toFloat()</span><br><span class="line">                    )</span><br><span class="line">                )</span><br><span class="line">            &#125;</span><br><span class="line">            bufferedInputStream.close()</span><br><span class="line">            ops.close()</span><br><span class="line">            ios.close()</span><br><span class="line">            <span class="keyword">if</span> (uri != <span class="literal">null</span>) &#123;</span><br><span class="line">                emit(DowloadStatus.DowloadSuccess(uri!!))</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (file != <span class="literal">null</span>) &#123;</span><br><span class="line">                emit(DowloadStatus.DowloadSuccess(Uri.fromFile(file)))</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">            emit(DowloadStatus.DowloadErron(e))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">DowloadStatus</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">DowloadProcess</span></span>(<span class="keyword">val</span> currentLength: <span class="built_in">Long</span>, <span class="keyword">val</span> length: <span class="built_in">Long</span>, <span class="keyword">val</span> process: <span class="built_in">Float</span>) :</span><br><span class="line">        DowloadStatus()</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">DowloadErron</span></span>(<span class="keyword">val</span> t: Throwable) : DowloadStatus()</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">DowloadSuccess</span></span>(<span class="keyword">val</span> uri: Uri) : DowloadStatus()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
 
 <p>这里使用了kotlin里面的flow 方法：</p>
 <p>使用方法就是　创建一个流，然后在需要返回结果的使用掉用　emit() 就行。</p>
-
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-        </div>
-        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
-    
-    <a class="pull-left" href="/2021/06/18/Kotlin%E4%B9%8BFlow%E5%AD%A6%E4%B9%A0/" style="float: left;">
-        ← Kotlin之Flow学习
-    </a>
-    
-    
-    <a class="pull-right" href="/2021/06/10/Android%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/">
-        Android消息机制 →
-    </a>
-    
-</nav>
-
-        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
-  /**
-   * 搜狐畅言
-   */
-
-  /*
-  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
-
-  window.onload = function () {
-    (function () {
-      var appid = 'cytXXXX';
-      var conf = 'prod_xxxxxxxxxxxxxxxxx';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      var loadJs = function (d, a, id) {
-        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-        var b = document.createElement("script");
-        b.setAttribute("type", "text/javascript");
-        b.setAttribute("charset", "UTF-8");
-        b.setAttribute("src", d);
-        if (id) {
-          b.setAttribute("id", id);
-        }
-        if (typeof a === "function") {
-          if (window.attachEvent) {
-            b.onreadystatechange = function () {
-              var e = b.readyState;
-              if (e === "loaded" || e === "complete") {
-                b.onreadystatechange = null;
-                a()
-              }
-            }
-          } else {
-            b.onload = a
-          }
-        }
-        c.appendChild(b)
-      };
-
-      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
-        window.changyan.api.config({
-          appid: appid,
-          conf: conf
-        })
-      });
-    })();
-  }
-  */
-
-</script>
-</div>
-    </div>
-</section>
-
-
-      
-<!-- ============================ Footer =========================== -->
-<footer>
-    <div class="container">
-            <div class="copy">
-                <p>
-                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
-                </p>
-                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
-            </div>
-            <div class="social">
-                <ul>
-                    
-                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
-                    
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-</footer>
-
-<!-- ============================ END Footer =========================== -->
-
-  <script src="https://unpkg.com/mermaid@8.8.3/dist/mermaid.min.js"></script>
-  <script>
-
-      mermaid.initialize({theme: 'forest'});
-  
-  </script>
-
-      <!-- Load our scripts -->
-<!-- Resizable 'on-demand' full-height hero -->
-<script type="text/javascript">
-    var resizeHero = function () {
-        var hero = $(".cover,.heightblock"),
-            window1 = $(window);
-        hero.css({
-            "height": window1.height()
-        });
-    };
-
-    resizeHero();
-
-    $(window).resize(function () {
-        resizeHero();
-    });
-</script>
-<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-<script src="/js/scripts.js"></script><!-- Theme scripts -->
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$('#intro').find('img').each(function(){
-  var alt = this.alt;
-
-  if (alt){
-    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
-  }
-
-  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
-});
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-
-      
-</body>
-</html>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/06/18/Kotlin%E4%B9%8BFlow%E5%AD%A6%E4%B9%A0/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Kotlin之Flow学习</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/06/10/Android%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/"><span class="paginator-prev__text">Android消息机制</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">libertyYu</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">54</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">24</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
