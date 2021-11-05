@@ -58,6 +58,17 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <div align="center"><img src="/2021/11/05/%E5%87%8F%E8%82%A5%E6%97%A5%E8%AE%B0-3/图8.jpg" alt="img-0" style="zoom: 20%;"></div>
 
 <p>今天午饭太棒了，排骨烧山药。好想和老婆一起烧排骨山药5555555555。馋了馋了。</p>
+
+        <h1 id="晚饭">
+          <a href="#晚饭" class="heading-link"><i class="fas fa-link"></i></a><a href="#晚饭" class="headerlink" title="晚饭"></a>晚饭</h1>
+      <p>下午5.00吃了两片全麦面包，导致17.54分还特别饱哈哈。太棒了。</p>
+<p>明天要和老婆去医院看我的脚，她要给我带自制汉堡🍔，现在去买生菜，番茄，琵琶腿。</p>
+<div align="center"><img src="/2021/11/05/%E5%87%8F%E8%82%A5%E6%97%A5%E8%AE%B0-3/图9.jpg" alt="img-0" style="zoom: 20%;"></div>
+
+
+
+
+
 </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/11/04/%E5%87%8F%E8%82%A5%E6%97%A5%E8%AE%B0-2/">老婆加油-2</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-11-04</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-11-05</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="早饭">
           <a href="#早饭" class="heading-link"><i class="fas fa-link"></i></a><a href="#早饭" class="headerlink" title="早饭"></a>早饭</h1>
@@ -341,8 +352,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <li>制约性：因访问共享数据/资源数据或进程间同步而产生制约。；</li>
 </ul>
 </li>
-<li>进程控制块<ul>
-<li>操作系统管理控制进程运行所用的信息集合，操作系统用PCB来描述进程的基本情况以及运行变化的过程，pcb是进程存在的唯一标识。</li>
+<li><strong>进程控制块</strong><ul>
+<li><strong>操作系统管理控制进程运行所用的信息集合，操作系统用PCB来描述进程的基本情况以及运行变化的过程，pcb是进程存在的唯一标识。</strong></li>
 <li>使用进程控制块<ul>
 <li>进程的创建：为该进程创建一个pcb</li>
 <li>进程的终止：回收pcb</li>
@@ -366,7 +377,120 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <li>栈指针：过程调用/系统调用/中断处理和返回时需要用到它。</li>
 </ul>
 </li>
-<li></li>
+<li>进程控制信息<ul>
+<li>调度和状态信息：用于操作系统调度进程并占用处理机使用</li>
+<li>进程间通信信息：为支持进程间的与通信相关的各种标识，信号，信件等。这些信息存在接收对方的进程控制块中。</li>
+<li>存储管理信息：包含有指向本进程映像存储空间的数据结构。</li>
+<li>进程所用资源：说明由进程打开，使用的系统资源，如打开文件等。</li>
+<li>有关数据结构链接信息：进程可以连接到一个进程队列中，或连接到相关的其他进程的pcb</li>
+</ul>
+</li>
+<li>pcb的组织方式<ul>
+<li>链表：同一状态的进程其pcb成一链表，多个状态对应多个不同链表。各个状态的进程形成不同的链表：就绪链表，阻塞链表。</li>
+<li>索引表：同一状态的进程归入一个index表，由index指向pcb，多个状态对应多个不同的index表。</li>
+</ul>
+</li>
+</ul>
+
+        <h3 id="进程状态">
+          <a href="#进程状态" class="heading-link"><i class="fas fa-link"></i></a><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h3>
+      <ul>
+<li><p>进程的生命周期</p>
+<ul>
+<li><p>进程创建</p>
+<ul>
+<li>引起进程创建的三个主要事件：<ul>
+<li>系统初始化；</li>
+<li>用户请求创建一个新进程；</li>
+<li>正在运行的进程执行了创建进程的系统调用；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进程运行</p>
+<ul>
+<li>内核选择一个就绪的进程，让他占用处理机并执行。<ul>
+<li>为何选择，如何选择?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进程等待</p>
+<ul>
+<li>请求并等待系统服务，无法马上完成。</li>
+<li>启动某种操作，无法马上完成。</li>
+<li>需要的数据没有到达。</li>
+<li><strong>进程只能自己阻塞自己，因为只有进程自身才能知道何时需要等待某种事件的发生。</strong></li>
+</ul>
+</li>
+<li><p>进程唤醒</p>
+<ul>
+<li>被阻塞进程需要的资源可被满足</li>
+<li>被阻塞进程等待的事件到达</li>
+<li>将该进程的pcb插入到就绪队列</li>
+<li>进程只能被别的进程或操作系统唤醒。</li>
+</ul>
+</li>
+<li><p>进程结束</p>
+<div align="center"><img src="/2021/11/03/%E7%A1%AC%E4%BB%B6/图3.png" alt="img-0" style="zoom: 50%;"></div></li>
+</ul>
+</li>
+<li><p> 进程的三种基本状态</p>
+</li>
+</ul>
+<ul>
+<li>运行状态</li>
+<li>就绪状态</li>
+<li>等待状态</li>
+</ul>
+  <pre class="mermaid">  stateDiagram-v2
+  new --> ready: 进入就绪队列
+  ready-->running: 被调度
+  running-->ready: 时间片完
+  running-->blocked: 等待事件
+  blocked-->ready: 事件发生
+  running-->exit: 结束</pre>
+
+
+        <h3 id="线程管理">
+          <a href="#线程管理" class="heading-link"><i class="fas fa-link"></i></a><a href="#线程管理" class="headerlink" title="线程管理"></a>线程管理</h3>
+      <p>为什么使用线程，什么是线程，线程的实现，多线程编程接口实现。</p>
+<ul>
+<li><p>什么是线程：</p>
+<ul>
+<li><p>进程当中的一条执行流程</p>
+<ul>
+<li>从资源组合的角度：进程把一组相关的资源整合起来，构成了一个资源平台，包括地址空间（代码段，数据段），打开文件等各种资源。</li>
+<li>从运行角度：代码在这个资源平台上的一条执行流程。</li>
+</ul>
+<div align="center"><img src="/2021/11/03/%E7%A1%AC%E4%BB%B6/图4.png" alt="img-0" style="zoom: 50%;"></div></li>
+<li><p>线程的缺点：一个线程崩溃，会导致其所属的进程的所有线程奔溃。</p>
+<ul>
+<li>这就出现了一个问题：什么时候使用线程 什么时候使用进程？<ul>
+<li>在需要安全性的时候使用进程。防止一个线程的奔溃导致进程崩溃了。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>线程所需要的资源：需要有独立的寄存器，堆栈。但是共享代码段，数据段。</p>
+</li>
+</ul>
+<div align="center"><img src="/2021/11/03/%E7%A1%AC%E4%BB%B6/图5.png" alt="img-0" style="zoom: 50%;"></div></li>
+</ul>
+
+        <h3 id="线程与进程的区别">
+          <a href="#线程与进程的区别" class="heading-link"><i class="fas fa-link"></i></a><a href="#线程与进程的区别" class="headerlink" title="线程与进程的区别"></a>线程与进程的区别</h3>
+      <ul>
+<li>进程是资源分配的单位，线程是cpu调度的单位</li>
+<li>进程拥有一个完整的资源平台，而线程只独享必不可少的资源，如寄存器和栈。</li>
+<li>线程同样具有就绪，阻塞和执行三种基本状态，同样具有状态之间的转换关系。</li>
+<li>线程能减少并发执行的时间和空间开销。<ul>
+<li>线程的创建时间比进程短</li>
+<li>线程的终止时间比进程短</li>
+<li>同一进程内的线程切换时间比进程短。</li>
+<li>由于同一进程的各线程共享和文件资源，可直接执行不通过内核通信。</li>
+</ul>
+</li>
 </ul>
 </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/10/29/%E6%89%8B%E6%9C%BA%E5%B1%8F%E5%B9%95%E8%83%8C%E5%90%8E%E7%9A%84%E6%8A%80%E6%9C%AF/">手机屏幕背后的技术</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-10-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-11-04</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>手机屏幕的显示技术分为两种：</p>
 <ul>
